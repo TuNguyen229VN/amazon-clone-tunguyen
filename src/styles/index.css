@@ -1,0 +1,8 @@
+@import url("./reset.css");
+
+* {
+  font-family: "Amazon Ember", sans-serif;
+  color: #565959;
+  font-size: 14px;
+  font-weight: normal;
+}

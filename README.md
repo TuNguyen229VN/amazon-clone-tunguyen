@@ -2,4 +2,11 @@
 
 ## Technologies: 
 
-- ReactJS , Firebase
+- ReactJS, Firebase, Material UI
+
+## Pages:
+
+## Main Features:
+
+## Rules:
+- Use BEM convention for classname
