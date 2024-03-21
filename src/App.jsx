@@ -1,10 +1,8 @@
-import Header from "./layouts/Header";
+import HomePage from "./pages/HomePage";
 function App() {
   return (
     <div className="app">
-      {/* Header */}
-      <Header />
-      {/* Home */}
+      <HomePage />
     </div>
   );
 }

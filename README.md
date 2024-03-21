@@ -5,7 +5,7 @@
 - ReactJS, Firebase, Material UI
 
 ## Pages:
-
+- HomePage
 ## Main Features:
 
 ## Rules:
