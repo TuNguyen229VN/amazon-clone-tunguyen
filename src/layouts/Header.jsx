@@ -3,11 +3,14 @@ import "../styles/Header.css";
 import Logo from "../assets/logo.png";
 import SearchIcon from "@mui/icons-material/Search";
 import { ShoppingBasket } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <div className="header">
-      <img src={Logo} alt="logo" className="header__logo" />
+      <Link to={"/"}>
+        <img src={Logo} alt="logo" className="header__logo" />
+      </Link>
 
       <div className="header__search">
         <input
