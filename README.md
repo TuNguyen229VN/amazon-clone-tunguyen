@@ -7,6 +7,7 @@
 ## Pages:
 - HomePage
 - ALo
+-doi la the
 ## Main Features:
 
 ## Rules:
