@@ -7,6 +7,7 @@
 ## Pages:
 - HomePage
 - ALo
+- zzzzzz
 ## Main Features:
 
 ## Rules:
