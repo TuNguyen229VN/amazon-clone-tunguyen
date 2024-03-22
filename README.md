@@ -5,11 +5,10 @@
 - ReactJS, Firebase, Material UI
 
 ## Pages:
-- HomePage
-- ALo
-- doi la the
-- zzzzzz
+- Home Page
+- Checkout Page
 ## Main Features:
+- Add to cart
 
 ## Rules:
 - Use BEM convention for classname

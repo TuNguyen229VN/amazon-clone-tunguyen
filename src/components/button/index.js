@@ -1,2 +1,2 @@
-import ButtonAddToBasket from "./ButtonAddToBasket";
-export { ButtonAddToBasket };
+import ButtonPrimary from "./ButtonPrimary";
+export { ButtonPrimary };
