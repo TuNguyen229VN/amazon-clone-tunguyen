@@ -7,8 +7,10 @@ button {
   border: none;
   padding: 6px 20px;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px 0 rgba(213, 217, 217, 0.5);
   width: max-content;
+  font-size: 13px;
 }
 
 button:hover {

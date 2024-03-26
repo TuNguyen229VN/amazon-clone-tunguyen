@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/Product.css";
-import StarBorderIcon from "@mui/icons-material/StarBorder";
+import StarIcon from '@mui/icons-material/Star';
 
 import { ButtonPrimary } from "../../components/button";
 import PropTypes from "prop-types";
@@ -34,7 +34,7 @@ const Product = ({id, title = "", image = "", price = 0, rating = 0 }) => {
           {Array(rating)
             .fill()
             .map((_, index) => (
-              <StarBorderIcon key={index} />
+              <StarIcon key={index} />
             ))}
         </div>
       </div>
