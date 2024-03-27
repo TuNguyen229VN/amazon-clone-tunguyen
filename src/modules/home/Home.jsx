@@ -4,6 +4,8 @@ import "../../styles/Home.css";
 import Product from "../product/Product";
 import ProductItem from "../../assets/product1.jpg";
 const Home = () => {
+  const {VITE_API_KEY_FIREBASE,}=import.meta.env
+  console.log(VITE_API_KEY_FIREBASE)
   return (
     <div className="home">
       <div className="home__container">
