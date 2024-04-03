@@ -5,6 +5,6 @@ import react from "@vitejs/plugin-react-swc";
 export default defineConfig({
   plugins: [react()],
   dotenv: ".env.development",
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
-
+  rewrites: [{ source: "/(.*)", destination: "/index.html" }],
+  routes: [{ src: "/[^.]+", dest: "/", status: 200 }],
 });
