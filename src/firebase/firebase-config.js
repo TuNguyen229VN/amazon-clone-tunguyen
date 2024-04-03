@@ -1,5 +1,7 @@
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 const {
   VITE_API_KEY_FIREBASE,
   VITE_AUTH_DOMAIN_FIREBASE,
@@ -19,3 +21,9 @@ const firebaseConfig = {
   appId: VITE_APP_ID_FIREBAE,
   measurementId: VITE_MEASUREMENT_ID_FIREBASE,
 };
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+export { db, auth };
