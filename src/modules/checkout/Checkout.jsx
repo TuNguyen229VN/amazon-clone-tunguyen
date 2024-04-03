@@ -29,7 +29,6 @@ const Checkout = () => {
                 rating={item.rating}
               />
             ))}
-          {basket?.length <= 0 && <p></p>}
         </div>
       </div>
 

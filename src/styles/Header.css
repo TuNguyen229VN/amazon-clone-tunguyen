@@ -78,3 +78,11 @@
 .header__basketCount {
   margin-inline: 10px;
 }
+
+.header .--accountName {
+  width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+}

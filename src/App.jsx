@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebase-config";
 import { useStateValue } from "./hooks/useStateValue";
+import PaymentPage from "./pages/PaymentPage";
 function App() {
   const [{ user }, dispatch] = useStateValue();
   useEffect(() => {
@@ -33,6 +34,10 @@ function App() {
           element={user ? <Navigate to={"/"} /> : <LoginPage />}
         ></Route>
         <Route path="/checkout" element={<CheckoutPage />}></Route>
+        <Route
+          path="/payment"
+          element={user ? <PaymentPage /> : <Navigate to={"/login"} />}
+        ></Route>
       </Routes>
     </BrowserRouter>
   );

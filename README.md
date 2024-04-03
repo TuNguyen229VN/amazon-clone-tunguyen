@@ -11,6 +11,7 @@
 - Home Page
 - Checkout Page
 - Login Page
+- Payment Page
 
 ## Main Features:
 
