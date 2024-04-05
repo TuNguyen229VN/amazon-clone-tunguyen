@@ -41,18 +41,18 @@ function App() {
           element={user ? <Navigate to={"/"} /> : <LoginPage />}
         ></Route>
         <Route path="/checkout" element={<CheckoutPage />}></Route>
-        <Route
+        {/* <Route
           path="/payment"
           element={
             user ? (
-              // <Elements stripe={promisze}>
+              <Elements stripe={promisze}>
                 <PaymentPage />
-              // </Elements>
+              </Elements>
             ) : (
               <Navigate to={"/login"} />
             )
           }
-        ></Route>
+        ></Route> */}
       </Routes>
     </BrowserRouter>
   );
