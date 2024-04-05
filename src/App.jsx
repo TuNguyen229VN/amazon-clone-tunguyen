@@ -15,23 +15,22 @@ const promisze = loadStripe(
 );
 
 function App() {
-  // const [{ user }, dispatch] = useStateValue();
-  // useEffect(() => {
-  //   onAuthStateChanged(auth, (authUser) => {
-  //     if (authUser) {
-  //       dispatch({
-  //         type: "SET_USER",
-  //         user: authUser,
-  //       });
-  //     } else {
-  //       dispatch({
-  //         type: "SET_USER",
-  //         user: null,
-  //       });
-  //     }
-  //   });
-  // }, []);
-  const user = "alo";
+  const [{ user }, dispatch] = useStateValue();
+  useEffect(() => {
+    onAuthStateChanged(auth, (authUser) => {
+      if (authUser) {
+        dispatch({
+          type: "SET_USER",
+          user: authUser,
+        });
+      } else {
+        dispatch({
+          type: "SET_USER",
+          user: null,
+        });
+      }
+    });
+  }, []);
   return (
     <BrowserRouter>
       <Routes>
