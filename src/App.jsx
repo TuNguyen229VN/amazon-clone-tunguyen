@@ -45,9 +45,9 @@ function App() {
           path="/payment"
           element={
             user ? (
-              <Elements stripe={promisze}>
+              // <Elements stripe={promisze}>
                 <PaymentPage />
-              </Elements>
+              // </Elements>
             ) : (
               <Navigate to={"/login"} />
             )

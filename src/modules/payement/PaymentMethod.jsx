@@ -4,7 +4,7 @@ import CurrencyFormat from "react-currency-format";
 import { useStateValue } from "../../hooks/useStateValue";
 import { getBasketTotal } from "../../utils/reducer";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../../axios/axios";
 
 const PaymentMethod = () => {
   const navigate = useNavigate();
