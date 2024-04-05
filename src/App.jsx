@@ -36,7 +36,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
-        <Route
+        {/* <Route
           path="/login"
           element={user ? <Navigate to={"/"} /> : <LoginPage />}
         ></Route>
@@ -52,7 +52,7 @@ function App() {
               <Navigate to={"/login"} />
             )
           }
-        ></Route>
+        ></Route> */}
       </Routes>
     </BrowserRouter>
   );
