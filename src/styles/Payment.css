@@ -32,11 +32,13 @@
   font-size: 18px;
 }
 
-.payment__address {
-  flex: 0.8;
-}
-
 .payment__address p {
   font-size: 14px;
   color: #333;
+}
+
+.payment__address,
+.payment__items,
+.payment__details {
+  flex: 0.8;
 }

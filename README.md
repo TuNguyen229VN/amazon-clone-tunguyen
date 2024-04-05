@@ -2,7 +2,7 @@
 
 ## Technologies & Libraries:
 
-- ReactJS, Firebase, Material UI, react-currency-format
+- ReactJS, Firebase, Material UI, react-currency-format, Stripe, axios
 
 ## Project Description
 
@@ -16,8 +16,9 @@
 ## Main Features:
 
 - Add to cart
-- Signin/ Signout
+- Sign in/ Sign out
 - Sign up
+- Payment
 
 ## Rules:
 

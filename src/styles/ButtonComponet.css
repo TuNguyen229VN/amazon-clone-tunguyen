@@ -1,4 +1,4 @@
-button {
+.button__primary {
   background-color: #f0c14b;
   border: 1px solid;
   margin-top: 10px;
@@ -13,6 +13,6 @@ button {
   font-size: 13px;
 }
 
-button:hover {
+.button__primary:hover {
   background-color: #cd9042;
 }
