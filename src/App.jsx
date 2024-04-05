@@ -6,13 +6,13 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebase-config";
 import { useStateValue } from "./hooks/useStateValue";
-import PaymentPage from "./pages/PaymentPage";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
+// import PaymentPage from "./pages/PaymentPage";
+// import { loadStripe } from "@stripe/stripe-js";
+// import { Elements } from "@stripe/react-stripe-js";
 
-const promisze = loadStripe(
-  "pk_test_51P1mNRFhreKVvoIjY4yZECYGXcXLQFZAVmWxT7m5HgFBuDukueTmjkR4t6UHIa632LfKAtq1BjSWB8QcZGxVLxij00uCbRfx5J"
-);
+// const promisze = loadStripe(
+//   "pk_test_51P1mNRFhreKVvoIjY4yZECYGXcXLQFZAVmWxT7m5HgFBuDukueTmjkR4t6UHIa632LfKAtq1BjSWB8QcZGxVLxij00uCbRfx5J"
+// );
 
 function App() {
   const [{ user }, dispatch] = useStateValue();

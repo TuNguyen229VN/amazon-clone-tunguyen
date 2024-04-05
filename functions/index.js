@@ -9,7 +9,7 @@ const stripe = require("stripe")("sk_test_51P1mNRFhreKVvoIjuz2v0Dp1lPO0Ajp5IdjJ9
 const app = express();
 
 // Middlewares
-app.use(cors({origin: true}));
+app.use(cors());
 app.use(express.json());
 
 // API routes

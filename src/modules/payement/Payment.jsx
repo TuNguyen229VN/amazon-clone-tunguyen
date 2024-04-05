@@ -1,7 +1,7 @@
 import React from "react";
 import PaymentDeliveryAddress from "./PaymentDeliveryAddress";
 import PaymentReviewItem from "./PaymentReviewItem";
-// import PaymentMethod from "./PaymentMethod";
+import PaymentMethod from "./PaymentMethod";
 import "../../styles/Payment.css";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../../hooks/useStateValue";
