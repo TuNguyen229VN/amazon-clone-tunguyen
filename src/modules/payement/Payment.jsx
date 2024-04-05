@@ -21,7 +21,7 @@ const Payment = () => {
           <PaymentReviewItem />
         </div>
         <div className="payment__section">
-          {/* <PaymentMethod /> */}
+          <PaymentMethod />
         </div>
       </div>
     </div>
