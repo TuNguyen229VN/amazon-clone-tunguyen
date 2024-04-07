@@ -11,6 +11,7 @@ const CheckoutProduct = ({
   image = "",
   price = 0,
   rating = 0,
+  hideButton = false,
 }) => {
   const [{ basket }, dispatch] = useStateValue();
   const removeFromBasket = () => {
@@ -40,10 +41,12 @@ const CheckoutProduct = ({
               <StarIcon key={index} />
             ))}
         </div>
-        <ButtonPrimary
-          text="Remove from basket"
-          onClick={removeFromBasket}
-        ></ButtonPrimary>
+        {!hideButton && (
+          <ButtonPrimary
+            text="Remove from basket"
+            onClick={!hideButton && removeFromBasket}
+          ></ButtonPrimary>
+        )}
       </div>
     </div>
   );
@@ -55,5 +58,6 @@ CheckoutProduct.propTypes = {
   image: PropTypes.string,
   price: PropTypes.number,
   rating: PropTypes.number,
+  hideButton: PropTypes.bool,
 };
 export default CheckoutProduct;

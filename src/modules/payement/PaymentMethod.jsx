@@ -1,14 +1,16 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useId, useState } from "react";
 import CurrencyFormat from "react-currency-format";
 import { useStateValue } from "../../hooks/useStateValue";
 import { getBasketTotal } from "../../utils/reducer";
 import { useNavigate } from "react-router-dom";
 import axios from "../../axios/axios";
-
+import { db } from "../../firebase/firebase-config";
+import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 const PaymentMethod = () => {
   const navigate = useNavigate();
-  const [{ basket }, dispatch] = useStateValue();
+  const a = useId();
+  const [{ user, basket }, dispatch] = useStateValue();
   const stripe = useStripe();
   const elements = useElements();
 
@@ -40,10 +42,20 @@ const PaymentMethod = () => {
         },
       })
       .then(({ paymentIntent }) => {
+        const userDocRef = doc(db, "users", user?.uid);
+        const ordersCollectionRef = collection(userDocRef, "orders");
+        const orderDocRef = doc(ordersCollectionRef, paymentIntent.id);
+        setDoc(orderDocRef, {
+          basket: basket,
+          amount: paymentIntent.amount,
+          created: paymentIntent.created,
+        });
+
         setSucceeded(true);
         setError(null);
         setProcessing(false);
-        navigate("/orders");
+        dispatch({ type: "EMPTY_BASKET" });
+        navigate("/order");
       });
   };
 

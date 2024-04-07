@@ -2,7 +2,7 @@
 
 ## Technologies & Libraries:
 
-- ReactJS, Firebase, Material UI, react-currency-format, Stripe, axios
+- ReactJS, Firebase, Material UI, react-currency-format, Stripe, axios, moment.js
 
 ## Project Description
 
@@ -12,13 +12,14 @@
 - Checkout Page
 - Login Page
 - Payment Page
+- Order History Page
 
 ## Main Features:
 
 - Add to cart
 - Sign in/ Sign out
 - Sign up
-- Payment
+- Payment / Order history
 
 ## Rules:
 

@@ -9,6 +9,7 @@ import { useStateValue } from "./hooks/useStateValue";
 import PaymentPage from "./pages/PaymentPage";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import OrderPage from "./pages/OrderPage";
 
 const promisze = loadStripe(
   "pk_test_51P1mNRFhreKVvoIjY4yZECYGXcXLQFZAVmWxT7m5HgFBuDukueTmjkR4t6UHIa632LfKAtq1BjSWB8QcZGxVLxij00uCbRfx5J"
@@ -51,6 +52,10 @@ function App() {
               <Navigate to={"/login"} />
             )
           }
+        ></Route>
+        <Route
+          path="/order"
+          element={user ?  <OrderPage />:<Navigate to={"/login"} /> }
         ></Route>
       </Routes>
     </BrowserRouter>

@@ -1,3 +1,6 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable indent */
+/* eslint-disable max-len */
 const functions = require("firebase-functions");
 const express = require("express");
 const cors = require("cors");
@@ -11,7 +14,7 @@ const stripe = require("stripe")(
 const app = express();
 
 // Middlewares
-app.use(cors({ origin: true }));
+app.use(cors({origin: true}));
 app.use(express.json());
 
 // API routes
