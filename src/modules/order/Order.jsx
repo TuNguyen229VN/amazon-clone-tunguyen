@@ -31,9 +31,7 @@ const Order = () => {
       <h1>Your Orders</h1>
       <div className="orders__order">
         {order?.map((item, index) => (
-          <>
             <OrderItem order={item} key={index} />
-          </>
         ))}
       </div>
     </div>

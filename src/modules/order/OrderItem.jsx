@@ -39,6 +39,6 @@ const OrderItem = ({ order = [] }) => {
 };
 
 OrderItem.propTypes = {
-  order: PropTypes.array,
+  order: PropTypes.object,
 };
 export default OrderItem;
