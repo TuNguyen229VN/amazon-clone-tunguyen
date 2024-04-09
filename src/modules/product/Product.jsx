@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/Product.css";
+import styles from "../../styles/Product.module.css";
 import StarIcon from '@mui/icons-material/Star';
 
 import { ButtonPrimary } from "../../components/button";
@@ -23,14 +23,14 @@ const Product = ({id, title = "", image = "", price = 0, rating = 0 }) => {
   };
 
   return (
-    <div className="product">
-      <div className="product__info">
+    <div className={styles.product}>
+      <div className={styles.product__info}>
         <p>{title}</p>
-        <p className="product__price">
+        <p className={styles.product__price}>
           <small>$</small>
           <strong>{price}</strong>
         </p>
-        <div className="product__rating">
+        <div className={styles.product__rating}>
           {Array(rating)
             .fill()
             .map((_, index) => (

@@ -1,14 +1,14 @@
 import React, { useId } from "react";
 import Banner from "../../assets/banner.jpg";
-import "../../styles/Home.css";
+import styles from "../../styles/Home.module.css";
 import Product from "../product/Product";
 import ProductItem from "../../assets/product1.jpg";
 const Home = () => {
   return (
-    <div className="home">
-      <div className="home__container">
-        <img src={Banner} alt="banner" className="home__image" />
-        <div className="home__row">
+    <div className={styles.home}>
+      <div className={styles.home__container}>
+        <img src={Banner} alt="banner" className={styles.home__image} />
+        <div className={styles.home__row}>
           <Product
             id={useId()}
             title={"The lean starup"}
@@ -27,7 +27,7 @@ const Home = () => {
             rating={5}
           />
         </div>
-        <div className="home__row">
+        <div className={styles.home__row}>
           <Product
             id={useId()}
             title={"The lean starup"}
@@ -50,7 +50,7 @@ const Home = () => {
             rating={5}
           />
         </div>
-        <div className="home__row">
+        <div className={styles.home__row}>
           <Product
             id={useId()}
             title={"The lean starup"}

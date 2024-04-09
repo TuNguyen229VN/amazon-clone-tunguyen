@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/Login.css";
+import styles from "../styles/Login.module.css";
 import LogoBlack from "../assets/logo_black.png";
 import { Link, useNavigate } from "react-router-dom";
 import { ButtonPrimary } from "../components/button";
@@ -17,6 +17,7 @@ const LoginPage = () => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((auth) => {
+        localStorage.setItem("userInfo", JSON.stringify(auth));
         navigate("/");
       })
       .catch((error) => alert(error.message));
@@ -27,18 +28,19 @@ const LoginPage = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((auth) => {
         if (auth) {
+          localStorage.setItem("userInfo", JSON.stringify(auth));
           navigate("/");
         }
       })
       .catch((error) => alert(error.message));
   };
   return (
-    <div className="login">
+    <div className={styles.login}>
       <Link to={"/"}>
-        <img src={LogoBlack} alt="logo" className="login__logo" />
+        <img src={LogoBlack} alt="logo" className={styles.login__logo} />
       </Link>
-      <div className="login__fluidContainer">
-        <div className="login__container">
+      <div className={styles.login__fluidContainer}>
+        <div className={styles.login__container}>
           <h1>Sign in</h1>
           <form>
             <h5>Email</h5>
@@ -54,7 +56,7 @@ const LoginPage = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <ButtonPrimary
-              className="login__signInButton"
+              className={styles.login__signInButton}
               text="Sign in"
               type="submit"
               onClick={signIn}
@@ -66,11 +68,11 @@ const LoginPage = () => {
             Interest Based Ads Notice.
           </p>
         </div>
-        <p className="login__textNew">New to Amazon?</p>
+        <p className={styles.login__textNew}>New to Amazon?</p>
         <ButtonPrimary
           onClick={register}
           text="Create your Amazon account"
-          className="login__regiterButton"
+          className={styles.login__registerButton}
         />
       </div>
     </div>

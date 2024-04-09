@@ -7,9 +7,10 @@ import { useNavigate } from "react-router-dom";
 import axios from "../../axios/axios";
 import { db } from "../../firebase/firebase-config";
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
+import styles from "../../styles/Payment.module.css";
+
 const PaymentMethod = () => {
   const navigate = useNavigate();
-  const a = useId();
   const [{ user, basket }, dispatch] = useStateValue();
   const stripe = useStripe();
   const elements = useElements();
@@ -66,14 +67,14 @@ const PaymentMethod = () => {
 
   return (
     <>
-      <div className="payment__title">
+      <div className={styles.payment__title}>
         <h3>Payment Method</h3>
       </div>
-      <div className="payment__details">
+      <div className={styles.payment__details}>
         <form onSubmit={handleSubmit}>
           <CardElement onChange={handleChange} />
 
-          <div className="payment__priceContainer">
+          <div className={styles.payment__priceContainer}>
             <CurrencyFormat
               renderText={(value) => (
                 <>

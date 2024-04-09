@@ -16,7 +16,7 @@ const promisze = loadStripe(
 );
 
 function App() {
-  const [{ user }, dispatch] = useStateValue();
+  const [{user}, dispatch] = useStateValue();
   useEffect(() => {
     onAuthStateChanged(auth, (authUser) => {
       if (authUser) {
@@ -55,7 +55,7 @@ function App() {
         ></Route>
         <Route
           path="/order"
-          element={user ?  <OrderPage />:<Navigate to={"/login"} /> }
+          element={user ? <OrderPage /> : <Navigate to={"/login"} />}
         ></Route>
       </Routes>
     </BrowserRouter>

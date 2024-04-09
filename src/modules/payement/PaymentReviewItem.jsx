@@ -1,15 +1,16 @@
 import React from "react";
 import { useStateValue } from "../../hooks/useStateValue";
 import CheckoutProduct from "../checkout/CheckoutProduct";
+import styles from "../../styles/Payment.module.css";
 
 const PaymentReviewItem = () => {
   const [{ basket, user }, dispatch] = useStateValue();
   return (
     <>
-      <div className="payment__title">
+      <div className={styles.payment__title}>
         <h3>Review items and delivery</h3>
       </div>
-      <div className="payment__items">
+      <div className={styles.payment__items}>
         {basket?.length > 0 &&
           basket.map((item, index) => (
             <CheckoutProduct

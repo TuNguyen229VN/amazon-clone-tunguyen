@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../../styles/Order.css";
+import styles from "../../styles/Order.module.css";
 import { db } from "../../firebase/firebase-config";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { useStateValue } from "../../hooks/useStateValue";
@@ -27,9 +27,9 @@ const Order = () => {
   }, []);
 
   return (
-    <div className="orders">
+    <div className={styles.orders}>
       <h1>Your Orders</h1>
-      <div className="orders__order">
+      <div className={styles.orders__order}>
         {order?.map((item, index) => (
             <OrderItem order={item} key={index} />
         ))}

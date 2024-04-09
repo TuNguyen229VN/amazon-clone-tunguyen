@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/CheckoutProduct.css";
+import styles from "../../styles/CheckoutProduct.module.css";
 import PropTypes from "prop-types";
 import StarIcon from "@mui/icons-material/Star";
 import { ButtonPrimary } from "../../components/button";
@@ -22,19 +22,19 @@ const CheckoutProduct = ({
     });
   };
   return (
-    <div className="checkoutProduct">
+    <div className={styles.checkoutProduct}>
       <img
         src={image}
         alt="checkoutProduct-image"
-        className="checkoutProduct__image"
+        className={styles.checkoutProduct__image}
       />
-      <div className="checkoutProduct__info">
-        <p className="checkoutProduct__title">{title}</p>
-        <p className="checkoutProduct__price">
+      <div className={styles.checkoutProduct__info}>
+        <p className={styles.checkoutProduct__title}>{title}</p>
+        <p className={styles.checkoutProduct__price}>
           <small>$</small>
           <strong>{price}</strong>
         </p>
-        <div className="checkoutProduct__rating">
+        <div className={styles.checkoutProduct__rating}>
           {Array(rating)
             .fill()
             .map((_, index) => (

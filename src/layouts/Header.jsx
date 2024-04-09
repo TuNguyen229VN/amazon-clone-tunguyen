@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Header.css";
+import styles from "../styles/Header.module.css";
 import Logo from "../assets/logo.png";
 import SearchIcon from "@mui/icons-material/Search";
 import { ShoppingBasket } from "@mui/icons-material";
@@ -14,54 +14,57 @@ const Header = () => {
   const handleAuthentication = () => {
     if (user) {
       signOut(auth);
+      localStorage.removeItem("userInfo");
     }
   };
 
   return (
-    <div className="header">
+    <div className={styles.header}>
       <Link to={"/"}>
-        <img src={Logo} alt="logo" className="header__logo" />
+        <img src={Logo} alt="logo" className={styles.header__logo} />
       </Link>
 
-      <div className="header__search">
+      <div className={styles.header__search}>
         <input
           type="text"
-          className="header__searchInput"
+          className={styles.header__searchInput}
           placeholder="Search Amazon"
         />
-        <SearchIcon className="header__searchIcon" />
+        <SearchIcon className={styles.header__searchIcon} />
       </div>
 
-      <div className="header__nav">
+      <div className={styles.header__nav}>
         <Link to={!user && "/login"}>
-          <div onClick={handleAuthentication} className="header__option">
+          <div onClick={handleAuthentication} className={styles.header__option}>
             <span
-              className="header__optionLineOne --accountName"
+              className={`${styles.header__optionLineOne} ${styles["--accountName"]}`}
               title={!user ? "guest" : user?.email}
             >
               Hello {!user ? "guest" : user?.email}
             </span>
-            <span className="header__optionLineTwo">
+            <span className={styles.header__optionLineTwo}>
               {user ? "Sign out" : "Sign in"}
             </span>
           </div>
         </Link>
         <Link to="/order">
-          <div className="header__option">
-            <span className="header__optionLineOne">Returns</span>
-            <span className="header__optionLineTwo">& Orders</span>
+          <div className={styles.header__option}>
+            <span className={styles.header__optionLineOne}>Returns</span>
+            <span className={styles.header__optionLineTwo}>& Orders</span>
           </div>
         </Link>
-        <div className="header__option">
-          <span className="header__optionLineOne">Your</span>
-          <span className="header__optionLineTwo">Prime</span>
+        <div className={styles.header__option}>
+          <span className={styles.header__optionLineOne}>Your</span>
+          <span className={styles.header__optionLineTwo}>Prime</span>
         </div>
       </div>
 
       <Link to={"/checkout"}>
-        <div className="header__optionBasket">
+        <div className={styles.header__optionBasket}>
           <ShoppingBasket />
-          <span className="header__optionLineTwo header__basketCount">
+          <span
+            className={`${styles.header__optionLineTwo} ${styles.header__basketCount}`}
+          >
             {basket?.length ?? 0}
           </span>
         </div>

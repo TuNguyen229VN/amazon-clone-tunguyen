@@ -1,9 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../../styles/ButtonComponet.css";
-const ButtonPrimary = ({ text = "", onClick = () => {}, ...props }) => {
+import styles from "../../styles/ButtonComponet.module.css";
+const ButtonPrimary = ({
+  text = "",
+  onClick = () => {},
+  className = "",
+  ...props
+}) => {
   return (
-    <button onClick={onClick} {...props} className="button__primary">
+    <button
+      onClick={onClick}
+      className={`${styles.button__primary} ${className}`}
+      {...props}
+    >
       {text}
     </button>
   );
@@ -12,5 +21,6 @@ const ButtonPrimary = ({ text = "", onClick = () => {}, ...props }) => {
 ButtonPrimary.propTypes = {
   text: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  className: PropTypes.string,
 };
 export default ButtonPrimary;
