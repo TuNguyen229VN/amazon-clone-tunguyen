@@ -1,6 +1,6 @@
 import React from "react";
 import { useStateValue } from "../../hooks/useStateValue";
-import styles from "../../styles/Payment.module.css";
+import styles from "./styles/Payment.module.css";
 const PaymentDeliveryAddress = () => {
   const [{ basket, user }, dispatch] = useStateValue();
   return (

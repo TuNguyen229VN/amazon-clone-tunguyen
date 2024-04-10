@@ -1,0 +1,22 @@
+.banner {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.banner__button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+}
+.--back {
+  left: 0;
+}
+.--forward {
+  right: 0;
+}
+
+

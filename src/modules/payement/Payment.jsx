@@ -2,7 +2,7 @@ import React from "react";
 import PaymentDeliveryAddress from "./PaymentDeliveryAddress";
 import PaymentReviewItem from "./PaymentReviewItem";
 import PaymentMethod from "./PaymentMethod";
-import styles from "../../styles/Payment.module.css";
+import styles from "./styles/Payment.module.css";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../../hooks/useStateValue";
 const Payment = () => {
@@ -11,7 +11,7 @@ const Payment = () => {
     <div className={styles.payment}>
       <h1>
         Checkout (
-        <Link to={"/checkout"} className="payment__link">
+        <Link to={"/checkout"} className={styles.payment__link}>
           {basket?.length} items
         </Link>
         )

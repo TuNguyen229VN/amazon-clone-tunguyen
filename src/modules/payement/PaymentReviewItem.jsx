@@ -1,7 +1,7 @@
 import React from "react";
 import { useStateValue } from "../../hooks/useStateValue";
 import CheckoutProduct from "../checkout/CheckoutProduct";
-import styles from "../../styles/Payment.module.css";
+import styles from "./styles/Payment.module.css";
 
 const PaymentReviewItem = () => {
   const [{ basket, user }, dispatch] = useStateValue();

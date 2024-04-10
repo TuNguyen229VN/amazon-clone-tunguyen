@@ -1,12 +1,11 @@
 import React from "react";
-import styles from "../../styles/Product.module.css";
-import StarIcon from '@mui/icons-material/Star';
-
+import styles from "./styles/Product.module.css";
+import StarIcon from "@mui/icons-material/Star";
 import { ButtonPrimary } from "../../components/button";
 import PropTypes from "prop-types";
 import { useStateValue } from "../../hooks/useStateValue";
 
-const Product = ({id, title = "", image = "", price = 0, rating = 0 }) => {
+const Product = ({ id, title = "", image = "", price = 0, rating = 0 }) => {
   const [state, dispatch] = useStateValue();
   const addToBasket = () => {
     // dispatch the item into the data layer
@@ -45,7 +44,7 @@ const Product = ({id, title = "", image = "", price = 0, rating = 0 }) => {
 };
 
 Product.propTypes = {
-  id:PropTypes.string,
+  id: PropTypes.string,
   title: PropTypes.string,
   image: PropTypes.string,
   price: PropTypes.number,

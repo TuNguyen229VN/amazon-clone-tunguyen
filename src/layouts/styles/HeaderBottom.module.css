@@ -1,0 +1,23 @@
+.headerBottom {
+  display: flex;
+  position: sticky;
+  z-index: 100;
+  background-color: #232f3e;
+  width: 100%;
+  height: 40px;
+  color: white;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;;
+  font-weight: 400;
+}
+
+.headerBottom__title {
+  font-size: 14px;
+}
+
+.headerBottom__item{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

@@ -2,7 +2,7 @@
 
 ## Technologies & Libraries:
 
-- ReactJS, Firebase, Material Icons, react-currency-format, Stripe, axios, moment.js
+- ReactJS, Firebase, Material Icons, react-currency-format, Stripe, axios, moment.js, react-flickity
 
 ## Project Description
 

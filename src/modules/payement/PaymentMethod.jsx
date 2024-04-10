@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "../../axios/axios";
 import { db } from "../../firebase/firebase-config";
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
-import styles from "../../styles/Payment.module.css";
+import styles from "./styles/Payment.module.css";
 
 const PaymentMethod = () => {
   const navigate = useNavigate();

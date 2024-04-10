@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../styles/Subtotal.module.css";
+import styles from "./styles/Subtotal.module.css";
 import CurrencyFormat from "react-currency-format";
 import { ButtonPrimary } from "../../components/button";
 import { useStateValue } from "../../hooks/useStateValue";
@@ -18,7 +18,7 @@ const Subtotal = () => {
               <strong> {value}</strong>
             </p>
             <small className={styles.subtotal__gift}>
-              <input type="checkbox" /> This order contains a gift
+              <input type="checkbox" /> <span>This order contains a gift</span>
             </small>
           </>
         )}
@@ -32,6 +32,7 @@ const Subtotal = () => {
       <ButtonPrimary
         text="Proceed to Checkout"
         onClick={() => navigate("/payment")}
+        className={styles.subtotal__button}
       />
     </div>
   );

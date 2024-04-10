@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "../../styles/ButtonComponet.module.css";
+import styles from "./styles/ButtonComponet.module.css";
 const ButtonPrimary = ({
   text = "",
   onClick = () => {},

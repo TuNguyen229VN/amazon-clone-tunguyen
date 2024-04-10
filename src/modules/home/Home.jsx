@@ -1,13 +1,14 @@
 import React, { useId } from "react";
-import Banner from "../../assets/banner.jpg";
-import styles from "../../styles/Home.module.css";
+import styles from "./styles/Home.module.css";
 import Product from "../product/Product";
 import ProductItem from "../../assets/product1.jpg";
+import { Banner } from "../../components/banner";
+import { bannerData } from "../../data_av/bannerData";
 const Home = () => {
   return (
     <div className={styles.home}>
       <div className={styles.home__container}>
-        <img src={Banner} alt="banner" className={styles.home__image} />
+        <Banner bannerData={bannerData} className={styles.home__image} />
         <div className={styles.home__row}>
           <Product
             id={useId()}
