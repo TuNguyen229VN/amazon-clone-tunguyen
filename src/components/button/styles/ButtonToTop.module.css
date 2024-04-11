@@ -1,0 +1,20 @@
+.buttonToTop {
+  background-color: RGB(55, 71, 90);
+  text-align: center;
+  height: 50px;
+}
+
+.buttonToTop button {
+  background-color: transparent;
+  width: 100%;
+  display: inline-block;
+  height: 100%;
+  border: none;
+  color: white;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.buttonToTop button:hover {
+  background-color: rgba(255, 255, 255,0.1);
+}

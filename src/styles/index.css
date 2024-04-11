@@ -5,6 +5,11 @@
   font-weight: normal;
 }
 
+*:focus {
+  outline: 0;
+  outline: none;
+}
+
 body {
   background-color: rgb(234, 237, 237);
 }

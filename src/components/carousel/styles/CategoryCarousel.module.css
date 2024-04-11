@@ -1,0 +1,36 @@
+.categoryCarousel {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-inline: 20px;
+  gap: 20px;
+}
+
+.categoryCarousel__item {
+  background-color: white;
+  padding: 20px;
+}
+
+.categoryCarousel__title {
+  margin-bottom: 10px;
+  font-size: 21px;
+  color: #0f1111;
+  font-weight: 700;
+}
+
+.categoryCarousel__img {
+  width: 380px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.categoryCarousel__seeMore {
+  display: inline-block;
+  margin-top: 20px;
+  color: #007185;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.categoryCarousel__seeMore:hover {
+  color: #c7511f;
+}

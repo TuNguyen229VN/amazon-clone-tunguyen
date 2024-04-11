@@ -1,2 +1,3 @@
 import ButtonPrimary from "./ButtonPrimary";
-export { ButtonPrimary };
+import ButtonToTop from "./ButtonToTop";
+export { ButtonToTop,ButtonPrimary };

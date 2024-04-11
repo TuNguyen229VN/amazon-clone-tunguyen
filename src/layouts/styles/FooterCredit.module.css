@@ -1,0 +1,40 @@
+.footerCredit{
+    background-color: #131A22;
+    color: #ddd;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.footerCredit__top{
+    width: max-content;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(7,120px);
+    padding-top: 30px;
+    gap: 30px;
+}
+
+.footerCredit__colItem{
+    margin-bottom: 30px;
+    height: 80px;
+}
+
+.footerCredit__desc{
+    color: #999;
+}
+
+.footerCredit__bottom{
+    width: max-content;
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+
+.footerCredit__bottomRules{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footerCredit__bottomYear{
+    text-align: center;
+}

@@ -1,0 +1,74 @@
+.listItem {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+  margin-inline: 20px;
+  overflow: hidden;
+  overflow-x: scroll;
+  height: 280px;
+
+  position: relative;
+}
+
+.listItem__title {
+  font-size: 21px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.listItem__img {
+  height: 200px;
+  margin-left: 15px;
+  width: 250px;
+  object-fit: contain;
+}
+
+.listItem__button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 100;
+  background-color: #fff;
+  box-shadow: 0 1px 3px #888;
+  text-align: center;
+  height: 100px !important;
+  width: 45px !important;
+  display: inline-block;
+  opacity: 0.2;
+}
+.listItem__button:hover {
+  opacity: 1;
+}
+.--back {
+  left: 0px;
+  border-radius: 0 3px 3px 0;
+  clip: rect(-10px, 55px, 110px, 0);
+  padding-right: 5px;
+}
+.--forward {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+  clip: rect(-10px, 45px, 110px, -10px);
+  padding-left: 5px;
+}
+
+/* Webkit scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+

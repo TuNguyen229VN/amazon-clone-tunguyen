@@ -6,17 +6,18 @@
 
 .banner__button {
   position: absolute;
-  top: 50%;
+  top: 20%;
   transform: translateY(-50%);
   cursor: pointer;
   width: 100px;
   height: 100px;
+  z-index: 100;
 }
 .--back {
-  left: 0;
+  left: 20px;
 }
 .--forward {
-  right: 0;
+  right: 20px;
 }
 
 

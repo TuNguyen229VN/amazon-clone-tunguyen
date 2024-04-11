@@ -4,11 +4,70 @@ import Product from "../product/Product";
 import ProductItem from "../../assets/product1.jpg";
 import { Banner } from "../../components/banner";
 import { bannerData } from "../../data_av/bannerData";
+import { CatergoryCarousel, ListItemCarousel } from "../../components/carousel";
 const Home = () => {
   return (
     <div className={styles.home}>
       <div className={styles.home__container}>
-        <Banner bannerData={bannerData} className={styles.home__image} />
+        <div className={styles.home__blockTop}>
+          <Banner bannerData={bannerData} className={styles.home__image} />
+          <CatergoryCarousel
+            sizeCategory={4}
+            nameCatagory={[
+              "Electronics",
+              "Jewelry",
+              "Men's clothing",
+              "Women's clothing",
+              "Deals in PCs",
+              "Personal Care under $25",
+              "Creating business solutions",
+              "Laptops for every need",
+            ]}
+            startImgCategory={1}
+            endImgCategory={5}
+            className={styles.home__categoryFirst}
+          />
+          <CatergoryCarousel
+            sizeCategory={4}
+            nameCatagory={[
+              "Deals in PCs",
+              "Personal Care under $25",
+              "Creating business solutions",
+              "Laptops for every need",
+            ]}
+            startImgCategory={4}
+            endImgCategory={8}
+            className={styles.home__categorySec}
+          />
+        </div>
+        <ListItemCarousel
+          title="Popular products in Electronics internationally"
+          nameProduct="electronics"
+        />
+        <ListItemCarousel
+          title="Popular products in Jewelery internationally"
+          nameProduct="jewelery"
+        />
+        <CatergoryCarousel
+            sizeCategory={4}
+            nameCatagory={[
+              "Deals in PCs",
+              "Personal Care under $25",
+              "Creating business solutions",
+              "Laptops for every need",
+            ]}
+            startImgCategory={4}
+            endImgCategory={8}
+            className={styles.home__category}
+          />
+        <ListItemCarousel
+          title="Deals Under clothing $25"
+          nameProduct="women's clothing"
+        />
+        <ListItemCarousel
+          title="Related to items you've viewed"
+          nameProduct="men's clothing"
+        />
         <div className={styles.home__row}>
           <Product
             id={useId()}

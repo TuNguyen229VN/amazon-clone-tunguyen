@@ -6,7 +6,7 @@
   max-width: 1500px;
 }
 
-.home__row{
+.home__row {
   display: flex;
   z-index: 1;
   margin-left: 5px;
@@ -18,4 +18,19 @@
   z-index: -1;
   margin-bottom: -150px;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+.home__blockTop{
+  position: relative;
+  height: max-content;
+}
+.home__categoryFirst {
+  position: absolute;
+  top: 250px;
+}
+
+.home__categorySec{
+  margin-top: -46px;
+}
+.home__category{
+  margin-top: 20px;
 }

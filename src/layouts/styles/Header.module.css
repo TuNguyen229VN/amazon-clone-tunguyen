@@ -8,6 +8,10 @@
   z-index: 100;
 }
 
+.headerTitle {
+  display: none;
+}
+
 .header__logo {
   width: 100px;
   object-fit: contain;

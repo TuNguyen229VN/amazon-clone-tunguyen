@@ -19,8 +19,9 @@ const Header = () => {
   };
 
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
       <Link to={"/"}>
+        <h1 className={styles.headerTitle}>Amazon</h1>
         <img src={Logo} alt="logo" className={styles.header__logo} />
       </Link>
 
@@ -69,7 +70,7 @@ const Header = () => {
           </span>
         </div>
       </Link>
-    </div>
+    </header>
   );
 };
 
