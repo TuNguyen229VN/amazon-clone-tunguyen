@@ -6,8 +6,11 @@
   overflow: hidden;
   overflow-x: scroll;
   height: 280px;
-
   position: relative;
+}
+
+.listItem:last-child {
+  margin-bottom: 20px;
 }
 
 .listItem__title {
@@ -71,4 +74,3 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-

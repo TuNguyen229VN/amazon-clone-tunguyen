@@ -23,7 +23,7 @@ const Home = () => {
               "Creating business solutions",
               "Laptops for every need",
             ]}
-            startImgCategory={1}
+            startImgCategory={0}
             endImgCategory={5}
             className={styles.home__categoryFirst}
           />
@@ -41,12 +41,12 @@ const Home = () => {
           />
         </div>
         <ListItemCarousel
-          title="Popular products in Electronics internationally"
-          nameProduct="electronics"
+          title="Popular products in Smartphones internationally"
+          nameProduct="smartphones"
         />
         <ListItemCarousel
           title="Popular products in Jewelery internationally"
-          nameProduct="jewelery"
+          nameProduct="womens-jewellery"
         />
         <CatergoryCarousel
             sizeCategory={4}
@@ -62,13 +62,17 @@ const Home = () => {
           />
         <ListItemCarousel
           title="Deals Under clothing $25"
-          nameProduct="women's clothing"
+          nameProduct="womens-dresses"
         />
         <ListItemCarousel
           title="Related to items you've viewed"
-          nameProduct="men's clothing"
+          nameProduct="mens-shirts"
         />
-        <div className={styles.home__row}>
+        <ListItemCarousel
+          title="Most wished for in Motorcycle"
+          nameProduct="motorcycle"
+        />
+        {/* <div className={styles.home__row}>
           <Product
             id={useId()}
             title={"The lean starup"}
@@ -118,7 +122,7 @@ const Home = () => {
             image={ProductItem}
             rating={5}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

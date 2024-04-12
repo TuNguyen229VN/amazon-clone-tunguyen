@@ -1,0 +1,17 @@
+.selectBox{
+    box-shadow: 0 2px 5px 0 rgba(213,217,217,0.5);
+    background-color: #F0F2F2;
+    border-color: #D5D9D9;
+    border-radius: 8px;
+    height: 24px;
+    font-size: 11px;
+    color: #0F1111;
+    padding-left: 6px;
+    display: flex;
+    margin-left: auto;
+    font-size: 12px;
+}
+
+.selectBox:focus{
+    border: 2px solid #000;
+}

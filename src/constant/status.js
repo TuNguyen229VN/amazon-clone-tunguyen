@@ -1,0 +1,3 @@
+const STATUS_SUCCESS=200
+
+export {STATUS_SUCCESS}

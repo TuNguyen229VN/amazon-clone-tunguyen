@@ -1,0 +1,42 @@
+.errorPage {
+  width: max-content;
+  height: 100vh;
+  margin: 0 auto;
+  color: #5e5e5e;
+
+}
+
+.errorPage .errorPage__link {
+  display: inline-block;
+  width: max-content;
+  height: max-content;
+  
+}
+
+.errorPage__title {
+ 
+  font-size: 120px;
+  font-weight: 200;
+  text-transform: uppercase;
+}
+
+.errorPage__content{
+    font-size: 40px;
+    font-weight: 300;
+    margin-top: -20px;
+}
+
+.errorPage__desc{
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.errorPage__desc a{
+    color: #2275C9;
+}
+
+.errorPage__img{
+    width: 400px;
+    height: 400px;
+    margin: 30px auto;
+}

@@ -2,7 +2,12 @@
 
 ## Technologies & Libraries:
 
-- ReactJS, Firebase, Material Icons, react-currency-format, Stripe, axios, moment.js, react-flickity
+- ReactJS, Firebase, Material Icons, react-currency-format, Stripe, axios, moment.js, react-flickity, react-paginate
+
+## API reference:
+
+- dummyJSON
+- dogAPI
 
 ## Project Description
 
@@ -13,6 +18,9 @@
 - Login Page
 - Payment Page
 - Order History Page
+- Error Page (404 Page)
+- Product Page
+- Product Detail Page
 
 ## Main Features:
 
@@ -20,6 +28,7 @@
 - Sign in/ Sign out
 - Sign up
 - Payment / Order history
+- Paging
 
 ## Rules:
 

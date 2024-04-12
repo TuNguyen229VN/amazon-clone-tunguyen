@@ -7,6 +7,7 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import axios from "axios";
 import { API_URL_PRODUCTS_IN_SPECIFIC_CATEGORY } from "../../constant/constanst";
 import { Link } from "react-router-dom";
+import { STATUS_SUCCESS } from "../../constant/status";
 
 const flickityOptions = {
   contain: true,
@@ -33,8 +34,8 @@ const ListItemCarousel = ({ title = "", nameProduct = "" }) => {
         `${API_URL_PRODUCTS_IN_SPECIFIC_CATEGORY}${nameProduct}`
         // "https://fakestoreapi.com/products"
       );
-      if (response.status === 200) {
-        setproductData(response.data);
+      if (response.status === STATUS_SUCCESS) {
+        setproductData(response.data?.products);
       }
     } catch (error) {
       return;
@@ -53,15 +54,16 @@ const ListItemCarousel = ({ title = "", nameProduct = "" }) => {
         className={styles.listItem__flickity} // default ''
         options={flickityOptions} // takes flickity options {}
       >
-        {productData?.map((item, index) => (
-          <Link key={index}>
-            <img
-              src={item.image}
-              alt="banner"
-              className={styles.listItem__img}
-            />
-          </Link>
-        ))}
+        {productData &&
+          productData.map((item, index) => (
+            <Link key={index}>
+              <img
+                src={item.thumbnail}
+                alt="banner"
+                className={styles.listItem__img}
+              />
+            </Link>
+          ))}
       </Flickity>
       <ArrowBackIosNewIcon
         fontSize="large"

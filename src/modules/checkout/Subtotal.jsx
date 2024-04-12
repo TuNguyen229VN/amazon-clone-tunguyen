@@ -5,6 +5,7 @@ import { ButtonPrimary } from "../../components/button";
 import { useStateValue } from "../../hooks/useStateValue";
 import { getBasketTotal } from "../../utils/reducer";
 import { useNavigate } from "react-router-dom";
+import { PAYMENT_ROUTE } from "../../constant/routesApp";
 const Subtotal = () => {
   const navigate = useNavigate();
   const [{ basket }, dispatch] = useStateValue();
@@ -31,7 +32,7 @@ const Subtotal = () => {
 
       <ButtonPrimary
         text="Proceed to Checkout"
-        onClick={() => navigate("/payment")}
+        onClick={() => navigate(PAYMENT_ROUTE)}
         className={styles.subtotal__button}
       />
     </div>

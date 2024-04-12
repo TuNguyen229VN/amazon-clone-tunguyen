@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useStateValue } from "../hooks/useStateValue";
 import { auth } from "../firebase/firebase-config";
 import { signOut } from "firebase/auth";
+import { CHECKOUT_ROUTE, HOME_ROUTE, LOGIN_ROUTE, ORDER_ROUTE } from "../constant/routesApp";
 
 const Header = () => {
   const [{ basket, user }, dispatch] = useStateValue();
@@ -20,7 +21,7 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <Link to={"/"}>
+      <Link to={HOME_ROUTE}>
         <h1 className={styles.headerTitle}>Amazon</h1>
         <img src={Logo} alt="logo" className={styles.header__logo} />
       </Link>
@@ -35,7 +36,7 @@ const Header = () => {
       </div>
 
       <div className={styles.header__nav}>
-        <Link to={!user && "/login"}>
+        <Link to={!user && LOGIN_ROUTE}>
           <div onClick={handleAuthentication} className={styles.header__option}>
             <span
               className={`${styles.header__optionLineOne} ${styles["--accountName"]}`}
@@ -48,7 +49,7 @@ const Header = () => {
             </span>
           </div>
         </Link>
-        <Link to="/order">
+        <Link to={ORDER_ROUTE}>
           <div className={styles.header__option}>
             <span className={styles.header__optionLineOne}>Returns</span>
             <span className={styles.header__optionLineTwo}>& Orders</span>
@@ -60,7 +61,7 @@ const Header = () => {
         </div>
       </div>
 
-      <Link to={"/checkout"}>
+      <Link to={CHECKOUT_ROUTE}>
         <div className={styles.header__optionBasket}>
           <ShoppingBasket />
           <span

@@ -5,13 +5,14 @@ import PaymentMethod from "./PaymentMethod";
 import styles from "./styles/Payment.module.css";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../../hooks/useStateValue";
+import { CHECKOUT_ROUTE } from "../../constant/routesApp";
 const Payment = () => {
   const [{ basket, user }, dispatch] = useStateValue();
   return (
     <div className={styles.payment}>
       <h1>
         Checkout (
-        <Link to={"/checkout"} className={styles.payment__link}>
+        <Link to={CHECKOUT_ROUTE} className={styles.payment__link}>
           {basket?.length} items
         </Link>
         )

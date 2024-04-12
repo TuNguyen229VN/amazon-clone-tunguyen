@@ -8,6 +8,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { HOME_ROUTE } from "../constant/routesApp";
 const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -18,7 +19,7 @@ const LoginPage = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((auth) => {
         localStorage.setItem("userInfo", JSON.stringify(auth));
-        navigate("/");
+        navigate(HOME_ROUTE);
       })
       .catch((error) => alert(error.message));
   };
@@ -29,14 +30,14 @@ const LoginPage = () => {
       .then((auth) => {
         if (auth) {
           localStorage.setItem("userInfo", JSON.stringify(auth));
-          navigate("/");
+          navigate(HOME_ROUTE);
         }
       })
       .catch((error) => alert(error.message));
   };
   return (
     <div className={styles.login}>
-      <Link to={"/"}>
+      <Link to={HOME_ROUTE}>
         <img src={LogoBlack} alt="logo" className={styles.login__logo} />
       </Link>
       <div className={styles.login__fluidContainer}>

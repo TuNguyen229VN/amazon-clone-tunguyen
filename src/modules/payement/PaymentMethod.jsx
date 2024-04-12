@@ -8,6 +8,7 @@ import axios from "../../axios/axios";
 import { db } from "../../firebase/firebase-config";
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import styles from "./styles/Payment.module.css";
+import { ORDER_ROUTE } from "../../constant/routesApp";
 
 const PaymentMethod = () => {
   const navigate = useNavigate();
@@ -56,7 +57,7 @@ const PaymentMethod = () => {
         setError(null);
         setProcessing(false);
         dispatch({ type: "EMPTY_BASKET" });
-        navigate("/order");
+        navigate(ORDER_ROUTE);
       });
   };
 

@@ -3,6 +3,7 @@ import styles from "./styles/CategoryCarousel.module.css";
 import PropTypes from "prop-types";
 import { categoryData } from "../../data_av/categoryData";
 import { Link } from "react-router-dom";
+import { PRODUCT_ROUTE } from "../../constant/routesApp";
 
 const CatergoryCarousel = ({
   sizeCategory = 0,
@@ -17,16 +18,23 @@ const CatergoryCarousel = ({
         .fill()
         .map((_, index) => (
           <div className={styles.categoryCarousel__item} key={index}>
-            <h3 className={styles.categoryCarousel__title}>
-              {nameCatagory[index]}
-            </h3>
-            <img
-              src={categoryData.slice(startImgCategory,endImgCategory)[index]}
-              alt="categoryImg"
-              className={styles.categoryCarousel__img}
-            />
-            <Link to={"/product"} className={styles.categoryCarousel__seeMore}>
-              See more
+            <Link to={PRODUCT_ROUTE}>
+              <h3 className={styles.categoryCarousel__title}>
+                {nameCatagory[index]}
+              </h3>
+              <img
+                src={
+                  categoryData.slice(startImgCategory, endImgCategory)[index]
+                }
+                alt="categoryImg"
+                className={styles.categoryCarousel__img}
+              />
+              <Link
+                to={"/product"}
+                className={styles.categoryCarousel__seeMore}
+              >
+                See more
+              </Link>
             </Link>
           </div>
         ))}

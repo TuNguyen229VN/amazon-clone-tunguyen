@@ -1,0 +1,44 @@
+import All from "../assets/thumbnailFilter/all.png";
+import Smartphone from "../assets/thumbnailFilter/smartphones.png";
+import Laptops from "../assets/thumbnailFilter/laptops.png";
+import Fragrances from "../assets/thumbnailFilter/fragrances.png";
+import Skincare from "../assets/thumbnailFilter/skincare.png";
+import Groceries from "../assets/thumbnailFilter/groceries.png";
+import HomeDecoration from "../assets/thumbnailFilter/home-decoration.png";
+import Furniture from "../assets/thumbnailFilter/furniture.png";
+import Tops from "../assets/thumbnailFilter/tops.png";
+import WomensDresses from "../assets/thumbnailFilter/womens-dresses.png";
+import WomensShoes from "../assets/thumbnailFilter/womens-shoes.png";
+import MensShirts from "../assets/thumbnailFilter/mens-shirts.png";
+import MensShoes from "../assets/thumbnailFilter/mens-shoes.png";
+import MensWatches from "../assets/thumbnailFilter/mens-watches.png";
+import WomensWatches from "../assets/thumbnailFilter/womens-watches.png";
+import WomensBags from "../assets/thumbnailFilter/womens-bags.png";
+import WomensJewellery from "../assets/thumbnailFilter/womens-jewellery.png";
+import Sunglasses from "../assets/thumbnailFilter/sunglasses.png";
+import Automotive from "../assets/thumbnailFilter/automotive.png";
+import Motorcycle from "../assets/thumbnailFilter/motorcycle.png";
+import Lighting from "../assets/thumbnailFilter/lighting.png";
+export const thumbnailCategoryData = [
+  { lighting: Lighting },
+  { motorcycle: Motorcycle },
+  { all: All },
+  { smartphones: Smartphone },
+  { laptops: Laptops },
+  { fragrances: Fragrances },
+  { skincare: Skincare },
+  { groceries: Groceries },
+  { "home-decoration": HomeDecoration },
+  { furniture: Furniture },
+  { tops: Tops },
+  { "womens-dresses": WomensDresses },
+  { "womens-shoes": WomensShoes },
+  { "mens-shirts": MensShirts },
+  { "mens-shoes": MensShoes },
+  { "mens-watches": MensWatches },
+  { "womens-watches": WomensWatches },
+  { "womens-bags": WomensBags },
+  { "womens-jewellery": WomensJewellery },
+  { sunglasses: Sunglasses },
+  { automotive: Automotive },
+];
