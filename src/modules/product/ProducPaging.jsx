@@ -11,6 +11,8 @@ const ProducPaging = ({
   setCount,
   skip = 0,
   setSkip,
+  loading = true,
+  setLoading,
 }) => {
   // Click paging number
   const handlePageClick = (data) => {
@@ -19,7 +21,7 @@ const ProducPaging = ({
   };
   return (
     <>
-      {products.length > 0 && (
+      {!loading && products?.length > 0 && (
         <div
           aria-label="Page navigation example"
           className={styles.productPaging}
@@ -57,5 +59,7 @@ ProducPaging.propTypes = {
   setCurrentPage: PropTypes.func,
   skip: PropTypes.number,
   setSkip: PropTypes.func,
+  loading: PropTypes.bool,
+  setLoading: PropTypes.func,
 };
 export default ProducPaging;

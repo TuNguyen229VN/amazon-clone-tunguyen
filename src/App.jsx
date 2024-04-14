@@ -60,7 +60,7 @@ function App() {
           element={<ProductPage />}
         ></Route>
         <Route
-          path={`${PRODUCT_DETAIL_ROUTE}/:slug?`}
+          path={`${PRODUCT_DETAIL_ROUTE}/:slug`}
           element={<ProductDetailPage />}
         ></Route>
         <Route

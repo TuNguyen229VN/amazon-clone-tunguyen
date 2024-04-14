@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./styles/Footer.module.css";
-import Logo from "../assets/logo.png";
+import Logo from "/assets/logo.png";
 import LanguageIcon from "@mui/icons-material/Language";
-import IconFlag from "../assets/united-states.png";
+import IconFlag from "/assets/united-states.png";
 const Footer = () => {
   return (
     <footer className={styles.footer}>

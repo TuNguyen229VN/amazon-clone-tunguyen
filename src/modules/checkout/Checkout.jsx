@@ -12,11 +12,13 @@ const Checkout = () => {
       <div className={styles.checkout__left}>
         <div className="">
           <h2 className={styles.checkout__title}>
-            {basket?.length > 0 ? "Shopping Cart" : "Your Amazon Cart is empty"}
+            {Object.keys(basket).length > 0
+              ? "Shopping Cart"
+              : "Your Amazon Cart is empty"}
           </h2>
           <p className={styles.checkout__selectAll}>Select all items</p>
           <p className={styles.checkout__priceTitle}>Price</p>
-          {basket?.length > 0 &&
+          {Object.keys(basket).length > 0 &&
             basket.map((item, index) => (
               <CheckoutProduct
                 key={index}
@@ -33,7 +35,7 @@ const Checkout = () => {
             renderText={(value) => (
               <>
                 <p>
-                  Subtotal ({basket?.length ?? 0} items):
+                  Subtotal ({Object.keys(basket).length ?? 0} items):
                   <strong> {value}</strong>
                 </p>
               </>

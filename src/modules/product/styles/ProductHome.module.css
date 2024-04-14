@@ -88,6 +88,10 @@
 .productFilterLeft__link {
   color: #007185;
   font-weight: 500;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .productFilterLeft__title {
@@ -107,11 +111,20 @@
 .productFilterLeft__action label:not(:first-child) {
   margin-top: -15px;
 }
-
+.productFilterLeft__label {
+}
 .productFilterLeft__label span {
   font-size: 14px;
   font-family: "Amazon Ember", sans-serif;
   font-weight: normal;
+}
+.productFilterLeft__label span:last-child {
+  width: 140px;
+  margin-left: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
 }
 
 .productFilterLeft__label input {
@@ -123,12 +136,18 @@
   color: #007185;
   margin-bottom: 5px;
   font-weight: 400;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .productFilterLeft__rate {
   display: flex;
   align-items: center;
   color: #007185;
   gap: 10px;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .productFilterLeft__rating {
   display: flex;
@@ -168,6 +187,11 @@
   font-size: 14px;
   color: #0f1111;
   margin-top: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 35px;
 }
 
 .productList__title:hover {
@@ -209,4 +233,11 @@
   height: 100%;
   color: #6f7373;
   cursor: text;
+}
+.productList__item.--notfound {
+  grid-column: 1 / end;
+  height: 500px;
+  text-align: center;
+  padding: 80px;
+  font-size: 30px;
 }

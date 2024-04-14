@@ -6,10 +6,11 @@ import { Link, useParams } from "react-router-dom";
 import { STATUS_SUCCESS } from "../../constant/status";
 import { PRODUCT_DETAIL_ROUTE } from "../../constant/routesApp";
 import PropTypes from "prop-types";
-const ProductList = ({ products = [] }) => {
+const ProductList = ({ products = [], loading = true, setLoading }) => {
   return (
     <div className={styles.productList}>
-      {products.length > 0 &&
+      {!loading &&
+        products?.length > 0 &&
         products.map((item) => (
           <Link
             to={`${PRODUCT_DETAIL_ROUTE}/${item.id}`}
@@ -24,11 +25,18 @@ const ProductList = ({ products = [] }) => {
             <p className={styles.productList__title}>{item.title}</p>
           </Link>
         ))}
+      {!loading && products.length <= 0 && (
+        <p className={`${styles.productList__item} ${styles["--notfound"]}`}>
+          The product you are looking for is not available
+        </p>
+      )}
     </div>
   );
 };
 
 ProductList.propTypes = {
   products: PropTypes.array,
+  loading: PropTypes.bool,
+  setLoading: PropTypes.func,
 };
 export default ProductList;

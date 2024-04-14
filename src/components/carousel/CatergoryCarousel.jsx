@@ -29,12 +29,12 @@ const CatergoryCarousel = ({
                 alt="categoryImg"
                 className={styles.categoryCarousel__img}
               />
-              <Link
+              <span
                 to={"/product"}
                 className={styles.categoryCarousel__seeMore}
               >
                 See more
-              </Link>
+              </span>
             </Link>
           </div>
         ))}

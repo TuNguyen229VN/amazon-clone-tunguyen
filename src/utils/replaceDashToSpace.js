@@ -1,3 +1,3 @@
-export const replaceDashToSpace = (chuoi) => {
-  return chuoi.replace(/-/g, " ");
+export const replaceDashToSpace = (str) => {
+  return str.replace(/-/g, " ");
 }

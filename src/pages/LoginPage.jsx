@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../styles/Login.module.css";
-import LogoBlack from "../assets/logo_black.png";
+import LogoBlack from "/assets/logo_black.png";
 import { Link, useNavigate } from "react-router-dom";
 import { ButtonPrimary } from "../components/button";
 import { auth } from "../firebase/firebase-config";

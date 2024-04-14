@@ -13,6 +13,7 @@ const ProductFilterLeft = () => {
         <Link
           to={`${PRODUCT_ROUTE}`}
           className={styles.productFilterLeft__link}
+          title="All deals"
         >
           All deals
         </Link>
@@ -26,6 +27,7 @@ const ProductFilterLeft = () => {
                 control={<Checkbox />}
                 label={replaceDashToSpace(Object.keys(item)[0])}
                 key={index}
+                title={replaceDashToSpace(Object.keys(item)[0])}
                 className={styles.productFilterLeft__label}
               />
             ))}
@@ -34,11 +36,33 @@ const ProductFilterLeft = () => {
       <div className={styles.productFilterLeft__block}>
         <p className={styles.productFilterLeft__title}>Price</p>
         <div className={styles.productFilterLeft__action}>
-          <p className={styles.productFilterLeft__price}>All deals</p>
-          <p className={styles.productFilterLeft__price}>10% off or more</p>
-          <p className={styles.productFilterLeft__price}>25% off or more</p>
-          <p className={styles.productFilterLeft__price}>50% off or more</p>
-          <p className={styles.productFilterLeft__price}>70% off or more</p>
+          <p className={styles.productFilterLeft__price} title="All deals">
+            All deals
+          </p>
+          <p
+            className={styles.productFilterLeft__price}
+            title="10% off or more"
+          >
+            10% off or more
+          </p>
+          <p
+            className={styles.productFilterLeft__price}
+            title="25% off or more"
+          >
+            25% off or more
+          </p>
+          <p
+            className={styles.productFilterLeft__price}
+            title="50% off or more"
+          >
+            50% off or more
+          </p>
+          <p
+            className={styles.productFilterLeft__price}
+            title="70% off or more"
+          >
+            70% off or more
+          </p>
         </div>
       </div>
       <div className={styles.productFilterLeft__block}>

@@ -8,6 +8,7 @@ import axios from "axios";
 import { API_URL_PRODUCTS_IN_SPECIFIC_CATEGORY } from "../../constant/constanst";
 import { Link } from "react-router-dom";
 import { STATUS_SUCCESS } from "../../constant/status";
+import { PRODUCT_DETAIL_ROUTE } from "../../constant/routesApp";
 
 const flickityOptions = {
   contain: true,
@@ -56,7 +57,7 @@ const ListItemCarousel = ({ title = "", nameProduct = "" }) => {
       >
         {productData &&
           productData.map((item, index) => (
-            <Link key={index}>
+            <Link key={index} to={`${PRODUCT_DETAIL_ROUTE}/${item.id}`}>
               <img
                 src={item.thumbnail}
                 alt="banner"

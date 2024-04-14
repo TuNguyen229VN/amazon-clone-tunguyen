@@ -33,7 +33,7 @@ const CheckoutProduct = ({
         <div className={styles.checkoutProduct__infoLeft}>
           <p className={styles.checkoutProduct__title}>{title}</p>
           <div className={styles.checkoutProduct__rating}>
-            {Array(rating)
+            {Array(Math.ceil(rating))
               .fill()
               .map((_, index) => (
                 <StarIcon key={index} />
