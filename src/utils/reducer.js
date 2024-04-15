@@ -4,21 +4,70 @@ export const initialState = {
 };
 
 // Selector
+export const getBasketSize = (basket) =>
+  basket?.reduce((amount, item) => parseInt(item.quantity) + amount, 0);
 export const getBasketTotal = (basket) =>
-  basket?.reduce((amount, item) => item.price + amount, 0);
+  basket?.reduce((amount, item) => item.price * item.quantity + amount, 0);
 
 const reducer = (state, action) => {
   let index, newBasket;
   switch (action.type) {
     case "ADD_TO_BASKET": {
-      const updatedBasket = [...state.basket, action.item];
+      let updatedBasket;
+      const existingItemIndex = state.basket.findIndex(
+        (item) => item.id === action.item.id
+      );
+
+      // Kiểm tra xem mặt hàng đã tồn tại trong giỏ hàng chưa
+      if (existingItemIndex !== -1) {
+        // Nếu mặt hàng đã tồn tại, tăng số lượng của nó lên
+        const updatedItem = {
+          ...state.basket[existingItemIndex],
+          quantity: state.basket[existingItemIndex].quantity + 1,
+        };
+        updatedBasket = [...state.basket];
+        updatedBasket[existingItemIndex] = updatedItem;
+      } else {
+        // Nếu mặt hàng chưa tồn tại, thêm mặt hàng mới vào giỏ hàng
+        const newItem = {
+          ...action.item,
+          quantity: 1, // Mặc định số lượng là 1
+        };
+        updatedBasket = [...state.basket, newItem];
+      }
+
+      // Cập nhật giỏ hàng trong localStorage
       localStorage.setItem("basket", JSON.stringify(updatedBasket));
+
+      // Trả về state mới
       return {
         ...state,
-        basket: [...state.basket, action.item],
+        basket: updatedBasket,
       };
     }
+    case "CHANGE_QUANTITY_BASKET": {
+      let updatedBasket;
+      const existingItemIndex = state.basket.findIndex(
+        (item) => item.id === action.id
+      );
+      if (existingItemIndex !== -1) {
+        // Nếu mặt hàng đã tồn tại, tăng số lượng của nó lên
+        const updatedItem = {
+          ...state.basket[existingItemIndex],
+          quantity: action.quantity,
+        };
+        updatedBasket = [...state.basket];
+        updatedBasket[existingItemIndex] = updatedItem;
+      }
+      // Cập nhật giỏ hàng trong localStorage
+      localStorage.setItem("basket", JSON.stringify(updatedBasket));
 
+      // Trả về state mới
+      return {
+        ...state,
+        basket: updatedBasket,
+      };
+    }
     case "EMPTY_BASKET":
       localStorage.removeItem("basket");
       return {

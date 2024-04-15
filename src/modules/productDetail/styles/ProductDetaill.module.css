@@ -21,6 +21,7 @@
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
+  width: max-content;
 }
 
 .productDetailImage__item {
@@ -30,10 +31,15 @@
   border: 1px solid #000;
   object-fit: cover;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .productDetailImage__item.active {
   border: 3px solid #007185;
+}
+
+.productDetailImage__mainImage:not(:first-child) {
+  display: none;
 }
 
 .productDetailImage__mainImage img {
@@ -157,7 +163,7 @@
 
 .productDetailAction__descLeft {
   font-weight: 400;
-  width: 115px;
+  width: 150px;
   color: #565959;
 }
 
@@ -170,11 +176,33 @@
   color: #0f1111;
   width: 270px;
 }
-.productDetailAction__label{
-    margin-top: 20px;
+.productDetailAction__label {
+  margin-top: 20px;
 }
 .productDetailAction__label span {
   font-size: 14px;
   font-weight: 400;
   font-family: "Amazon Ember", sans-serif;
+}
+
+.productDetailImage__gallery {
+  width: 600px;
+  height: max-content;
+}
+
+.productDetailImage__gallery img {
+  display: inline;
+  max-width: initial;
+}
+
+.productDetailImage__mainImage::after {
+  content: "Roll over image to zoom in";
+  transition: 0.2s;
+  margin: 10px auto;
+  width: max-content;
+  display: block;
+}
+
+.productDetailImage__gallery:hover .productDetailImage__mainImage::after {
+  content: "Click hover to expand view";
 }

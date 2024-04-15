@@ -5,7 +5,6 @@
   padding-bottom: 20px;
 }
 .checkoutProduct:not(:last-child) {
-
   border-bottom: 1px solid lightgray;
 }
 .checkoutProduct__info {
@@ -47,4 +46,41 @@
 
 .checkoutProduct__price strong {
   font-weight: 700;
+}
+
+.imageLink {
+  display: block;
+  flex-shrink: 0;
+  width: max-content;
+  height: max-content;
+}
+
+.buttonSave {
+  margin-top: 0;
+  background-color: #1a73e8;
+  color: white;
+  margin-left: 20px;
+}
+
+.buttonSave:hover {
+  background-color: #084391;
+}
+
+.buttonCancel {
+  margin-top: 0;
+  background-color: transparent;
+  color: #007185;
+  box-shadow: none;
+  font-weight: 400;
+}
+.buttonCancel:hover{
+  background-color: transparent;
+  box-shadow: none;
+  color: #c7511f;
+}
+.dash{
+  width: 2px;
+  background-color: lightgray;
+  height: 20px;
+  margin-left: 20px;
 }

@@ -44,6 +44,7 @@ const OrderItem = ({ order = [] }) => {
           image={item.image}
           price={item.price}
           rating={item.rating}
+          quantity={item.quantity}
           hideButton
           className={styles.order__checkoutProduct}
         />

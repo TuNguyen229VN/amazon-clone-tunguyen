@@ -8,6 +8,7 @@ import { useStateValue } from "../hooks/useStateValue";
 import { auth } from "../firebase/firebase-config";
 import { signOut } from "firebase/auth";
 import { CHECKOUT_ROUTE, HOME_ROUTE, LOGIN_ROUTE, ORDER_ROUTE } from "../constant/routesApp";
+import { getBasketSize } from "../utils/reducer";
 
 const Header = () => {
   const [{ basket, user }, dispatch] = useStateValue();
@@ -67,7 +68,7 @@ const Header = () => {
           <span
             className={`${styles.header__optionLineTwo} ${styles.header__basketCount}`}
           >
-            {basket?.length ?? 0}
+            {getBasketSize(basket) ?? 0}
           </span>
         </div>
       </Link>

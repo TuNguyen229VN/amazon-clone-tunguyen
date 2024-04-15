@@ -20,6 +20,8 @@ const PaymentReviewItem = () => {
               image={item.image}
               price={item.price}
               rating={item.rating}
+              quantity={parseInt(item.quantity)}
+              stock={item.stock}
             />
           ))}
         {basket?.length <= 0 && <p>Items Empty</p>}

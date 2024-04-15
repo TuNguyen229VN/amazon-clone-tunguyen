@@ -16,13 +16,19 @@
   color: #0f1111;
   font-weight: 700;
 }
-
+.test{
+  overflow: hidden;
+}
 .categoryCarousel__img {
   width: 380px;
   height: 300px;
   object-fit: cover;
+  transition: 0.5s;
 }
 
+.categoryCarousel__img:hover {
+  transform: scale(1.2);
+}
 .categoryCarousel__seeMore {
   display: inline-block;
   margin-top: 20px;

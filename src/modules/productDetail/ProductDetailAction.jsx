@@ -17,6 +17,7 @@ const ProductDetailAction = ({ productDetail = {} }) => {
         image: productDetail.images[0],
         price: productDetail.price,
         rating: productDetail.rating,
+        stock:productDetail.stock
       },
     });
   };

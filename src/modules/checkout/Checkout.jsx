@@ -27,6 +27,8 @@ const Checkout = () => {
                 image={item.image}
                 price={item.price}
                 rating={item.rating}
+                quantity={parseInt(item.quantity)}
+                stock={item.stock}
               />
             ))}
         </div>

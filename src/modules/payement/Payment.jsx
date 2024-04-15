@@ -6,6 +6,7 @@ import styles from "./styles/Payment.module.css";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../../hooks/useStateValue";
 import { CHECKOUT_ROUTE } from "../../constant/routesApp";
+import { getBasketSize } from "../../utils/reducer";
 const Payment = () => {
   const [{ basket, user }, dispatch] = useStateValue();
   return (
@@ -13,7 +14,7 @@ const Payment = () => {
       <h1>
         Checkout (
         <Link to={CHECKOUT_ROUTE} className={styles.payment__link}>
-          {basket?.length} items
+          {getBasketSize(basket)} items
         </Link>
         )
       </h1>

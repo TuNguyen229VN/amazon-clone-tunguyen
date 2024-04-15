@@ -22,13 +22,15 @@ const CatergoryCarousel = ({
               <h3 className={styles.categoryCarousel__title}>
                 {nameCatagory[index]}
               </h3>
-              <img
-                src={
-                  categoryData.slice(startImgCategory, endImgCategory)[index]
-                }
-                alt="categoryImg"
-                className={styles.categoryCarousel__img}
-              />
+              <div className={styles.test}>
+                <img
+                  src={
+                    categoryData.slice(startImgCategory, endImgCategory)[index]
+                  }
+                  alt="categoryImg"
+                  className={styles.categoryCarousel__img}
+                />
+              </div>
               <span
                 to={"/product"}
                 className={styles.categoryCarousel__seeMore}
