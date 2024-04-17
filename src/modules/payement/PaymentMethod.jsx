@@ -9,6 +9,7 @@ import { db } from "../../firebase/firebase-config";
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import styles from "./styles/Payment.module.css";
 import { ORDER_ROUTE } from "../../constant/routesApp";
+import { Spinner } from "../../components/loading";
 
 const PaymentMethod = () => {
   const navigate = useNavigate();
@@ -36,6 +37,19 @@ const PaymentMethod = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (basket.length <= 0) {
+      setError("Don't have item to pay");
+      return;
+    }
+    if (!user?.userProfile?.userAddress) {
+      setError("Please add your address");
+      return;
+    }
+    if (disabled) {
+      setError("Please enter number visa");
+      return;
+    }
+    setError("");
     setProcessing(true);
     const payload = await stripe
       .confirmCardPayment(clientSecret, {
@@ -44,13 +58,14 @@ const PaymentMethod = () => {
         },
       })
       .then(({ paymentIntent }) => {
-        const userDocRef = doc(db, "users", user?.uid);
+        const userDocRef = doc(db, "users", user?.auth?.uid);
         const ordersCollectionRef = collection(userDocRef, "orders");
         const orderDocRef = doc(ordersCollectionRef, paymentIntent.id);
         setDoc(orderDocRef, {
           basket: basket,
           amount: paymentIntent.amount,
           created: paymentIntent.created,
+          address: user?.userProfile.userAddress,
         });
 
         setSucceeded(true);
@@ -65,7 +80,6 @@ const PaymentMethod = () => {
     setDisabled(e.empty);
     setError(e.error ? e.error.message : "");
   };
-
   return (
     <>
       <div className={styles.payment__title}>
@@ -88,13 +102,20 @@ const PaymentMethod = () => {
               thousandSeparator={true}
               prefix={"$"}
             />
-            <button disabled={processing || disabled || succeeded}>
-              <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
-            </button>
+            {basket?.length > 0 && (
+              <button
+                disabled={processing || succeeded}
+                className={`${styles.buttonPayment} ${
+                  processing && styles.disabled
+                }`}
+              >
+                <span>{processing ? <Spinner /> : "Buy Now"}</span>
+              </button>
+            )}
           </div>
 
           {/* Error */}
-          {error && <div>{error}</div>}
+          {error && <div className={styles.paymentError}>*{error}*</div>}
         </form>
       </div>
     </>

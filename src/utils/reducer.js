@@ -96,10 +96,24 @@ const reducer = (state, action) => {
 
       return { ...state, basket: newBasket };
     case "SET_USER": {
-      localStorage.setItem("userInfo", JSON.stringify(action.user));
+      let newUser = JSON.parse(JSON.stringify(state.user));
+      if (!action.user) {
+        newUser["userProfile"] = null;
+      }
+      newUser["auth"] = action.user;
+      localStorage.setItem("userInfo", JSON.stringify(newUser));
       return {
         ...state,
-        user: action.user,
+        user: newUser,
+      };
+    }
+    case "SET_USERPROFILE": {
+      let newUser = JSON.parse(JSON.stringify(state.user));
+      newUser["userProfile"] = action.userProfile;
+      localStorage.setItem("userInfo", JSON.stringify(newUser));
+      return {
+        ...state,
+        user: newUser,
       };
     }
     default:

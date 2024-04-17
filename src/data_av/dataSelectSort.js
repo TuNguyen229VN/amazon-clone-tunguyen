@@ -5,3 +5,10 @@ export const dataSelectSort = [
   "Price-High-to-Low",
   "Price-Low-to-High",
 ];
+
+export const dataSelectSortOrder=[
+  "Date decrease",
+  "Date increase",
+  "A - Z",
+  "Z - A",
+]

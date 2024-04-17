@@ -4,7 +4,7 @@ import CheckoutPage from "./pages/CheckoutPage";
 import LoginPage from "./pages/LoginPage";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase/firebase-config";
+import { auth, db } from "./firebase/firebase-config";
 import { useStateValue } from "./hooks/useStateValue";
 import PaymentPage from "./pages/PaymentPage";
 import { loadStripe } from "@stripe/stripe-js";
@@ -23,10 +23,10 @@ import {
   PRODUCT_ROUTE,
 } from "./constant/routesApp";
 import ProductDetailPage from "./pages/ProductDetailPage";
-
-const promisze = loadStripe(
-  "pk_test_51P1mNRFhreKVvoIjY4yZECYGXcXLQFZAVmWxT7m5HgFBuDukueTmjkR4t6UHIa632LfKAtq1BjSWB8QcZGxVLxij00uCbRfx5J"
-);
+import { doc, getDoc } from "firebase/firestore";
+import { getUserProfile } from "./utils/getUserProfile";
+const { VITE_SECRET_KEY } = import.meta.env;
+const promisze = loadStripe(VITE_SECRET_KEY);
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -37,6 +37,7 @@ function App() {
           type: "SET_USER",
           user: authUser,
         });
+        getUserProfile(authUser,dispatch);
       } else {
         dispatch({
           type: "SET_USER",
@@ -44,7 +45,9 @@ function App() {
         });
       }
     });
+
   }, []);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -52,7 +55,7 @@ function App() {
         <Route path={HOME_ROUTE} element={<HomePage />}></Route>
         <Route
           path={LOGIN_ROUTE}
-          element={user ? <Navigate to={HOME_ROUTE} /> : <LoginPage />}
+          element={user?.auth ? <Navigate to={HOME_ROUTE} /> : <LoginPage />}
         ></Route>
         <Route path={CHECKOUT_ROUTE} element={<CheckoutPage />}></Route>
         <Route
@@ -66,7 +69,7 @@ function App() {
         <Route
           path={PAYMENT_ROUTE}
           element={
-            user ? (
+            user?.auth ? (
               <Elements stripe={promisze}>
                 <PaymentPage />
               </Elements>
@@ -77,7 +80,7 @@ function App() {
         ></Route>
         <Route
           path={ORDER_ROUTE}
-          element={user ? <OrderPage /> : <Navigate to={LOGIN_ROUTE} />}
+          element={user?.auth ? <OrderPage /> : <Navigate to={LOGIN_ROUTE} />}
         ></Route>
       </Routes>
     </BrowserRouter>

@@ -36,7 +36,23 @@
   font-size: 14px;
   color: #333;
 }
+.payment__address p:first-child {
+  font-weight: 700;
+}
+.payment__address {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
+.payment__openPopup {
+  background-color: #fff;
+  font-size: 14px;
+  color: #007185;
+}
+.payment__openPopup:hover {
+  color: #c7511f;
+}
 .payment__address,
 .payment__items,
 .payment__details {
@@ -62,4 +78,29 @@
   margin-top: 10px;
   border-color: #a88734 #9c7e31 #846a29;
   color: #111;
+}
+
+.viewmore {
+  color: #007185;
+}
+
+.viewmore:hover {
+  color: #c7511f;
+}
+
+.buttonPayment {
+  height: 40px !important;
+}
+
+.buttonPayment.disabled {
+  background-color: #eaeded !important;
+  border: none !important;
+  pointer-events: none;
+}
+
+.paymentError {
+  font-size: 14px;
+  margin-top: 20px;
+  font-style: italic;
+  color: red;
 }

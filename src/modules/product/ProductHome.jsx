@@ -4,12 +4,12 @@ import styles from "./styles/ProductHome.module.css";
 import ProductCategoryFilter from "./ProductCategoryFilter";
 import ProductFilterLeft from "./ProductFilterLeft";
 import ProductList from "./ProductList";
-import SelectBox from "../../components/selecbox/SelectBox";
 import { dataSelectSort } from "../../data_av/dataSelectSort";
 import ProducPaging from "./ProducPaging";
 import axios from "axios";
 import { API_PRODUCT } from "../../constant/constanst";
 import { STATUS_SUCCESS } from "../../constant/status";
+import { SelectBox } from "../../components/selecbox";
 
 const LIMIT = 20;
 const ProductHome = () => {

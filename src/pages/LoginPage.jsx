@@ -3,12 +3,13 @@ import styles from "../styles/Login.module.css";
 import LogoBlack from "/assets/logo_black.png";
 import { Link, useNavigate } from "react-router-dom";
 import { ButtonPrimary } from "../components/button";
-import { auth } from "../firebase/firebase-config";
+import { auth, db } from "../firebase/firebase-config";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { HOME_ROUTE } from "../constant/routesApp";
+import { collection, doc, getDoc, onSnapshot, query } from "firebase/firestore";
 const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -18,7 +19,6 @@ const LoginPage = () => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((auth) => {
-        localStorage.setItem("userInfo", JSON.stringify(auth));
         navigate(HOME_ROUTE);
       })
       .catch((error) => alert(error.message));
@@ -29,7 +29,6 @@ const LoginPage = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((auth) => {
         if (auth) {
-          localStorage.setItem("userInfo", JSON.stringify(auth));
           navigate(HOME_ROUTE);
         }
       })

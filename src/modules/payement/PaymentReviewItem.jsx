@@ -2,6 +2,8 @@ import React from "react";
 import { useStateValue } from "../../hooks/useStateValue";
 import CheckoutProduct from "../checkout/CheckoutProduct";
 import styles from "./styles/Payment.module.css";
+import { Link } from "react-router-dom";
+import { PRODUCT_ROUTE } from "../../constant/routesApp";
 
 const PaymentReviewItem = () => {
   const [{ basket, user }, dispatch] = useStateValue();
@@ -24,7 +26,11 @@ const PaymentReviewItem = () => {
               stock={item.stock}
             />
           ))}
-        {basket?.length <= 0 && <p>Items Empty</p>}
+        {basket?.length <= 0 && (
+          <p>
+            Items Empty. <Link to={PRODUCT_ROUTE} className={styles.viewmore}>View more product</Link>
+          </p>
+        )}
       </div>
     </>
   );

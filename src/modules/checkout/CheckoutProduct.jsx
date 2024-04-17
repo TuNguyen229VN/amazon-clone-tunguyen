@@ -32,7 +32,11 @@ const CheckoutProduct = ({
   };
 
   const saveQuantity = () => {
-    if (quantityInput <= 0 || quantityInput > stock) {
+    if (quantityInput <= 0) {
+      alert(`Quantity > 0 or < ${stock}`);
+      setQuantityInput(parseInt(quantity));
+      return;
+    } else if (quantityInput > stock) {
       alert(`Quantity > 0 or < ${stock}`);
       setQuantityInput(parseInt(stock));
       return;

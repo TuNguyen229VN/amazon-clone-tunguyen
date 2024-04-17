@@ -32,7 +32,7 @@ const ListItemCarousel = ({ title = "", nameProduct = "" }) => {
   const getProduct = async () => {
     try {
       const response = await axios.get(
-        `${API_URL_PRODUCTS_IN_SPECIFIC_CATEGORY}${nameProduct}`
+        `${API_URL_PRODUCTS_IN_SPECIFIC_CATEGORY}/${nameProduct}`
         // "https://fakestoreapi.com/products"
       );
       if (response.status === STATUS_SUCCESS) {

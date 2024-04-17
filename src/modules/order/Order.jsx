@@ -6,13 +6,18 @@ import { useStateValue } from "../../hooks/useStateValue";
 import OrderItem from "./OrderItem";
 import { ButtonPrimary } from "../../components/button";
 import { InputSearch } from "../../components/input";
+import { Link } from "react-router-dom";
+import { PRODUCT_ROUTE } from "../../constant/routesApp";
+import { dataSelectSortOrder } from "../../data_av/dataSelectSort";
+import { SelectBox } from "../../components/selecbox";
+
 const Order = () => {
   const [{ user, basket }, dispatch] = useStateValue();
   const [order, setOrder] = useState([]);
   useEffect(() => {
-    if (user) {
+    if (user?.auth) {
       const ordersQuery = query(
-        collection(db, "users", user?.uid, "orders"),
+        collection(db, "users", user?.auth?.uid, "orders"),
         orderBy("created", "desc")
       );
 
@@ -36,15 +41,23 @@ const Order = () => {
           <InputSearch placeholder="Search all orders" />
           <ButtonPrimary
             text="Search Orders"
-            className={(styles.orders__buttonSearch)}
+            className={styles.orders__buttonSearch}
           />
         </div>
       </div>
-
+      <div className={styles.orders__selectBox}>
+        <SelectBox dataSelect={dataSelectSortOrder} />
+      </div>
       <div className={styles.orders__order}>
-        {order?.map((item, index) => (
-          <OrderItem order={item} key={index} />
-        ))}
+        {order.length > 0 &&
+          order?.map((item, index) => <OrderItem order={item} key={index} />)}
+
+        {order.length <= 0 && (
+          <p className={styles.order__dont}>
+            Looks like you didn&apos;t place an order.{" "}
+            <Link to={PRODUCT_ROUTE}>View more prodcuts.</Link>
+          </p>
+        )}
       </div>
     </div>
   );

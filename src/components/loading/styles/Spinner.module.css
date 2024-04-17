@@ -1,0 +1,16 @@
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: max-content;
+  height: max-content;
+  margin: 0 auto;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 10px solid white;
+  border-right-color: black;
+  animation: l2 1s infinite linear;
+}
+@keyframes l2 {
+  to {
+    transform: rotate(1turn);
+  }
+}

@@ -12,6 +12,7 @@
   border-top-right-radius: 3px;
 }
 
+.order__shiptoTitle,
 .order__total {
   font-size: 16px;
   text-transform: uppercase;
@@ -29,7 +30,7 @@
 
 .oder__topTitle {
   display: flex;
-  gap: 20px;
+  gap: 30px;
 }
 
 .order__checkoutProduct {
@@ -40,11 +41,22 @@
   text-transform: uppercase;
   font-size: 16px;
 }
+
 .order__topTitleItem p {
   font-size: 18px;
   font-weight: 500;
 }
 
+.order__shiptoAddress {
+  color: #007185;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  width: 600px;
+}
+
+.order__shiptoAddress,
 .order__total p {
   font-size: 18px;
   font-weight: 500;
@@ -55,34 +67,54 @@
   font-size: 16px;
 }
 
-.order__id small{
-    margin-left: 5px;
-    font-size: 16px;
+.order__id small {
+  margin-left: 5px;
+  font-size: 16px;
   font-weight: 500;
 }
 
-.orders__title{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.orders__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.orders__search{
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.orders__search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.orders__buttonSearch{
-    background-color: #303333;
-    font-size: 14px;
-    font-weight: 400;
-    color: white;
-    border-radius: 100px;
-    text-align: center;
-    margin-top: 0;
-    padding: 8px 20px;
+.orders__buttonSearch {
+  background-color: #303333;
+  font-size: 14px;
+  font-weight: 400;
+  color: white;
+  border-radius: 100px;
+  text-align: center;
+  margin-top: 0;
+  padding: 8px 20px;
 }
-.orders__buttonSearch:hover{
-    background-color: #000;
+.orders__buttonSearch:hover {
+  background-color: #000;
+}
+
+.order__dont {
+  margin-bottom: 30px;
+  margin-top: 50px;
+  font-size: 18px;
+  text-align: center;
+  font-weight: 400;
+}
+
+.order__dont a {
+  color: #007185;
+}
+
+.order__dont a:hover {
+  color: #c7511f;
+}
+
+.orders__selectBox {
+  margin-top: 20px;
 }

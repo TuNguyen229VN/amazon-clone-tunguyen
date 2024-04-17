@@ -12,9 +12,9 @@ import { getBasketSize } from "../utils/reducer";
 
 const Header = () => {
   const [{ basket, user }, dispatch] = useStateValue();
-
   const handleAuthentication = () => {
-    if (user) {
+    
+    if (user?.auth) {
       signOut(auth);
       localStorage.removeItem("userInfo");
     }
@@ -37,16 +37,16 @@ const Header = () => {
       </div>
 
       <div className={styles.header__nav}>
-        <Link to={!user && LOGIN_ROUTE}>
+        <Link to={!user?.auth && LOGIN_ROUTE}>
           <div onClick={handleAuthentication} className={styles.header__option}>
             <span
               className={`${styles.header__optionLineOne} ${styles["--accountName"]}`}
-              title={!user ? "guest" : user?.email}
+              title={!user?.auth ? "guest" : user?.auth?.email}
             >
-              Hello {!user ? "guest" : user?.email}
+              Hello {!user?.auth ? "guest" : user?.auth?.email}
             </span>
             <span className={styles.header__optionLineTwo}>
-              {user ? "Sign out" : "Sign in"}
+              {user?.auth ? "Sign out" : "Sign in"}
             </span>
           </div>
         </Link>
