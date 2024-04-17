@@ -4,7 +4,7 @@ import CheckoutPage from "./pages/CheckoutPage";
 import LoginPage from "./pages/LoginPage";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth, db } from "./firebase/firebase-config";
+import { auth } from "./firebase/firebase-config";
 import { useStateValue } from "./hooks/useStateValue";
 import PaymentPage from "./pages/PaymentPage";
 import { loadStripe } from "@stripe/stripe-js";
@@ -23,7 +23,6 @@ import {
   PRODUCT_ROUTE,
 } from "./constant/routesApp";
 import ProductDetailPage from "./pages/ProductDetailPage";
-import { doc, getDoc } from "firebase/firestore";
 import { getUserProfile } from "./utils/getUserProfile";
 const { VITE_SECRET_KEY } = import.meta.env;
 const promisze = loadStripe(VITE_SECRET_KEY);

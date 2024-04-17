@@ -1,6 +1,9 @@
 export const initialState = {
   basket: JSON.parse(localStorage.getItem("basket")) || [],
-  user: JSON.parse(localStorage.getItem("userInfo")) || null,
+  user: JSON.parse(localStorage.getItem("userInfo")) || {
+    auth: "",
+    userProfile: "",
+  },
 };
 
 // Selector
@@ -97,11 +100,14 @@ const reducer = (state, action) => {
       return { ...state, basket: newBasket };
     case "SET_USER": {
       let newUser = JSON.parse(JSON.stringify(state.user));
-      if (!action.user) {
+      if (!action.user && newUser) {
         newUser["userProfile"] = null;
       }
-      newUser["auth"] = action.user;
+      if (newUser) {
+        newUser["auth"] = action.user;
+      }
       localStorage.setItem("userInfo", JSON.stringify(newUser));
+
       return {
         ...state,
         user: newUser,
@@ -109,7 +115,9 @@ const reducer = (state, action) => {
     }
     case "SET_USERPROFILE": {
       let newUser = JSON.parse(JSON.stringify(state.user));
-      newUser["userProfile"] = action.userProfile;
+      if (newUser) {
+        newUser["userProfile"] = action.userProfile;
+      }
       localStorage.setItem("userInfo", JSON.stringify(newUser));
       return {
         ...state,
