@@ -14,7 +14,7 @@ const OrderItem = ({ order = [] }) => {
           <div className={styles.order__topTitleItem}>
             <h2>Order Placed</h2>
             <p>
-              {moment.unix(order?.data.created).format("MMMM Do YYYY, h:mma")}
+              {moment.unix(order?.data?.created).format("MMMM Do YYYY, h:mma")}
             </p>
           </div>
           <CurrencyFormat
@@ -26,12 +26,12 @@ const OrderItem = ({ order = [] }) => {
               </>
             )}
             decimalScale={2}
-            value={order.data.amount / 100}
+            value={order.data?.amount / 100}
             displayType={"text"}
             thousandSeparator={true}
             prefix={"$"}
           />
-          <div className={styles.order__shipto}>
+          {address&&<div className={styles.order__shipto}>
             <h2 className={styles.order__shiptoTitle}>Ship to</h2>
             <p
               className={styles.order__shiptoAddress}
@@ -40,14 +40,14 @@ const OrderItem = ({ order = [] }) => {
               {address?.houseNumber}, {address?.ward.ward_name},{" "}
               {address?.district.district_name}, {address?.city.province_name}
             </p>
-          </div>
+          </div>}
         </div>
         <p className={styles.order__id}>
           Order
           <small>#{order.id}</small>
         </p>
       </div>
-      {order?.data.basket?.map((item, index) => (
+      {order?.data?.basket?.map((item, index) => (
         <CheckoutProduct
           key={index}
           id={item.id}

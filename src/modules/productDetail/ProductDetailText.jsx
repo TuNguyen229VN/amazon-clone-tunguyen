@@ -3,6 +3,8 @@ import styles from "./styles/ProductDetaill.module.css";
 import StarIcon from "@mui/icons-material/Star";
 import PropTypes from "prop-types";
 import { replaceDashToSpace } from "../../utils/replaceDashToSpace";
+import { Link } from "react-router-dom";
+import { PRODUCT_ROUTE } from "../../constant/routesApp";
 const ProductDetailText = ({ productDetail = {} }) => {
   return (
     <div className={styles.productDetailText}>
@@ -23,7 +25,9 @@ const ProductDetailText = ({ productDetail = {} }) => {
       <div>
         <div className={styles.productDetailText__detailsItem}>
           <strong>Category</strong>{" "}
-          <p>{replaceDashToSpace(productDetail.category)}</p>
+          <Link to={`${PRODUCT_ROUTE}/${productDetail.category}`}>
+            {replaceDashToSpace(productDetail.category)}
+          </Link>
         </div>
         <div className={styles.productDetailText__detailsItem}>
           <strong>Brand</strong> <p>{productDetail.brand}</p>

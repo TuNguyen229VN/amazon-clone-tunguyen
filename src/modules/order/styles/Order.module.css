@@ -118,3 +118,18 @@
 .orders__selectBox {
   margin-top: 20px;
 }
+
+.loadmore{
+  background-color: rgb(245, 245, 245,0);
+  width: max-content;
+  text-transform: capitalize;
+  padding: 10px 30px;
+  border-radius: 8px;
+  margin: 0px auto;
+  cursor: pointer;
+  border: 1px solid #000;
+}
+
+.loadmore:hover{
+  background-color: rgb(245, 245, 245,1);
+}
