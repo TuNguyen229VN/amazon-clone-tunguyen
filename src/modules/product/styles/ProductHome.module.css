@@ -58,7 +58,9 @@
 .--forward {
   right: 20px;
 }
-
+.--forward.active,.--back.active{
+ display: none;
+}
 .--back {
   left: 20px;
 }
@@ -240,4 +242,11 @@
   text-align: center;
   padding: 80px;
   font-size: 30px;
+}
+
+
+.productList__price{
+  font-size: 16px;
+  font-weight: 400;
+  color: #007185;
 }

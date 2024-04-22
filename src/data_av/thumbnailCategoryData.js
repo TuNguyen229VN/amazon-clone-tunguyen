@@ -20,8 +20,6 @@ import Automotive from "/assets/thumbnailFilter/automotive.png";
 import Motorcycle from "/assets/thumbnailFilter/motorcycle.png";
 import Lighting from "/assets/thumbnailFilter/lighting.png";
 export const thumbnailCategoryData = [
-  { lighting: Lighting },
-  { motorcycle: Motorcycle },
   { all: All },
   { smartphones: Smartphone },
   { laptops: Laptops },
@@ -41,4 +39,6 @@ export const thumbnailCategoryData = [
   { "womens-jewellery": WomensJewellery },
   { sunglasses: Sunglasses },
   { automotive: Automotive },
+  { lighting: Lighting },
+  { motorcycle: Motorcycle },
 ];

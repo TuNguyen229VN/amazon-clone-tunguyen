@@ -24,6 +24,7 @@ import {
 } from "./constant/routesApp";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import { getUserProfile } from "./utils/getUserProfile";
+import { Layout } from "./layouts";
 const { VITE_SECRET_KEY } = import.meta.env;
 const promisze = loadStripe(VITE_SECRET_KEY);
 
@@ -36,7 +37,7 @@ function App() {
           type: "SET_USER",
           user: authUser,
         });
-        getUserProfile(authUser,dispatch);
+        getUserProfile(authUser, dispatch);
       } else {
         dispatch({
           type: "SET_USER",
@@ -44,43 +45,44 @@ function App() {
         });
       }
     });
-
   }, []);
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path={ERROR_ROUTE} element={<ErrorPage />}></Route>
-        <Route path={HOME_ROUTE} element={<HomePage />}></Route>
         <Route
           path={LOGIN_ROUTE}
           element={user?.auth ? <Navigate to={HOME_ROUTE} /> : <LoginPage />}
         ></Route>
-        <Route path={CHECKOUT_ROUTE} element={<CheckoutPage />}></Route>
-        <Route
-          path={`${PRODUCT_ROUTE}/:slug?`}
-          element={<ProductPage />}
-        ></Route>
-        <Route
-          path={`${PRODUCT_DETAIL_ROUTE}/:slug`}
-          element={<ProductDetailPage />}
-        ></Route>
-        <Route
-          path={PAYMENT_ROUTE}
-          element={
-            user?.auth ? (
-              <Elements stripe={promisze}>
-                <PaymentPage />
-              </Elements>
-            ) : (
-              <Navigate to={LOGIN_ROUTE} />
-            )
-          }
-        ></Route>
-        <Route
-          path={ORDER_ROUTE}
-          element={user?.auth ? <OrderPage /> : <Navigate to={LOGIN_ROUTE} />}
-        ></Route>
+        <Route element={<Layout />}>
+          <Route path={HOME_ROUTE} element={<HomePage />}></Route>
+          <Route path={CHECKOUT_ROUTE} element={<CheckoutPage />}></Route>
+          <Route
+            path={`${PRODUCT_ROUTE}/:slug?`}
+            element={<ProductPage />}
+          ></Route>
+          <Route
+            path={`${PRODUCT_DETAIL_ROUTE}/:slug`}
+            element={<ProductDetailPage />}
+          ></Route>
+          <Route
+            path={PAYMENT_ROUTE}
+            element={
+              user?.auth ? (
+                <Elements stripe={promisze}>
+                  <PaymentPage />
+                </Elements>
+              ) : (
+                <Navigate to={LOGIN_ROUTE} />
+              )
+            }
+          ></Route>
+          <Route
+            path={ORDER_ROUTE}
+            element={user?.auth ? <OrderPage /> : <Navigate to={LOGIN_ROUTE} />}
+          ></Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   );

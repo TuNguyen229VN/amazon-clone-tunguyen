@@ -4,9 +4,7 @@ import Home from "../modules/home/Home";
 
 const HomePage = () => {
   return (
-    <Layout>
       <Home/>
-    </Layout>
   );
 };
 

@@ -3,11 +3,7 @@ import { Layout } from "../layouts";
 import ProductHome from "../modules/product/ProductHome";
 
 const ProductPage = () => {
-  return (
-    <Layout>
-      <ProductHome />
-    </Layout>
-  );
+  return <ProductHome />;
 };
 
 export default ProductPage;

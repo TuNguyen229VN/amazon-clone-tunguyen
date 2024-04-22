@@ -3,11 +3,7 @@ import { Layout } from "../layouts";
 import Order from "../modules/order/Order";
 
 const OrderPage = () => {
-  return (
-    <Layout>
-      <Order />
-    </Layout>
-  );
+  return <Order />;
 };
 
 export default OrderPage;

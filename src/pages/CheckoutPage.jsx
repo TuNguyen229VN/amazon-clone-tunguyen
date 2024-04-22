@@ -3,9 +3,7 @@ import { Layout } from "../layouts";
 import Checkout from "../modules/checkout/Checkout";
 
 const CheckoutPage = () => {
-  return <Layout>
-    <Checkout></Checkout>
-  </Layout>;
+  return <Checkout></Checkout>;
 };
 
 export default CheckoutPage;

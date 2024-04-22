@@ -10,16 +10,20 @@ import axios from "axios";
 import { API_PRODUCT } from "../../constant/constanst";
 import { STATUS_SUCCESS } from "../../constant/status";
 import { SelectBox } from "../../components/selecbox";
+import { useStateValue } from "../../hooks/useStateValue";
+import { replaceSpecialChars } from "../../utils/replaceDashToSpace";
 
 const LIMIT = 20;
 const ProductHome = () => {
   const { slug } = useParams();
+  const search = new URLSearchParams(window.location.search).get("search");
   const [currentPage, setCurrentPage] = useState(1);
   const [skip, setSkip] = useState(0);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [count, setCount] = useState(0);
   const [filter, setFilter] = useState("");
+  const [sortValue, setSortValue] = useState("charactDesc");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -40,11 +44,17 @@ const ProductHome = () => {
 
     const getProduct = async () => {
       try {
-        const res = await axios.get(
-          `${API_PRODUCT}${
-            slug && slug != "all" ? `/category/${filter}` : "/"
-          }?limit=${LIMIT}&skip=${LIMIT * skip}`
-        );
+        const URL_SEARCH =
+          search &&
+          `${API_PRODUCT}/search?q=${replaceSpecialChars(
+            search
+          )}&limit=${LIMIT}&skip=${LIMIT * skip}`;
+          console.log(URL_SEARCH)
+        const URL_CATEGORY = `${API_PRODUCT}${
+          slug && slug != "all" ? `/category/${slug}` : "/"
+        }?limit=${LIMIT}&skip=${LIMIT * skip}`;
+
+        const res = await axios.get(search ? URL_SEARCH : URL_CATEGORY);
         if (res.status === STATUS_SUCCESS) {
           setProducts(res.data.products);
           setCount(res.data?.total);
@@ -56,14 +66,14 @@ const ProductHome = () => {
       }
     };
     getProduct();
-  }, [count, currentPage, filter, slug, skip]);
+  }, [count, currentPage, filter, slug, skip, search]);
 
   return (
     <div className={styles.productHome}>
       <h2 className={styles.productHome__title}>Today&apos;s Deals</h2>
       <ProductCategoryFilter />
       <div className={styles.productHome__blockSelect}>
-        <SelectBox dataSelect={dataSelectSort} />
+        <SelectBox dataSelect={dataSelectSort} setSortValue={setSortValue} />
       </div>
       <div className={styles.productHome__content}>
         <ProductFilterLeft />
@@ -71,6 +81,7 @@ const ProductHome = () => {
           products={products}
           loading={loading}
           setLoading={setLoading}
+          sortValue={sortValue}
         />
       </div>
       <ProducPaging
