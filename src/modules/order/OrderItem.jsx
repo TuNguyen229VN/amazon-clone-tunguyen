@@ -4,6 +4,7 @@ import moment from "moment";
 import CheckoutProduct from "../checkout/CheckoutProduct";
 import CurrencyFormat from "react-currency-format";
 import styles from "./styles/Order.module.css";
+import { Skeleton } from "@mui/material";
 
 const OrderItem = ({ order = [] }) => {
   const [address, setAddress] = useState(order?.data?.address);
@@ -31,16 +32,18 @@ const OrderItem = ({ order = [] }) => {
             thousandSeparator={true}
             prefix={"$"}
           />
-          {address&&<div className={styles.order__shipto}>
-            <h2 className={styles.order__shiptoTitle}>Ship to</h2>
-            <p
-              className={styles.order__shiptoAddress}
-              title={`${address?.houseNumber}, ${address?.ward.ward_name}, ${address?.district.district_name}, ${address?.city.province_name}`}
-            >
-              {address?.houseNumber}, {address?.ward.ward_name},{" "}
-              {address?.district.district_name}, {address?.city.province_name}
-            </p>
-          </div>}
+          {address && (
+            <div className={styles.order__shipto}>
+              <h2 className={styles.order__shiptoTitle}>Ship to</h2>
+              <p
+                className={styles.order__shiptoAddress}
+                title={`${address?.houseNumber}, ${address?.ward.ward_name}, ${address?.district.district_name}, ${address?.city.province_name}`}
+              >
+                {address?.houseNumber}, {address?.ward.ward_name},{" "}
+                {address?.district.district_name}, {address?.city.province_name}
+              </p>
+            </div>
+          )}
         </div>
         <p className={styles.order__id}>
           Order

@@ -1,7 +1,15 @@
 @import url("./reset.css");
+@font-face {
+  font-family: "AmazonEmber_W_Bd";
+  src: local("AmazonEmber_W_Bd"), local("AmazonEmber_W_Bd"),
+    url("../fonts/AmazonEmber_W_Rg.woff") format("woff2"),
+    url("../fonts/AmazonEmber_W_Rg.woff2") format("woff");
+  font-weight: 100;
+  font-style: normal;
+}
 
 * {
-  font-family: "Amazon Ember", sans-serif;
+  font-family: "AmazonEmber_W_Bd", sans-serif;
   font-weight: normal;
 }
 

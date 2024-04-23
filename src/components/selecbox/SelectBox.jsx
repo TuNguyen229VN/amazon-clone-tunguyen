@@ -2,13 +2,14 @@ import React from "react";
 import styles from "./styles/SelectBox.module.css";
 import PropTypes from "prop-types";
 import { replaceDashToSpace } from "../../utils/replaceDashToSpace";
-const SelectBox = ({ dataSelect, setSortValue }) => {
+import { Skeleton } from "@mui/material";
+const SelectBox = ({ dataSelect, setSortValue, loading }) => {
   const handleChange = (e) => {
     if (e.target) {
       setSortValue(e.target.value);
     }
   };
-  return (
+  return !loading ? (
     <select className={styles.selectBox} onChange={handleChange}>
       {dataSelect.length > 0 &&
         dataSelect.map((item, index) => (
@@ -21,11 +22,18 @@ const SelectBox = ({ dataSelect, setSortValue }) => {
           </option>
         ))}
     </select>
+  ) : (
+    <SelectBoxSkeleton />
   );
+};
+
+const SelectBoxSkeleton = () => {
+  return <Skeleton variant="rounded" width={170} height={24} sx={{marginLeft:"auto"}}/>;
 };
 
 SelectBox.propTypes = {
   dataSelect: PropTypes.array.isRequired,
   setSortValue: PropTypes.func,
+  loading: PropTypes.bool,
 };
 export default SelectBox;

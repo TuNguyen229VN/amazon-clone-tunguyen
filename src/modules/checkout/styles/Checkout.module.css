@@ -50,3 +50,15 @@
 .checkout__totalBottom p strong{
 font-weight: 700;
 }
+
+.OrderItemSkeleton__Wrap{
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid lightgray;
+  padding: 20px 0px;
+}
+
+.OrderItemSkeleton__WrapLeft{
+  display: flex;
+  gap: 20px;
+}

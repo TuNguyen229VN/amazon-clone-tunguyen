@@ -8,6 +8,8 @@ import { thumbnailCategoryData } from "../../data_av/thumbnailCategoryData";
 import { replaceDashToSpace } from "../../utils/replaceDashToSpace";
 import { PRODUCT_ROUTE } from "../../constant/routesApp";
 import { useEffect } from "react";
+import PropTypes from "prop-types";
+import { Skeleton } from "@mui/material";
 
 const MAX__CELL = 1200;
 const flickityOptions = {
@@ -20,7 +22,7 @@ const flickityOptions = {
   initialIndex: 0,
   groupCells: 2,
 };
-const ProductCategoryFilter = () => {
+const ProductCategoryFilter = ({ loading = false }) => {
   const [flkty, setFlkty] = useState(null);
   const [checkout, setCheckout] = useState(true);
   useEffect(() => {
@@ -61,7 +63,8 @@ const ProductCategoryFilter = () => {
         className={styles.productCategoryFilter__flickity} // default ''
         options={flickityOptions} // takes flickity options {}
       >
-        {thumbnailCategoryData &&
+        {!loading &&
+          thumbnailCategoryData &&
           thumbnailCategoryData.map((item, index) => (
             <Link
               to={`${PRODUCT_ROUTE}/${Object.keys(item)[0]}`}
@@ -76,6 +79,10 @@ const ProductCategoryFilter = () => {
               </p>
             </Link>
           ))}
+        {loading &&
+          Array(12)
+            .fill()
+            .map((_, index) => <ProductCategoryFilterSkeleton key={index} />)}
       </Flickity>
       <ArrowBackIosNewIcon
         fontSize="large"
@@ -91,4 +98,15 @@ const ProductCategoryFilter = () => {
   );
 };
 
+const ProductCategoryFilterSkeleton = () => {
+  return (
+    <div className={styles.productCategoryFilter__link}>
+      <Skeleton variant="circular" width={90} height={90}></Skeleton>
+      <Skeleton variant="rectangular" width={58} height={18}></Skeleton>
+    </div>
+  );
+};
+ProductCategoryFilter.propTypes = {
+  loading: PropTypes.bool,
+};
 export default ProductCategoryFilter;

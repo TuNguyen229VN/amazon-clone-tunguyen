@@ -30,6 +30,7 @@
 - Sign up
 - Payment / Order history
 - Paging
+- Search/ Filter product
 
 ## Rules:
 

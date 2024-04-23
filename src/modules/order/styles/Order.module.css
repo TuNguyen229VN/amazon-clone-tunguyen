@@ -133,3 +133,15 @@
 .loadmore:hover{
   background-color: rgb(245, 245, 245,1);
 }
+
+.OrderItemSkeleton__Wrap{
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid lightgray;
+  padding: 20px;
+}
+
+.OrderItemSkeleton__WrapLeft{
+  display: flex;
+  gap: 20px;
+}

@@ -12,6 +12,7 @@ import { STATUS_SUCCESS } from "../../constant/status";
 import { SelectBox } from "../../components/selecbox";
 import { useStateValue } from "../../hooks/useStateValue";
 import { replaceSpecialChars } from "../../utils/replaceDashToSpace";
+import { Skeleton } from "@mui/material";
 
 const LIMIT = 20;
 const ProductHome = () => {
@@ -21,9 +22,13 @@ const ProductHome = () => {
   const [skip, setSkip] = useState(0);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadingTop, setLoadingTop] = useState(true)
   const [count, setCount] = useState(0);
   const [filter, setFilter] = useState("");
   const [sortValue, setSortValue] = useState("charactDesc");
+  const [selectedCategories, setSelectedCategories] = useState(["all"]);
+  const [selectPrice, setSelectPrice] = useState();
+  const [selectRating, setSelectRating] = useState();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -44,24 +49,29 @@ const ProductHome = () => {
 
     const getProduct = async () => {
       try {
+        setLoading(true)
         const URL_SEARCH =
           search &&
           `${API_PRODUCT}/search?q=${replaceSpecialChars(
             search
           )}&limit=${LIMIT}&skip=${LIMIT * skip}`;
-          console.log(URL_SEARCH)
         const URL_CATEGORY = `${API_PRODUCT}${
           slug && slug != "all" ? `/category/${slug}` : "/"
         }?limit=${LIMIT}&skip=${LIMIT * skip}`;
 
         const res = await axios.get(search ? URL_SEARCH : URL_CATEGORY);
         if (res.status === STATUS_SUCCESS) {
+          setSelectedCategories(["all"]);
+          setSelectPrice();
+          setSelectRating();
           setProducts(res.data.products);
           setCount(res.data?.total);
           setLoading(false);
+          setLoadingTop(false)
         }
       } catch (error) {
         setLoading(false);
+        setLoadingTop(false)
         return;
       }
     };
@@ -70,18 +80,29 @@ const ProductHome = () => {
 
   return (
     <div className={styles.productHome}>
-      <h2 className={styles.productHome__title}>Today&apos;s Deals</h2>
-      <ProductCategoryFilter />
+    {!loadingTop? <h2 className={styles.productHome__title}>Today&apos;s Deals</h2>:<Skeleton variant="text" width={150} height={73} sx={{padding:"20px", marginLeft:"20px"}} />}
+     
+      <ProductCategoryFilter loading={loadingTop}/>
       <div className={styles.productHome__blockSelect}>
-        <SelectBox dataSelect={dataSelectSort} setSortValue={setSortValue} />
+        <SelectBox loading={loadingTop} dataSelect={dataSelectSort} setSortValue={setSortValue} />
       </div>
       <div className={styles.productHome__content}>
-        <ProductFilterLeft />
+        <ProductFilterLeft
+          selectedCategories={selectedCategories}
+          setSelectedCategories={setSelectedCategories}
+          selectPrice={selectPrice}
+          setSelectPrice={setSelectPrice}
+          selectRating={selectRating}
+          setSelectRating={setSelectRating}
+          loading={loadingTop}
+        />
         <ProductList
           products={products}
           loading={loading}
-          setLoading={setLoading}
           sortValue={sortValue}
+          selectedCategories={selectedCategories}
+          selectPrice={selectPrice}
+          selectRating={selectRating}
         />
       </div>
       <ProducPaging
@@ -92,8 +113,7 @@ const ProductHome = () => {
         setCurrentPage={setCurrentPage}
         setSkip={setSkip}
         skip={skip}
-        loading={loading}
-        setLoading={setLoading}
+        loading={loadingTop}
       />
     </div>
   );

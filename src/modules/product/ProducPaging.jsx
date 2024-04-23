@@ -12,7 +12,6 @@ const ProducPaging = ({
   skip = 0,
   setSkip,
   loading = true,
-  setLoading,
 }) => {
   // Click paging number
   const handlePageClick = (data) => {
@@ -60,6 +59,5 @@ ProducPaging.propTypes = {
   skip: PropTypes.number,
   setSkip: PropTypes.func,
   loading: PropTypes.bool,
-  setLoading: PropTypes.func,
 };
 export default ProducPaging;

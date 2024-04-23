@@ -58,8 +58,9 @@
 .--forward {
   right: 20px;
 }
-.--forward.active,.--back.active{
- display: none;
+.--forward.active,
+.--back.active {
+  display: none;
 }
 .--back {
   left: 20px;
@@ -117,7 +118,7 @@
 }
 .productFilterLeft__label span {
   font-size: 14px;
-  font-family: "Amazon Ember", sans-serif;
+  font-family: "AmazonEmber_W_Bd", sans-serif;
   font-weight: normal;
 }
 .productFilterLeft__label span:last-child {
@@ -142,6 +143,11 @@
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  cursor: pointer;
+}
+
+.productFilterLeft__price.priceActive{
+  font-weight: 500;
 }
 .productFilterLeft__rate {
   display: flex;
@@ -149,7 +155,15 @@
   color: #007185;
   gap: 10px;
   white-space: nowrap;
+  cursor: pointer;
   overflow: hidden;
+}
+
+.productFilterLeft__rate.rateActive {
+  font-weight: 500;
+}
+.productFilterLeft__rate.rateActive .productFilterLeft__rating {
+  border-bottom: 1px solid;
 }
 .productFilterLeft__rating {
   display: flex;
@@ -238,15 +252,33 @@
 }
 .productList__item.--notfound {
   grid-column: 1 / end;
-  height: 500px;
+  height: 1080px;
   text-align: center;
   padding: 80px;
   font-size: 30px;
 }
 
-
-.productList__price{
+.productList__price {
   font-size: 16px;
   font-weight: 400;
   color: #007185;
+}
+
+.productList__notice {
+  font-style: italic;
+  font-size: 15px;
+  margin-top: 20px;
+}
+
+.productList__wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.productList__rating {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  gap: 5px;
 }

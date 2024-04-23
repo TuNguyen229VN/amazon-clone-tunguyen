@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { STATUS_SUCCESS } from "../../constant/status";
 import { API_PRODUCT } from "../../constant/constanst";
+import ProductDetailLink from "./ProductDetailLink";
 const ProductDetail = () => {
   const { slug } = useParams();
   const [productDetail, setProductDetail] = useState({});
@@ -35,9 +36,12 @@ const ProductDetail = () => {
     <div className={styles.productDetail}>
       {!loading && Object.keys(productDetail).length > 0 && (
         <>
-          <ProductDetailImage productDetail={productDetail} />
-          <ProductDetailText productDetail={productDetail} />
-          <ProductDetailAction productDetail={productDetail} />
+          <ProductDetailLink productDetail={productDetail} />
+          <div className={styles.productDetail__wrap}>
+            <ProductDetailImage productDetail={productDetail} />
+            <ProductDetailText productDetail={productDetail} />
+            <ProductDetailAction productDetail={productDetail} />
+          </div>
         </>
       )}
       {!loading && Object.keys(productDetail).length <= 0 && (

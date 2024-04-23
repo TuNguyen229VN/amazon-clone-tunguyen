@@ -25,6 +25,7 @@
 }
 .home__categoryFirst {
   position: absolute;
+  width: max-content;
   top: 250px;
 }
 
