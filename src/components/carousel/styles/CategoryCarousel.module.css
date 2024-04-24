@@ -6,8 +6,11 @@
 }
 
 .categoryCarousel__item {
+  z-index: 1;
   background-color: white;
   padding: 20px;
+  justify-self: center;
+  align-self: center;
 }
 
 .categoryCarousel__title {
@@ -15,8 +18,12 @@
   font-size: 21px;
   color: #0f1111;
   font-weight: 700;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
-.test{
+.test {
   overflow: hidden;
 }
 .categoryCarousel__img {
@@ -39,4 +46,47 @@
 
 .categoryCarousel__seeMore:hover {
   color: #c7511f;
+}
+
+@media only screen and (min-width: 1201px) {
+}
+@media only screen and (max-width: 1200px) {
+  .categoryCarousel {
+    grid-template-columns: repeat(2, 1fr);
+    margin-inline: 10px;
+    gap: 20px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+}
+@media only screen and (max-width: 768px) {
+  .categoryCarousel {
+    margin-inline: 10px;
+    gap: 10px;
+  }
+  .categoryCarousel__title {
+    font-size: 18px;
+  }
+  .categoryCarousel__item {
+    margin: auto;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 730px) {
+  .categoryCarousel {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .categoryCarousel__img {
+    width: 100%;
+    height: 200px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .categoryCarousel__title {
+    font-size: 16px;
+  }
+
+  .categoryCarousel__seeMore {
+    font-size: 12px;
+  }
 }

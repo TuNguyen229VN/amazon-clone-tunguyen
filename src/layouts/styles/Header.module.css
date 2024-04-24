@@ -112,7 +112,69 @@
   padding: 6px 10px;
   cursor: pointer;
 }
-.header__suggest a:hover, .header__suggest a.active{
+.header__suggest a:hover,
+.header__suggest a.active {
   background-color: #f5f5f5;
 }
 
+.header__icon {
+  color: white;
+  cursor: pointer;
+  display: none !important;
+  margin-right: 10px;
+}
+
+@media only screen and (min-width: 1201px) {
+}
+@media only screen and (max-width: 1200px) {
+  .header__option:nth-child(3) {
+    display: none;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .header__optionLineOne {
+    font-size: 11px;
+  }
+  .header__optionLineTwo {
+    font-size: 13px;
+  }
+  .header__searchInput {
+    font-size: 13px;
+  }
+  .header__searchInput::placeholder {
+    font-size: 13px;
+  }
+
+  .header__logo {
+    width: 80px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .header__icon {
+    display: block !important;
+  }
+  .header__option {
+    display: none;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .header__logo {
+    width: 60px;
+  }
+  .header__search {
+    margin: 0 5px;
+  }
+  .header__searchInput {
+    height: 30px;
+    padding: 5px;
+  }
+  .header__searchIcon {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  .iconBasket,
+  .header__icon {
+    width: 25px !important;
+    height: 25px !important;
+  }
+}

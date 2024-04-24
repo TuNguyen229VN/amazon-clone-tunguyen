@@ -6,6 +6,7 @@ import { ShoppingBasket } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
 import { useStateValue } from "../hooks/useStateValue";
 import { auth } from "../firebase/firebase-config";
+import MenuIcon from "@mui/icons-material/Menu";
 import { signOut } from "firebase/auth";
 import {
   CHECKOUT_ROUTE,
@@ -22,9 +23,11 @@ import useDebounce from "../hooks/useDebounce";
 import { replaceSpaceToUnderScore } from "../utils/replaceDashToSpace";
 import { Highlighted } from "../components/highlightText";
 import PropTypes from "prop-types";
+import HeaderReponsive from "./HeaderReponsive";
 
 const Header = ({ openBackground, setOpenBackground }) => {
   const navigate = useNavigate();
+  const [openHeader, setOpenHeader] = useState(false);
   const [{ basket, user }, dispatch] = useStateValue();
   const [searchValue, setSearchValue] = useState("");
   const [debouncedValue, setDebouncedValue] = useDebounce("", 500);
@@ -197,7 +200,7 @@ const Header = ({ openBackground, setOpenBackground }) => {
 
       <Link to={CHECKOUT_ROUTE} onClick={() => setOpenBackground(false)}>
         <div className={styles.header__optionBasket}>
-          <ShoppingBasket />
+          <ShoppingBasket  className={styles.iconBasket}/>
           <span
             className={`${styles.header__optionLineTwo} ${styles.header__basketCount}`}
           >
@@ -205,6 +208,18 @@ const Header = ({ openBackground, setOpenBackground }) => {
           </span>
         </div>
       </Link>
+      <MenuIcon
+        onClick={() => setOpenHeader(!openHeader)}
+        className={styles.header__icon}
+      />
+
+      <HeaderReponsive
+        openHeader={openHeader}
+        user={user}
+        setOpenBackground={setOpenBackground}
+        handleAuthentication={handleAuthentication}
+        setOpenHeader={setOpenHeader}
+      />
     </header>
   );
 };

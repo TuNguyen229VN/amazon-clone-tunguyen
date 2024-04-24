@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles/ProductDetaill.module.css";
 import PropTypes from "prop-types";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ButtonPrimary from "../../components/button/ButtonPrimary";
 import { useStateValue } from "../../hooks/useStateValue";
 import { Checkbox, FormControlLabel } from "@mui/material";
+import { getUserProfile } from "../../utils/getUserProfile";
 const ProductDetailAction = ({ productDetail = {} }) => {
-  const [state, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
+  const [address, setAddress] = useState(user?.userProfile?.userAddress);
+  useEffect(() => {
+    getUserProfile(user.auth, dispatch);
+  }, []);
+
+  useEffect(() => {
+    setAddress(user?.userProfile?.userAddress);
+  }, [user?.userProfile?.userAddress]);
+
   const addToBasket = () => {
     // dispatch the item into the data layer
     dispatch({
@@ -17,7 +27,7 @@ const ProductDetailAction = ({ productDetail = {} }) => {
         image: productDetail.images[0],
         price: productDetail.price,
         rating: productDetail.rating,
-        stock:productDetail.stock
+        stock: productDetail.stock,
       },
     });
   };
@@ -28,10 +38,21 @@ const ProductDetailAction = ({ productDetail = {} }) => {
         <p>{productDetail.price}</p>
       </div>
       <div className={styles.productDetailAction__location}>
-        <LocationOnIcon fontSize="small"/>
-        <p>Deliver to Tu - Ho Chi Minh 10000‌</p>
+        {user?.userProfile && (
+          <>
+            <LocationOnIcon fontSize="small" />
+            <p>
+              Deliver to {address?.houseNumber}, {address?.ward.ward_name},{" "}
+              {address?.district.district_name}, {address?.city.province_name}
+            </p>
+          </>
+        )}
       </div>
-      <ButtonPrimary text="Add to Basket" onClick={addToBasket} className={styles.productDetailAction__button}/>
+      <ButtonPrimary
+        text="Add to Basket"
+        onClick={addToBasket}
+        className={styles.productDetailAction__button}
+      />
       <div className={styles.productDetailAction__desc}>
         <p className={styles.productDetailAction__descLeft}>Ships from</p>
         <p className={styles.productDetailAction__descRight}>Amazon.com</p>

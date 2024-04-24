@@ -19,6 +19,7 @@ const flickityOptions = {
   imagesLoaded: true,
   percentPosition: false,
   wrapAround: false,
+  draggable: true,
 };
 const ListItemCarousel = ({
   title = "",
@@ -40,7 +41,7 @@ const ListItemCarousel = ({
       setLoading(true);
       const response = await axios.get(
         `${API_URL_PRODUCTS_IN_SPECIFIC_CATEGORY}/${nameProduct}`
-        // "https://fakestoreapi.com/products"
+        // "https://dummyjson.com/products"
       );
       if (response.status === STATUS_SUCCESS) {
         setproductData(response.data?.products);
@@ -59,7 +60,9 @@ const ListItemCarousel = ({
   return (
     <div className={styles.listItem}>
       {!loading ? (
-        <h4 className={styles.listItem__title}>{title}</h4>
+        <h4 className={styles.listItem__title} title={title}>
+          {title}
+        </h4>
       ) : (
         <Skeleton variant="rectangular" height={25} width={400} />
       )}

@@ -9,6 +9,7 @@ import { Skeleton } from "@mui/material";
 const CatergoryCarousel = ({
   sizeCategory = 0,
   nameCatagory = [],
+  linkCatagory = [],
   startImgCategory = 0,
   endImgCategory = 0,
   className = "",
@@ -23,8 +24,12 @@ const CatergoryCarousel = ({
           .fill()
           .map((_, index) => (
             <div className={styles.categoryCarousel__item} key={index}>
-              <Link to={PRODUCT_ROUTE}>
-                <h3 className={styles.categoryCarousel__title}>
+              <Link
+                to={`${PRODUCT_ROUTE}${
+                  linkCatagory.length > 0 ? `/${linkCatagory[index]}` : ``
+                }`}
+              >
+                <h3 className={styles.categoryCarousel__title} title={nameCatagory[index]}>
                   {nameCatagory[index]}
                 </h3>
                 <div className={styles.test}>
@@ -61,10 +66,10 @@ const CatergoryCarouselSkeleton = ({ sizeCategory = 0 }) => {
           <div className={styles.categoryCarousel__item} key={index}>
             <Skeleton
               variant="rectangular"
-              height={25} 
+              height={25}
               sx={{ marginBottom: "10px" }}
             />
-            <Skeleton variant="rectangular" height={300} width={310}/>
+            <Skeleton variant="rectangular" height={300} width={310} />
             <Skeleton
               variant="rectangular"
               height={25}
@@ -78,6 +83,7 @@ const CatergoryCarouselSkeleton = ({ sizeCategory = 0 }) => {
 CatergoryCarousel.propTypes = {
   sizeCategory: PropTypes.number,
   nameCatagory: PropTypes.array,
+  linkCatagory: PropTypes.array,
   startImgCategory: PropTypes.number,
   endImgCategory: PropTypes.number,
   className: PropTypes.string,

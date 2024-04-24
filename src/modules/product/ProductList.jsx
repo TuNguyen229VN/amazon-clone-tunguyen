@@ -11,6 +11,7 @@ import { Skeleton } from "@mui/material";
 const ProductList = ({
   products = [],
   loading = true,
+  setLoading,
   sortValue,
   selectedCategories,
   selectPrice,
@@ -42,6 +43,7 @@ const ProductList = ({
   sortList();
 
   useEffect(() => {
+    setLoading(true);
     if (products?.length > 0) {
       let filteredArray = products.filter((item) => {
         if (selectedCategories[0] === "all") {
@@ -62,7 +64,8 @@ const ProductList = ({
       }
       setProductFilterLeft(filteredArray);
     }
-  }, [selectedCategories, products, selectRating, selectPrice]);
+    setLoading(false);
+  }, [selectedCategories, products, selectRating, selectPrice, setLoading]);
 
   return (
     <div className={styles.productList}>
@@ -117,11 +120,20 @@ const ProductListSkeleton = () => {
     .fill()
     .map((_, index) => (
       <div className={styles.productList__item} key={index}>
-        <Skeleton variant="rectangular" width={226} height={226} sx={{margin:"0 auto"}} />
-        <Skeleton variant="rectangular"  height={35} sx={{marginBlock:"20px"}} />
+        <Skeleton
+          variant="rectangular"
+          width={226}
+          height={226}
+          sx={{ margin: "0 auto" }}
+        />
+        <Skeleton
+          variant="rectangular"
+          height={35}
+          sx={{ marginBlock: "20px" }}
+        />
         <div className={styles.productList__wrap}>
-        <Skeleton variant="rectangular" width={40} height={18} />
-        <Skeleton variant="rectangular"  width={40} height={18}  />
+          <Skeleton variant="rectangular" width={40} height={18} />
+          <Skeleton variant="rectangular" width={40} height={18} />
         </div>
       </div>
     ));
@@ -129,6 +141,7 @@ const ProductListSkeleton = () => {
 ProductList.propTypes = {
   products: PropTypes.array,
   loading: PropTypes.bool,
+  setLoading: PropTypes.func,
   sortValue: PropTypes.string,
   selectedCategories: PropTypes.array,
   selectPrice: PropTypes.number,

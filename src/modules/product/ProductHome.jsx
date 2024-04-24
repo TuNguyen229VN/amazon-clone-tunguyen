@@ -22,7 +22,7 @@ const ProductHome = () => {
   const [skip, setSkip] = useState(0);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [loadingTop, setLoadingTop] = useState(true)
+  const [loadingTop, setLoadingTop] = useState(true);
   const [count, setCount] = useState(0);
   const [filter, setFilter] = useState("");
   const [sortValue, setSortValue] = useState("charactDesc");
@@ -49,7 +49,7 @@ const ProductHome = () => {
 
     const getProduct = async () => {
       try {
-        setLoading(true)
+        setLoading(true);
         const URL_SEARCH =
           search &&
           `${API_PRODUCT}/search?q=${replaceSpecialChars(
@@ -66,12 +66,12 @@ const ProductHome = () => {
           setSelectRating();
           setProducts(res.data.products);
           setCount(res.data?.total);
-          setLoading(false);
-          setLoadingTop(false)
+          // setLoading(false);
+          setLoadingTop(false);
         }
       } catch (error) {
         setLoading(false);
-        setLoadingTop(false)
+        setLoadingTop(false);
         return;
       }
     };
@@ -80,11 +80,24 @@ const ProductHome = () => {
 
   return (
     <div className={styles.productHome}>
-    {!loadingTop? <h2 className={styles.productHome__title}>Today&apos;s Deals</h2>:<Skeleton variant="text" width={150} height={73} sx={{padding:"20px", marginLeft:"20px"}} />}
-     
-      <ProductCategoryFilter loading={loadingTop}/>
+      {!loadingTop ? (
+        <h2 className={styles.productHome__title}>Today&apos;s Deals</h2>
+      ) : (
+        <Skeleton
+          variant="text"
+          width={150}
+          height={73}
+          sx={{ padding: "20px", marginLeft: "20px" }}
+        />
+      )}
+
+      <ProductCategoryFilter loading={loadingTop} />
       <div className={styles.productHome__blockSelect}>
-        <SelectBox loading={loadingTop} dataSelect={dataSelectSort} setSortValue={setSortValue} />
+        <SelectBox
+          loading={loadingTop}
+          dataSelect={dataSelectSort}
+          setSortValue={setSortValue}
+        />
       </div>
       <div className={styles.productHome__content}>
         <ProductFilterLeft
@@ -99,6 +112,7 @@ const ProductHome = () => {
         <ProductList
           products={products}
           loading={loading}
+          setLoading={setLoading}
           sortValue={sortValue}
           selectedCategories={selectedCategories}
           selectPrice={selectPrice}

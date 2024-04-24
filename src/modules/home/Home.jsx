@@ -21,6 +21,12 @@ const Home = () => {
               "Men's clothing",
               "Women's clothing",
             ]}
+            linkCatagory={[
+              "all",
+              "womens-jewellery",
+              "mens-shirts",
+              "womens-dresses",
+            ]}
             startImgCategory={0}
             endImgCategory={5}
             className={styles.home__categoryFirst}
@@ -34,6 +40,7 @@ const Home = () => {
               "Creating business solutions",
               "Laptops for every need",
             ]}
+            linkCatagory={["laptops", "skincare", "furniture", "laptops"]}
             startImgCategory={4}
             endImgCategory={8}
             className={styles.home__categorySec}
@@ -60,6 +67,7 @@ const Home = () => {
             "Creating business solutions",
             "Laptops for every need",
           ]}
+          linkCatagory={["laptops", "skincare", "furniture", "laptops"]}
           startImgCategory={4}
           endImgCategory={8}
           className={styles.home__category}

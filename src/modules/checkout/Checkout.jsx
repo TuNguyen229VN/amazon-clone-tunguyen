@@ -11,7 +11,6 @@ const Checkout = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(false)
-
   }, [])
 
   return (

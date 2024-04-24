@@ -11,7 +11,7 @@
   cursor: pointer;
   width: 100px;
   height: 100px;
-  z-index: 100;
+  z-index: 10;
 }
 .--back {
   left: 20px;
@@ -20,4 +20,34 @@
   right: 20px;
 }
 
-
+@media only screen and (min-width: 1201px) {
+}
+@media only screen and (max-width: 1200px) {
+  .banner {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+  }
+  .banner__button {
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 1024px) {
+}
+@media only screen and (max-width: 768px) {
+  .banner {
+    position: relative;
+    height: auto;
+    overflow: hidden;
+  }
+}
+@media only screen and (max-width: 730px) {
+  .banner {
+    display: none;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .banner {
+    display: none;
+  }
+}
