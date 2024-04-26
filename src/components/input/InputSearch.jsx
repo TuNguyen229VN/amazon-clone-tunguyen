@@ -9,7 +9,7 @@ const InputSearch = ({
   ...props
 }) => {
   return (
-    <div className={styles.inputSearch__block}>
+    <div className={`${styles.inputSearch__block} ${className}`}>
       <SearchIcon className={styles.inputSearch__icon} fontSize="small"/>
       <input
         type="text"

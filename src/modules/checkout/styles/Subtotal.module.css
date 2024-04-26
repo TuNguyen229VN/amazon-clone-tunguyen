@@ -1,36 +1,86 @@
-.subtotal{
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    height: 150px;
-    padding: 20px;
-    background-color: white;
-    border: 1px solid #dddddd;
-    border-radius: 3px;
-    gap: 6px;
+.subtotal {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 150px;
+  padding: 20px;
+  background-color: white;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  gap: 6px;
 }
-.subtotal p{
-    font-size: 18px;
-}
-
-.subtotal p strong{
-    font-weight: 700;
+.subtotal p {
+  font-size: 18px;
 }
 
-.subtotal > button{
+.subtotal p strong {
+  font-weight: 700;
+}
+
+.subtotal > button {
+  width: 100%;
+}
+
+.subtotal__gift {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.subtotal__gift span {
+  font-size: 14px;
+}
+
+.subtotal__button {
+  font-size: 14px;
+}
+
+@media only screen and (min-width: 1201px) {
+}
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 1024px) {
+  .subtotal > button {
+    width: 500px;
+    padding: 10px;
+    margin: 20px auto;
+  }
+  .subtotal {
     width: 100%;
+  }
+  .subtotal p {
+    font-size: 17px;
+  }
 }
-
-.subtotal__gift{
-    display: flex;
-    align-items: center;
-    gap: 5px;
+@media only screen and (max-width: 768px) {
+  .subtotal > button {
+    width: max-content;
+    padding: 10px 60px;
+    margin: 10px auto;
+  }
+  .subtotal p {
+    font-size: 16px;
+  }
+  .subtotal__gift span {
+    font-size: 13px;
+  }
+  .subtotal__button {
+    font-size: 13px;
+  }
+  .subtotal {
+    height: auto;
+  }
 }
-
-.subtotal__gift span{
-    font-size: 14px;
-}
-
-.subtotal__button{
-    font-size: 14px;
+@media only screen and (max-width: 480px) {
+    .subtotal > button {
+        width: 100%;
+        padding: 10px;
+        margin: 10px auto;
+      }
+  .subtotal p {
+    font-size: 15px;
+  }
+  .subtotal__gift span {
+    font-size: 12px;
+  }
 }

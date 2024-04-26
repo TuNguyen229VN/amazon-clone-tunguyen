@@ -16,3 +16,17 @@
 .button__primary:hover {
   background-color: #cd9042;
 }
+
+@media only screen and (min-width: 1201px) {
+}
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 1024px) {
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 480px) {
+  .button__primary {
+   margin-bottom: 10px;
+  }
+}

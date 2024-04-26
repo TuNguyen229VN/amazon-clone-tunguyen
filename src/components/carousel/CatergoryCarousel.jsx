@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { categoryData } from "../../data_av/categoryData";
 import { Link } from "react-router-dom";
 import { PRODUCT_ROUTE } from "../../constant/routesApp";
-import { Skeleton } from "@mui/material";
+import { Skeleton, useMediaQuery } from "@mui/material";
 
 const CatergoryCarousel = ({
   sizeCategory = 0,
@@ -29,7 +29,10 @@ const CatergoryCarousel = ({
                   linkCatagory.length > 0 ? `/${linkCatagory[index]}` : ``
                 }`}
               >
-                <h3 className={styles.categoryCarousel__title} title={nameCatagory[index]}>
+                <h3
+                  className={styles.categoryCarousel__title}
+                  title={nameCatagory[index]}
+                >
                   {nameCatagory[index]}
                 </h3>
                 <div className={styles.test}>
@@ -58,6 +61,8 @@ const CatergoryCarousel = ({
 };
 
 const CatergoryCarouselSkeleton = ({ sizeCategory = 0 }) => {
+  const is768Screen = useMediaQuery("(max-width: 768px)");
+  const is480Screen = useMediaQuery("(max-width: 480px)");
   return (
     <>
       {Array(sizeCategory)
@@ -66,14 +71,18 @@ const CatergoryCarouselSkeleton = ({ sizeCategory = 0 }) => {
           <div className={styles.categoryCarousel__item} key={index}>
             <Skeleton
               variant="rectangular"
-              height={25}
+              height={is480Screen ? "18px" : is768Screen ? "21px" : "25px"}
               sx={{ marginBottom: "10px" }}
             />
-            <Skeleton variant="rectangular" height={300} width={310} />
             <Skeleton
               variant="rectangular"
-              height={25}
-              sx={{ marginTop: "20px" }}
+              height={is768Screen ? "200px" : "300px"}
+              width={is768Screen ? "100%" : "300px"}
+            />
+            <Skeleton
+              variant="rectangular"
+              height={is480Screen ? "14px" : "16px"}
+              sx={{ marginTop: is768Screen ? "10px" : "20px" }}
             />
           </div>
         ))}

@@ -1,3 +1,4 @@
 import InputSearch from "./InputSearch";
 import InputQuantity from "./InputQuantity";
-export { InputSearch, InputQuantity };
+import InputSearchHeader from "./InputSearchHeader";
+export { InputSearch, InputQuantity, InputSearchHeader };

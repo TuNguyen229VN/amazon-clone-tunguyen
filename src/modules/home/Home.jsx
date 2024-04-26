@@ -1,4 +1,4 @@
-import React, { useId, useState } from "react";
+import React, { useEffect, useId, useState } from "react";
 import styles from "./styles/Home.module.css";
 import Product from "../product/Product";
 import ProductItem from "/assets/product1.jpg";
@@ -7,6 +7,9 @@ import { bannerData } from "../../data_av/bannerData";
 import { CatergoryCarousel, ListItemCarousel } from "../../components/carousel";
 const Home = () => {
   const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className={styles.home}>
       <div className={styles.home__container}>

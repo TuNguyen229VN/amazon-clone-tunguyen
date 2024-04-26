@@ -7,7 +7,8 @@ import FooterCredit from "./FooterCredit";
 import { ButtonToTop } from "../components/button";
 import { Outlet } from "react-router-dom";
 import { BackgroundBlack } from "../components/background";
-
+import { InputSearchHeader } from "../components/input";
+import styles from "./styles/Layout.module.css";
 const Layout = ({ children }) => {
   const [openBackground, setOpenBackground] = useState(false);
   return (
@@ -20,6 +21,11 @@ const Layout = ({ children }) => {
         openBackground={openBackground}
         setOpenBackground={setOpenBackground}
       ></Header>
+      <InputSearchHeader
+        openBackground={openBackground}
+        setOpenBackground={setOpenBackground}
+        className={styles.layout__reponsiveInput}
+      />
       <HeaderBottom></HeaderBottom>
       <Outlet />
       {children}

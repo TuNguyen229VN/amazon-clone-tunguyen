@@ -7,7 +7,7 @@ import { STATUS_SUCCESS } from "../../constant/status";
 import { PRODUCT_DETAIL_ROUTE } from "../../constant/routesApp";
 import StarIcon from "@mui/icons-material/Star";
 import PropTypes from "prop-types";
-import { Skeleton } from "@mui/material";
+import { Skeleton, useMediaQuery } from "@mui/material";
 const ProductList = ({
   products = [],
   loading = true,
@@ -116,24 +116,52 @@ const ProductList = ({
 };
 
 const ProductListSkeleton = () => {
+  const is1200Screen = useMediaQuery("(max-width: 1200px)");
+  const is1024Screen = useMediaQuery("(max-width: 1024px)");
+  const is768Screen = useMediaQuery("(max-width: 768px)");
+  const is480Screen = useMediaQuery("(max-width: 480px)");
   return Array(12)
     .fill()
     .map((_, index) => (
       <div className={styles.productList__item} key={index}>
         <Skeleton
           variant="rectangular"
-          width={226}
-          height={226}
+          width={is1200Screen ? "100%" : "226px"}
+          height={is1200Screen ? "200px" : "226px"}
           sx={{ margin: "0 auto" }}
         />
         <Skeleton
           variant="rectangular"
           height={35}
-          sx={{ marginBlock: "20px" }}
+          sx={{ marginBlock: is1200Screen ? "10px" : "20px" }}
         />
         <div className={styles.productList__wrap}>
-          <Skeleton variant="rectangular" width={40} height={18} />
-          <Skeleton variant="rectangular" width={40} height={18} />
+          <Skeleton
+            variant="rectangular"
+            width={is768Screen ? "30px" : "40px"}
+            height={
+              is480Screen
+                ? "15px"
+                : is768Screen
+                ? "16px"
+                : is1024Screen
+                ? "17px"
+                : "18px"
+            }
+          />
+          <Skeleton
+            variant="rectangular"
+            width={is768Screen ? "30px" : "40px"}
+            height={
+              is480Screen
+                ? "15px"
+                : is768Screen
+                ? "16px"
+                : is1024Screen
+                ? "17px"
+                : "18px"
+            }
+          />
         </div>
       </div>
     ));

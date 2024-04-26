@@ -20,7 +20,7 @@ import { dataSelectSortOrder } from "../../data_av/dataSelectSort";
 import { SelectBox } from "../../components/selecbox";
 import useDebounce from "../../hooks/useDebounce";
 import Spinner from "../../components/loading/Spinner";
-import { Skeleton } from "@mui/material";
+import { Skeleton, useMediaQuery } from "@mui/material";
 
 const NUMBER_LIMIT_INCREASE = 5;
 const Order = () => {
@@ -32,6 +32,11 @@ const Order = () => {
   const [numberLimit, setNumberLimit] = useState(4);
   const [loading, setLoading] = useState(true);
   const [loadingTop, setLoadingTop] = useState(true);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     setLoading(true);
     let newSearchResults = [];
@@ -78,13 +83,38 @@ const Order = () => {
   const handleLoadMore = () => {
     setNumberLimit(numberLimit + NUMBER_LIMIT_INCREASE);
   };
+
+  const is1024Screen = useMediaQuery("(max-width: 1024px)");
+  const is768Screen = useMediaQuery("(max-width: 768px)");
+  const is480Screen = useMediaQuery("(max-width: 480px)");
+
   return (
     <div className={styles.orders}>
       <div className={styles.orders__title}>
         {!loadingTop ? (
           <h1>Your Orders</h1>
         ) : (
-          <Skeleton variant="rectangular" width={179} height={38} />
+          <Skeleton
+            variant="rectangular"
+            width={
+              is480Screen
+                ? "140pxpx"
+                : is768Screen
+                ? "150px"
+                : is1024Screen
+                ? "160px"
+                : "179px"
+            }
+            height={
+              is480Screen
+                ? "28px"
+                : is768Screen
+                ? "33px"
+                : is1024Screen
+                ? "35px"
+                : "38px"
+            }
+          />
         )}
         <div className={styles.orders__search}>
           {!loadingTop ? (
@@ -92,6 +122,7 @@ const Order = () => {
               <InputSearch
                 placeholder="Search for purchased products"
                 onChange={handleSearch}
+                className={styles.orders__inputSearch}
               />
               <ButtonPrimary
                 text="Search Orders"
@@ -100,8 +131,16 @@ const Order = () => {
             </>
           ) : (
             <>
-              <Skeleton variant="rectangular" height={28} width={325} />
-              <Skeleton variant="rounded" height={28} width={100} />
+              <Skeleton
+                variant="rectangular"
+                height={is1024Screen ? "38px" : "28px"}
+                width={is1024Screen ? "100%" : "325px"}
+              />
+              <Skeleton
+                variant="rounded"
+                height={28}
+                width={is1024Screen ? "0px" : "100px"}
+              />
             </>
           )}
         </div>
@@ -137,44 +176,138 @@ const Order = () => {
 };
 
 const OrderItemSkeleton = () => {
+  const is1200Screen = useMediaQuery("(max-width: 1200px)");
+  const is1024Screen = useMediaQuery("(max-width: 1024px)");
+  const is768Screen = useMediaQuery("(max-width: 768px)");
+  const is480Screen = useMediaQuery("(max-width: 480px)");
   return (
     <div className={styles.order}>
       <div className={styles.order__top}>
         <div className={styles.oder__topTitle}>
-          <Skeleton variant="rectangular" height={43} width={210} />
-          <Skeleton variant="rectangular" height={43} width={210} />
-          <Skeleton variant="rectangular" height={43} width={210} />
+          <Skeleton
+            variant="rectangular"
+            height={
+              is480Screen
+                ? "16px"
+                : is768Screen
+                ? "18px"
+                : is1024Screen
+                ? "20px"
+                : "22px"
+            }
+            width={is480Screen?"100%":is1024Screen ? "200px" : "210px"}
+          />
+          <Skeleton
+            variant="rectangular"
+            height={
+              is480Screen
+                ? "16px"
+                : is768Screen
+                ? "18px"
+                : is1024Screen
+                ? "20px"
+                : "22px"
+            }
+            width={is480Screen?"100%":is1024Screen ? "200px" : "210px"}
+          />
+          <Skeleton
+            variant="rectangular"
+            height={
+              is480Screen
+                ? "16px"
+                : is768Screen
+                ? "18px"
+                : is1024Screen
+                ? "20px"
+                : "22px"
+            }
+            width={is480Screen?"100%":is1024Screen ? "350px" : "210px"}
+          />
         </div>
-        <Skeleton variant="rectangular" height={23} width={210} />
+        <Skeleton
+          variant="rectangular"
+          height={
+            is480Screen
+              ? "16px"
+              : is768Screen
+              ? "18px"
+              : is1024Screen
+              ? "20px"
+              : "22px"
+          }
+          width={is480Screen?"100%":is1024Screen ? "350px" : "210px"}
+          sx={{ marginTop: is1200Screen ? "10px" : "0px" }}
+        />
       </div>
       {Array(3)
         .fill()
         .map((_, index) => (
           <div key={index} className={styles.OrderItemSkeleton__Wrap}>
+            <Skeleton
+              variant="rectangular"
+              height={is1200Screen ? "200px" : "180px"}
+              width={is768Screen ? "100%" : is1200Screen ? "200px" : "180px"}
+              sx={{ flexShrink: "0" }}
+            />
             <div className={styles.OrderItemSkeleton__WrapLeft}>
-              <Skeleton variant="rectangular" height={180} width={180} />
               <div className={styles.OrderItemSkeleton__Text}>
                 <Skeleton
                   variant="rectangular"
-                  height={22}
-                  width={120}
+                  height={
+                    is480Screen
+                      ? "16px"
+                      : is768Screen
+                      ? "18px"
+                      : is1024Screen
+                      ? "20px"
+                      : "22px"
+                  }
+                  width={is480Screen?"100%":is1024Screen ? "200px" : "140px"}
                   sx={{ marginBottom: "10px" }}
                 />
                 <Skeleton
                   variant="rectangular"
-                  height={22}
-                  width={140}
+                  height={
+                    is480Screen
+                      ? "16px"
+                      : is768Screen
+                      ? "18px"
+                      : is1024Screen
+                      ? "20px"
+                      : "22px"
+                  }
+                  width={is480Screen?"100%":is1024Screen ? "200px" : "140px"}
                   sx={{ marginBottom: "10px" }}
                 />
                 <Skeleton
                   variant="rectangular"
-                  height={22}
-                  width={140}
+                  height={
+                    is480Screen
+                      ? "16px"
+                      : is768Screen
+                      ? "18px"
+                      : is1024Screen
+                      ? "20px"
+                      : "22px"
+                  }
+                  width={is480Screen?"100%":is1024Screen ? "200px" : "140px"}
                   sx={{ marginBottom: "10px" }}
                 />
               </div>
+              <Skeleton
+                variant="rectangular"
+                height={
+                  is480Screen
+                    ? "16px"
+                    : is768Screen
+                    ? "18px"
+                    : is1024Screen
+                    ? "20px"
+                    : "22px"
+                }
+                width={100}
+              />
             </div>
-            <Skeleton variant="rectangular" height={22} width={100} />
           </div>
         ))}
     </div>

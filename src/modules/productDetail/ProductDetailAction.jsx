@@ -41,8 +41,10 @@ const ProductDetailAction = ({ productDetail = {} }) => {
         {user?.userProfile && (
           <>
             <LocationOnIcon fontSize="small" />
-            <p>
-              Deliver to {address?.houseNumber}, {address?.ward.ward_name},{" "}
+            <p
+              title={`${address?.houseNumber}, ${address?.ward.ward_name}, ${address?.district.district_name}, ${address?.city.province_name}`}
+            >
+              {address?.houseNumber}, {address?.ward.ward_name},{" "}
               {address?.district.district_name}, {address?.city.province_name}
             </p>
           </>

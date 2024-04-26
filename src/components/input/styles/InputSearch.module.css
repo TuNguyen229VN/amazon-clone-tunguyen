@@ -19,3 +19,22 @@
     transform: translateY(-50%);
     left: 5px;
 }
+
+@media only screen and (min-width: 1201px) {
+}
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 1024px) {
+    .inputSearch{
+        padding: 10px 30px;
+    }
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 480px) {
+    
+.inputSearch{
+    font-size: 13px;
+    padding: 5px 20px;
+}
+}

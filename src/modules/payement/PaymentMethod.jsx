@@ -113,7 +113,6 @@ const PaymentMethod = () => {
               </button>
             )}
           </div>
-
           {/* Error */}
           {error && <div className={styles.paymentError}>*{error}*</div>}
         </form>

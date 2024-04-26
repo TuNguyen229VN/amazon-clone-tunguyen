@@ -9,7 +9,7 @@ import { API_URL_PRODUCTS_IN_SPECIFIC_CATEGORY } from "../../constant/constanst"
 import { Link } from "react-router-dom";
 import { STATUS_SUCCESS } from "../../constant/status";
 import { PRODUCT_DETAIL_ROUTE } from "../../constant/routesApp";
-import { Skeleton } from "@mui/material";
+import { Skeleton, useMediaQuery } from "@mui/material";
 
 const flickityOptions = {
   contain: true,
@@ -27,6 +27,8 @@ const ListItemCarousel = ({
   loading = false,
   setLoading,
 }) => {
+  const is768Screen = useMediaQuery("(max-width: 768px)");
+  const is480Screen = useMediaQuery("(max-width: 480px)");
   const [flkty, setFlkty] = useState(null);
   const [productData, setproductData] = useState([]);
   const handleNext = () => {
@@ -64,7 +66,11 @@ const ListItemCarousel = ({
           {title}
         </h4>
       ) : (
-        <Skeleton variant="rectangular" height={25} width={400} />
+        <Skeleton
+          variant="rectangular"
+          height={is480Screen ? "18px" : is768Screen ? "21px" : "25px"}
+          width={400}
+        />
       )}
 
       <Flickity
@@ -90,8 +96,8 @@ const ListItemCarousel = ({
               <Skeleton
                 key={index}
                 variant="rectangular"
-                height={200}
-                width={250}
+                height={is768Screen ? "150px" : "200px"}
+                width={is480Screen ? "150px" : is768Screen ? "200px" : "250px"}
                 sx={{ margin: "10px" }}
               />
             ))}

@@ -5,13 +5,14 @@ import CheckoutProduct from "./CheckoutProduct";
 import { useStateValue } from "../../hooks/useStateValue";
 import CurrencyFormat from "react-currency-format";
 import { getBasketTotal } from "../../utils/reducer";
-import { Skeleton } from "@mui/material";
+import { Skeleton, useMediaQuery } from "@mui/material";
 const Checkout = () => {
   const [{ basket, user }, dispatch] = useStateValue();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    setLoading(false)
-  }, [])
+    window.scrollTo(0, 0);
+    setLoading(false);
+  }, []);
 
   return (
     <div className={styles.checkout}>
@@ -60,7 +61,6 @@ const Checkout = () => {
       ) : (
         <CheckoutLeftSkeleton />
       )}
-
       <div className={styles.checkout__right}>
         <Subtotal loading={loading}></Subtotal>
       </div>
@@ -69,6 +69,10 @@ const Checkout = () => {
 };
 
 const CheckoutLeftSkeleton = () => {
+  const is1200Screen = useMediaQuery("(max-width: 1200px)");
+  const is1024Screen = useMediaQuery("(max-width: 1024px)");
+  const is768Screen = useMediaQuery("(max-width: 768px)");
+  const is480Screen = useMediaQuery("(max-width: 480px)");
   return (
     <div className={styles.checkout__left}>
       <div className="">
@@ -85,39 +89,98 @@ const CheckoutLeftSkeleton = () => {
           height={27}
           sx={{ marginBlock: "5px", marginLeft: "auto" }}
         />
-         {Array(2)
-        .fill()
-        .map((_, index) => (
-          <div key={index} className={styles.OrderItemSkeleton__Wrap}>
-            <div className={styles.OrderItemSkeleton__WrapLeft}>
-              <Skeleton variant="rectangular" height={180} width={180} />
-              <div className={styles.OrderItemSkeleton__Text}>
+        {Array(2)
+          .fill()
+          .map((_, index) => (
+            <div key={index} className={styles.OrderItemSkeleton__Wrap}>
+              <Skeleton
+                variant="rectangular"
+                height={is1200Screen ? "200px" : "180px"}
+                width={is768Screen ? "100%" : is1200Screen ? "200px" : "180px"}
+                sx={{ flexShrink: "0" }}
+              />
+              <div className={styles.OrderItemSkeleton__WrapLeft}>
+                <div className={styles.OrderItemSkeleton__Text}>
+                  <Skeleton
+                    variant="rectangular"
+                    height={
+                      is480Screen
+                        ? "16px"
+                        : is768Screen
+                        ? "18px"
+                        : is1024Screen
+                        ? "20px"
+                        : "22px"
+                    }
+                    width={
+                      is480Screen ? "100%" : is1024Screen ? "200px" : "140px"
+                    }
+                    sx={{ marginBottom: "10px" }}
+                  />
+                  <Skeleton
+                    variant="rectangular"
+                    height={
+                      is480Screen
+                        ? "16px"
+                        : is768Screen
+                        ? "18px"
+                        : is1024Screen
+                        ? "20px"
+                        : "22px"
+                    }
+                    width={
+                      is480Screen ? "100%" : is1024Screen ? "200px" : "140px"
+                    }
+                    sx={{ marginBottom: "10px" }}
+                  />
+                  <Skeleton
+                    variant="rectangular"
+                    height={
+                      is480Screen
+                        ? "16px"
+                        : is768Screen
+                        ? "18px"
+                        : is1024Screen
+                        ? "20px"
+                        : "22px"
+                    }
+                    width={
+                      is480Screen ? "100%" : is1024Screen ? "200px" : "140px"
+                    }
+                    sx={{ marginBottom: "10px" }}
+                  />
+                </div>
                 <Skeleton
                   variant="rectangular"
-                  height={22}
-                  width={120}
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="rectangular"
-                  height={22}
-                  width={140}
-                  sx={{ marginBottom: "10px" }}
-                />
-                <Skeleton
-                  variant="rectangular"
-                  height={22}
-                  width={140}
-                  sx={{ marginBottom: "10px" }}
+                  height={
+                    is480Screen
+                      ? "16px"
+                      : is768Screen
+                      ? "18px"
+                      : is1024Screen
+                      ? "20px"
+                      : "22px"
+                  }
+                  width={100}
                 />
               </div>
             </div>
-            <Skeleton variant="rectangular" height={22} width={100} />
-          </div>
-        ))}
+          ))}
       </div>
       <div className={styles.checkout__totalBottom}>
-      <Skeleton variant="rectangular" height={22} width={187} />
+        <Skeleton
+          variant="rectangular"
+          height={
+            is480Screen
+              ? "16px"
+              : is768Screen
+              ? "18px"
+              : is1024Screen
+              ? "20px"
+              : "22px"
+          }
+          width={is480Screen ? "100%" : "187px"}
+        />
       </div>
     </div>
   );

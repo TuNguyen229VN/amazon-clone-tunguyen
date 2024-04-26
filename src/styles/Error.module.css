@@ -3,40 +3,94 @@
   height: 100vh;
   margin: 0 auto;
   color: #5e5e5e;
-
 }
 
 .errorPage .errorPage__link {
   display: inline-block;
   width: max-content;
   height: max-content;
-  
 }
 
 .errorPage__title {
- 
   font-size: 120px;
   font-weight: 200;
   text-transform: uppercase;
 }
 
-.errorPage__content{
-    font-size: 40px;
-    font-weight: 300;
+.errorPage__content {
+  font-size: 40px;
+  font-weight: 300;
+  margin-top: -20px;
+}
+
+.errorPage__desc {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.errorPage__desc a {
+  color: #2275c9;
+}
+
+.errorPage__img {
+  width: 400px;
+  height: 400px;
+  margin: 30px auto;
+}
+
+@media only screen and (min-width: 1201px) {
+}
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 1024px) {
+  .errorPage__title {
+    font-size: 100px;
+  }
+  .errorPage__content {
+    font-size: 35px;
+  }
+  .errorPage__desc {
+    font-size: 18px;
+  }
+  .errorPage__img {
+    width: 380px;
+    height: 380px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .errorPage__title {
+    font-size: 80px;
+  }
+  .errorPage__content {
+    font-size: 30px;
     margin-top: -20px;
-}
+  }
 
-.errorPage__desc{
-    font-size: 20px;
-    margin-top: 10px;
+  .errorPage__desc {
+    font-size: 16px;
+    margin-top: 8px;
+  }
+  .errorPage__img {
+    width: 300px;
+    height: 300px;
+    margin: 20px auto;
+  }
 }
+@media only screen and (max-width: 480px) {
+  .errorPage__title {
+    font-size: 60px;
+  }
+  .errorPage__content {
+    font-size: 25px;
+    margin-top:5px;
+  }
 
-.errorPage__desc a{
-    color: #2275C9;
-}
-
-.errorPage__img{
-    width: 400px;
-    height: 400px;
-    margin: 30px auto;
+  .errorPage__desc {
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  .errorPage__img {
+    width: 280px;
+    height: 280px;
+  }
 }

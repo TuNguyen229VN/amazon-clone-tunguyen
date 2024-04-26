@@ -8,7 +8,12 @@ import { PRODUCT_ROUTE } from "../../constant/routesApp";
 const ProductDetailText = ({ productDetail = {} }) => {
   return (
     <div className={styles.productDetailText}>
-      <p className={styles.productDetailText__title}>{productDetail.title}</p>
+      <p
+        className={styles.productDetailText__title}
+        title={productDetail.title}
+      >
+        {productDetail.title}
+      </p>
       <div className={styles.productDetailText__rating}>
         {productDetail.rating}{" "}
         {Array(Math.ceil(productDetail.rating))

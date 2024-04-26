@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import styles from "./styles/ProductHome.module.css";
 import { Link } from "react-router-dom";
 import { PRODUCT_ROUTE } from "../../constant/routesApp";
-import { Checkbox, FormControlLabel, Skeleton } from "@mui/material";
+import {
+  Checkbox,
+  FormControlLabel,
+  Skeleton,
+  useMediaQuery,
+} from "@mui/material";
 import { thumbnailCategoryData } from "../../data_av/thumbnailCategoryData";
 import { replaceDashToSpace } from "../../utils/replaceDashToSpace";
 import StarIcon from "@mui/icons-material/Star";
@@ -220,17 +225,40 @@ const ProductFilterLeft = ({
 };
 
 const ProductFilterLeftSkeleton = () => {
+  const is1024Screen = useMediaQuery("(max-width: 1024px)");
+  const is768Screen = useMediaQuery("(max-width: 768px)");
+  const is480Screen = useMediaQuery("(max-width: 480px)");
   return (
     <>
       <div className={styles.productFilterLeft__block}>
-        <Skeleton variant="rectangular" height={16} width={100} />
+        <Skeleton
+          variant="rectangular"
+          height={is1024Screen ? "16px" : "16.8px"}
+          width={is1024Screen ? "80px" : "100px"}
+        />
       </div>
       <div className={styles.productFilterLeft__block}>
         <Skeleton
           variant="rectangular"
-          height={21}
-          width={100}
-          sx={{ marginBottom: "10px" }}
+          height={
+            is480Screen
+              ? "17px"
+              : is768Screen
+              ? "18px"
+              : is1024Screen
+              ? "20px"
+              : "21px"
+          }
+          width={
+            is480Screen
+              ? "70px"
+              : is768Screen
+              ? "80px"
+              : is1024Screen
+              ? "90px"
+              : "100px"
+          }
+          sx={{ marginBottom: is480Screen ? "8px" : "10px" }}
         />
         <div className={styles.productFilterLeft__action}>
           {Array(8)
@@ -239,9 +267,17 @@ const ProductFilterLeftSkeleton = () => {
               <Skeleton
                 variant="rectangular"
                 key={index}
-                height={30}
-                width={193}
-                sx={{ marginBottom: "10px" }}
+                height={is768Screen ? "20px" : "30px"}
+                width={
+                  is480Screen
+                    ? "150px"
+                    : is768Screen
+                    ? "160px"
+                    : is1024Screen
+                    ? "180px"
+                    : "193px"
+                }
+                sx={{ marginBottom: is480Screen ? "8px" : "10px" }}
               />
             ))}
         </div>
@@ -249,9 +285,25 @@ const ProductFilterLeftSkeleton = () => {
       <div className={styles.productFilterLeft__block}>
         <Skeleton
           variant="rectangular"
-          height={21}
-          width={100}
-          sx={{ marginBottom: "10px" }}
+          height={
+            is480Screen
+              ? "17px"
+              : is768Screen
+              ? "18px"
+              : is1024Screen
+              ? "20px"
+              : "21px"
+          }
+          width={
+            is480Screen
+              ? "70px"
+              : is768Screen
+              ? "80px"
+              : is1024Screen
+              ? "90px"
+              : "100px"
+          }
+          sx={{ marginBottom: is480Screen ? "8px" : "10px" }}
         />
         <div className={styles.productFilterLeft__action}>
           {Array(4)
@@ -260,9 +312,17 @@ const ProductFilterLeftSkeleton = () => {
               <Skeleton
                 variant="rectangular"
                 key={index}
-                height={30}
-                width={193}
-                sx={{ marginBottom: "10px" }}
+                height={is768Screen ? "20px" : "30px"}
+                width={
+                  is480Screen
+                    ? "150px"
+                    : is768Screen
+                    ? "160px"
+                    : is1024Screen
+                    ? "180px"
+                    : "193px"
+                }
+                sx={{ marginBottom: is480Screen ? "8px" : "10px" }}
               />
             ))}
         </div>
@@ -270,9 +330,25 @@ const ProductFilterLeftSkeleton = () => {
       <div className={styles.productFilterLeft__block}>
         <Skeleton
           variant="rectangular"
-          height={21}
-          width={100}
-          sx={{ marginBottom: "10px" }}
+          height={
+            is480Screen
+              ? "17px"
+              : is768Screen
+              ? "18px"
+              : is1024Screen
+              ? "20px"
+              : "21px"
+          }
+          width={
+            is480Screen
+              ? "70px"
+              : is768Screen
+              ? "80px"
+              : is1024Screen
+              ? "90px"
+              : "100px"
+          }
+          sx={{ marginBottom: is480Screen ? "8px" : "10px" }}
         />
         <div className={styles.productFilterLeft__action}>
           {Array(4)
@@ -281,9 +357,17 @@ const ProductFilterLeftSkeleton = () => {
               <Skeleton
                 variant="rectangular"
                 key={index}
-                height={30}
-                width={193}
-                sx={{ marginBottom: "10px" }}
+                height={is768Screen ? "20px" : "30px"}
+                width={
+                  is480Screen
+                    ? "150px"
+                    : is768Screen
+                    ? "160px"
+                    : is1024Screen
+                    ? "180px"
+                    : "193px"
+                }
+                sx={{ marginBottom: is480Screen ? "8px" : "10px" }}
               />
             ))}
         </div>

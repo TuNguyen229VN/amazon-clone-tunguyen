@@ -27,7 +27,7 @@ const PaymentReviewItem = () => {
             />
           ))}
         {basket?.length <= 0 && (
-          <p>
+          <p className={styles.payment__empty}>
             Items Empty. <Link to={PRODUCT_ROUTE} className={styles.viewmore}>View more product</Link>
           </p>
         )}

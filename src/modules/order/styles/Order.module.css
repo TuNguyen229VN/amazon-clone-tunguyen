@@ -13,7 +13,8 @@
 }
 
 .order__shiptoTitle,
-.order__total {
+.order__total,
+.order__topTitleItem h2 {
   font-size: 16px;
   text-transform: uppercase;
 }
@@ -37,25 +38,16 @@
   padding: 0 20px 20px;
 }
 
-.order__topTitleItem h2 {
-  text-transform: uppercase;
-  font-size: 16px;
-}
-
-.order__topTitleItem p {
-  font-size: 18px;
-  font-weight: 500;
-}
-
 .order__shiptoAddress {
   color: #007185;
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  display: inline-block;
-  text-overflow: ellipsis;
-  width: 600px;
+  width: 500px;
 }
 
+.order__topTitleItem p,
 .order__shiptoAddress,
 .order__total p {
   font-size: 18px;
@@ -119,8 +111,8 @@
   margin-top: 20px;
 }
 
-.loadmore{
-  background-color: rgb(245, 245, 245,0);
+.loadmore {
+  background-color: rgb(245, 245, 245, 0);
   width: max-content;
   text-transform: capitalize;
   padding: 10px 30px;
@@ -130,18 +122,181 @@
   border: 1px solid #000;
 }
 
-.loadmore:hover{
-  background-color: rgb(245, 245, 245,1);
+.loadmore:hover {
+  background-color: rgb(245, 245, 245, 1);
 }
 
-.OrderItemSkeleton__Wrap{
+.OrderItemSkeleton__Wrap {
   display: flex;
-  justify-content: space-between;
+  gap: 20px;
   border: 1px solid lightgray;
   padding: 20px;
 }
 
-.OrderItemSkeleton__WrapLeft{
+.OrderItemSkeleton__WrapLeft {
+  justify-content: space-between;
   display: flex;
   gap: 20px;
+  width: 100%;
+}
+
+@media only screen and (min-width: 1201px) {
+}
+@media only screen and (max-width: 1200px) {
+  .order__top {
+    flex-direction: column;
+  }
+  .oder__topTitle {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .order__shiptoAddress {
+    width: 500px;
+  }
+
+  .order__id {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .orders {
+    padding: 20px 60px;
+  }
+  .order__dont {
+    margin-bottom: 20px;
+    margin-top: 40px;
+  }
+  .orders__title h1 {
+    font-size: 30px;
+  }
+
+  .orders__title {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .orders__search {
+    width: 100%;
+  }
+  .orders__inputSearch {
+    width: 100%;
+  }
+  .orders__buttonSearch {
+    display: none;
+  }
+  .loadmore {
+    font-size: 14px;
+  }
+  .order__shiptoTitle,
+  .order__total,
+  .order__topTitleItem h2,
+  .order__id {
+    font-weight: bold;
+    font-size: 15px;
+    text-transform: uppercase;
+  }
+  .order__topTitleItem p,
+  .order__shiptoAddress,
+  .order__total p,
+  .order__id small {
+    font-size: 17px;
+  }
+
+}
+@media only screen and (max-width: 768px) {
+  .OrderItemSkeleton__Wrap{
+    flex-direction: column;
+  }
+  .order__checkoutProduct {
+    padding: 0 20px 15px;
+  }
+  .order__shiptoAddress {
+    width: 350px;
+    -webkit-line-clamp: 2;
+  }
+  .order__top {
+    padding: 15px;
+  }
+  .order {
+    margin: 20px 0;
+  }
+
+  .orders {
+    padding: 20px 40px;
+  }
+  .order__dont {
+    margin-bottom: 20px;
+    margin-top: 40px;
+    font-size: 16px;
+  }
+  .orders__title h1 {
+    font-size: 28px;
+  }
+  .loadmore {
+    padding: 10px 20px;
+  }
+  .order__shiptoTitle,
+  .order__total,
+  .order__topTitleItem h2,
+  .order__id {
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+  .order__topTitleItem p,
+  .order__shiptoAddress,
+  .order__total p,
+  .order__id small {
+    font-size: 16px;
+  }
+  .order__id,
+  .order__id small {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .order__shiptoAddress {
+    width: 200px;
+    -webkit-line-clamp: 3;
+  }
+  .orders {
+    padding: 10px 20px;
+  }
+  .order__dont {
+    margin-bottom: 15px;
+    margin-top: 30px;
+    font-size: 14px;
+  }
+  .orders__title h1 {
+    font-size: 24px;
+  }
+  .loadmore {
+    font-size: 13px;
+    padding: 10px 15px;
+  }
+  .order__shiptoTitle,
+  .order__total,
+  .order__topTitleItem h2,
+  .order__id {
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+  .order__topTitleItem p,
+  .order__shiptoAddress,
+  .order__total p,
+  .order__id small {
+    font-size: 15px;
+  }
+
+  .order__id,
+  .order__id small {
+    font-size: 13px;
+  }
+  .OrderItemSkeleton__WrapLeft {
+    flex-direction: column;
+    gap: 0px;
+  }
 }

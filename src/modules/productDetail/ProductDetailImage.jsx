@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./styles/ProductDetaill.module.css";
 import PropTypes from "prop-types";
 import { Gallery, Item } from "react-photoswipe-gallery";
@@ -47,10 +47,24 @@ const GalleryImage = ({
   numberMainImage = 0,
   setNumberMainImage,
 }) => {
-  const sourceRef = useRef(null);
-  const targetRef = useRef(null);
-  const containerRef = useRef(null);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
+  useEffect(() => {
+    // Function to handle resize event
+    function handleResize() {
+      setScreenWidth(window.innerWidth);
+    }
+
+    // Add event listener for resize event
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup: remove event listener when component unmounts
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const containerRef = useRef(null);
   return (
     <div className={styles.productDetailImage__gallery} ref={containerRef}>
       <Gallery>
@@ -95,6 +109,8 @@ const GalleryImage = ({
                       },
                       shouldUsePositiveSpaceLens: true,
                       isEnlargedImagePortalEnabledForTouch: true,
+                      enlargedImagePosition:
+                        screenWidth < 1201 ? "over" : "beside",
                     }}
                   />
                 </div>

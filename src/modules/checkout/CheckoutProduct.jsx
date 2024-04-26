@@ -120,10 +120,10 @@ const CheckoutProduct = ({
             ></ButtonPrimary>
           )}
         </div>
+        <p className={styles.checkoutProduct__price}>
+          <strong>${price}</strong>
+        </p>
       </div>
-      <p className={styles.checkoutProduct__price}>
-        <strong>${price}</strong>
-      </p>
     </div>
   );
 };

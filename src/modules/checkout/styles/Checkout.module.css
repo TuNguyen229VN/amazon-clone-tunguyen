@@ -5,11 +5,11 @@
   justify-content: space-between;
   gap: 15px;
 }
-.checkout__left{
-    background-color: white;
-    padding: 20px 20px 30px 20px;
-    border-radius: 3px;
-    flex: 1;
+.checkout__left {
+  background-color: white;
+  padding: 20px 20px 30px 20px;
+  border-radius: 3px;
+  flex: 1;
 }
 .checkout__ad {
   width: 100%;
@@ -38,7 +38,7 @@
   border-bottom: 1px solid lightgray;
 }
 
-.checkout__totalBottom{
+.checkout__totalBottom {
   display: flex;
   justify-content: flex-end;
   font-size: 18px;
@@ -47,18 +47,74 @@
   padding-top: 20px;
 }
 
-.checkout__totalBottom p strong{
-font-weight: 700;
+.checkout__totalBottom p strong {
+  font-weight: 700;
 }
 
-.OrderItemSkeleton__Wrap{
-  display: flex;
-  justify-content: space-between;
-  border-top: 1px solid lightgray;
-  padding: 20px 0px;
-}
-
-.OrderItemSkeleton__WrapLeft{
+.OrderItemSkeleton__Wrap {
   display: flex;
   gap: 20px;
+  border: 1px solid lightgray;
+  padding: 20px;
+}
+
+.OrderItemSkeleton__WrapLeft {
+  justify-content: space-between;
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+@media only screen and (min-width: 1201px) {
+}
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 1024px) {
+  .checkout__totalBottom {
+    font-size: 17px;
+  }
+  .checkout {
+    flex-direction: column-reverse;
+  }
+  .checkout__title {
+    font-size: 24px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .OrderItemSkeleton__Wrap{
+    flex-direction: column;
+  }
+  .checkout__totalBottom {
+    font-size: 16px;
+    padding-top: 15px;
+  }
+  .checkout__title {
+    font-size: 22px;
+  }
+
+  .checkout__selectAll {
+    font-size: 13px;
+  }
+  .checkout__priceTitle {
+    font-size: 13px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .checkout__totalBottom {
+    font-size: 15px;
+  }
+  .checkout__title {
+    font-size: 20px;
+  }
+  .checkout__priceTitle {
+    display: none;
+  }
+  .checkout__selectAll {
+    padding-bottom: 10px;
+    border-bottom: 1px solid lightgray;
+  }
+  .OrderItemSkeleton__WrapLeft {
+    flex-direction: column;
+    gap: 0px;
+  }
 }

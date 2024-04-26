@@ -1,0 +1,20 @@
+.layout__reponsiveInput{
+    display: none;
+}
+@media only screen and (min-width: 1201px) {
+}
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 1024px) {
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 480px) {
+    .layout__reponsiveInput{
+        display: flex;
+        z-index: 99;
+        position: sticky;
+        margin: 0;
+        border: 1px solid black;
+    }
+}

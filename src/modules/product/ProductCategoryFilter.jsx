@@ -9,7 +9,7 @@ import { replaceDashToSpace } from "../../utils/replaceDashToSpace";
 import { PRODUCT_ROUTE } from "../../constant/routesApp";
 import { useEffect } from "react";
 import PropTypes from "prop-types";
-import { Skeleton } from "@mui/material";
+import { Skeleton, useMediaQuery } from "@mui/material";
 
 const MAX__CELL = 1200;
 const flickityOptions = {
@@ -99,10 +99,20 @@ const ProductCategoryFilter = ({ loading = false }) => {
 };
 
 const ProductCategoryFilterSkeleton = () => {
+  const is768Screen = useMediaQuery("(max-width: 768px)");
+  const is480Screen = useMediaQuery("(max-width: 480px)");
   return (
     <div className={styles.productCategoryFilter__link}>
-      <Skeleton variant="circular" width={90} height={90}></Skeleton>
-      <Skeleton variant="rectangular" width={58} height={18}></Skeleton>
+      <Skeleton
+        variant="circular"
+        width={is480Screen ? "60px" : is768Screen ? "70px" : "90px"}
+        height={is480Screen ? "60px" : is768Screen ? "70px" : "90px"}
+      ></Skeleton>
+      <Skeleton
+        variant="rectangular"
+        width={58}
+        height={is480Screen ? "16px" : is768Screen ? "17px" : "18px"}
+      ></Skeleton>
     </div>
   );
 };

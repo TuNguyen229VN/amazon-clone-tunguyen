@@ -12,7 +12,7 @@ import { STATUS_SUCCESS } from "../../constant/status";
 import { SelectBox } from "../../components/selecbox";
 import { useStateValue } from "../../hooks/useStateValue";
 import { replaceSpecialChars } from "../../utils/replaceDashToSpace";
-import { Skeleton } from "@mui/material";
+import { Skeleton, useMediaQuery } from "@mui/material";
 
 const LIMIT = 20;
 const ProductHome = () => {
@@ -29,6 +29,9 @@ const ProductHome = () => {
   const [selectedCategories, setSelectedCategories] = useState(["all"]);
   const [selectPrice, setSelectPrice] = useState();
   const [selectRating, setSelectRating] = useState();
+  const is1024Screen = useMediaQuery("(max-width: 1024px)");
+  const is768Screen = useMediaQuery("(max-width: 768px)");
+  const is480Screen = useMediaQuery("(max-width: 480px)");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -86,8 +89,16 @@ const ProductHome = () => {
         <Skeleton
           variant="text"
           width={150}
-          height={73}
-          sx={{ padding: "20px", marginLeft: "20px" }}
+          height={
+            is480Screen
+              ? "38px"
+              : is768Screen
+              ? "41px"
+              : is1024Screen
+              ? "69px"
+              : "73px"
+          }
+          sx={{ padding: "20px", marginLeft: is480Screen ? "10px" : "20px" }}
         />
       )}
 
