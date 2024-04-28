@@ -9,8 +9,10 @@ import { STATUS_SUCCESS } from "../../constant/status";
 import { API_PRODUCT } from "../../constant/constanst";
 import ProductDetailLink from "./ProductDetailLink";
 import { Skeleton, useMediaQuery } from "@mui/material";
+import { useTranslation } from "react-i18next";
 const ProductDetail = () => {
   const { slug } = useParams();
+  const [t, i18n] = useTranslation("global");
   const [productDetail, setProductDetail] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -24,6 +26,7 @@ const ProductDetail = () => {
         const res = await axios.get(`${API_PRODUCT}/${slug}`);
         if (res.status === STATUS_SUCCESS) {
           setProductDetail(res.data);
+          document.title = "Amazon | " + res.data.title;
           setLoading(false);
         }
       } catch (error) {
@@ -50,7 +53,7 @@ const ProductDetail = () => {
       )}
       {!loading && Object.keys(productDetail).length <= 0 && (
         <p className={styles.productDetail__error}>
-          The product you are looking for is not available
+          {t("product.The product you are looking for is not available")}
         </p>
       )}
       {loading && <ProductDetailSkeleton />}
@@ -61,7 +64,7 @@ const ProductDetail = () => {
 const ProductDetailSkeleton = () => {
   const is1200Screen = useMediaQuery("(max-width: 1200px)");
   const is768Screen = useMediaQuery("(max-width: 768px)");
-  
+
   return (
     <>
       <div className={styles.productDetailLink}>
@@ -104,7 +107,11 @@ const ProductDetailSkeleton = () => {
               <Skeleton variant="rectangular" width={200} height={24} />
             </div>
             <div className={styles.productDetailText__price}>
-              <Skeleton variant="rectangular" width={100} height={is768Screen ? "30px" : "33px"} />
+              <Skeleton
+                variant="rectangular"
+                width={100}
+                height={is768Screen ? "30px" : "33px"}
+              />
             </div>
             <Skeleton
               variant="rectangular"

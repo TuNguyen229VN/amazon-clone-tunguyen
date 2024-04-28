@@ -1,10 +1,12 @@
 import React from "react";
 import styles from "./styles/InputQuantity.module.css";
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 const InputQuantity = ({ quantity, onChange, max, children, ...props }) => {
+  const [t, i18n] = useTranslation("global");
   return (
     <div className={styles.input__wrap}>
-      <p>Quantity:</p>
+      <p>{t("product.Quantity")}</p>
       <input
         type="number"
         onChange={onChange}

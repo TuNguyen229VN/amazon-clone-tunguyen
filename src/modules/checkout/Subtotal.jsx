@@ -8,8 +8,10 @@ import { useNavigate } from "react-router-dom";
 import { PAYMENT_ROUTE } from "../../constant/routesApp";
 import PropTypes from "prop-types";
 import { Skeleton, useMediaQuery } from "@mui/material";
+import { useTranslation } from "react-i18next";
 const Subtotal = ({ loading }) => {
   const navigate = useNavigate();
+  const [t, i18n] = useTranslation("global");
   const [{ basket }, dispatch] = useStateValue();
   return (
     <div className={styles.subtotal}>
@@ -19,12 +21,12 @@ const Subtotal = ({ loading }) => {
             renderText={(value) => (
               <>
                 <p>
-                  Subtotal ({basket?.length ?? 0} items):
+                  {t("order.Subtotal")} ({basket?.length ?? 0} {t("order.items")}):
                   <strong> {value}</strong>
                 </p>
                 <small className={styles.subtotal__gift}>
                   <input type="checkbox" />{" "}
-                  <span>This order contains a gift</span>
+                  <span>{t("order.This order contains a gift")}</span>
                 </small>
               </>
             )}
@@ -35,7 +37,7 @@ const Subtotal = ({ loading }) => {
             prefix={"$"}
           />
           <ButtonPrimary
-            text="Proceed to Checkout"
+            text={t("order.Proceed to Checkout")}
             onClick={() => navigate(PAYMENT_ROUTE)}
             className={styles.subtotal__button}
           />

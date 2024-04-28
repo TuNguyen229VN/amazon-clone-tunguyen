@@ -5,15 +5,17 @@ import CheckoutProduct from "../checkout/CheckoutProduct";
 import CurrencyFormat from "react-currency-format";
 import styles from "./styles/Order.module.css";
 import { Skeleton } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const OrderItem = ({ order = [] }) => {
+  const [t, i18n] = useTranslation("global");
   const [address, setAddress] = useState(order?.data?.address);
   return (
     <div className={styles.order}>
       <div className={styles.order__top}>
         <div className={styles.oder__topTitle}>
           <div className={styles.order__topTitleItem}>
-            <h2>Order Placed</h2>
+            <h2>{t("order.Order Placed")}</h2>
             <p>
               {moment.unix(order?.data?.created).format("MMMM Do YYYY, h:mma")}
             </p>
@@ -22,7 +24,7 @@ const OrderItem = ({ order = [] }) => {
             renderText={(value) => (
               <>
                 <h3 className={styles.order__total}>
-                  Total <p>{value}</p>
+                  {t("order.Total")} <p>{value}</p>
                 </h3>
               </>
             )}
@@ -34,7 +36,7 @@ const OrderItem = ({ order = [] }) => {
           />
           {address && (
             <div className={styles.order__shipto}>
-              <h2 className={styles.order__shiptoTitle}>Ship to</h2>
+              <h2 className={styles.order__shiptoTitle}>{t("order.Ship to")}</h2>
               <p
                 className={styles.order__shiptoAddress}
                 title={`${address?.houseNumber}, ${address?.ward.ward_name}, ${address?.district.district_name}, ${address?.city.province_name}`}
@@ -46,7 +48,7 @@ const OrderItem = ({ order = [] }) => {
           )}
         </div>
         <p className={styles.order__id}>
-          Order
+          {t("order.Order")}
           <small>#{order.id}</small>
         </p>
       </div>

@@ -7,6 +7,8 @@ import { useStateValue } from "../../hooks/useStateValue";
 import { Link } from "react-router-dom";
 import { PRODUCT_DETAIL_ROUTE } from "../../constant/routesApp";
 import { InputQuantity } from "../../components/input";
+import { showToast } from "../../utils/showToast";
+import { useTranslation } from "react-i18next";
 
 const CheckoutProduct = ({
   id,
@@ -19,6 +21,7 @@ const CheckoutProduct = ({
   hideButton = false,
   className = "",
 }) => {
+  const [t, i18n] = useTranslation("global");
   const [{ basket }, dispatch] = useStateValue();
   const [quantityInput, setQuantityInput] = useState(quantity);
   const [buttonSaveOpen, setButtonSaveOpen] = useState(false);
@@ -33,11 +36,11 @@ const CheckoutProduct = ({
 
   const saveQuantity = () => {
     if (quantityInput <= 0) {
-      alert(`Quantity > 0 or < ${stock}`);
+      showToast(`Quantity > 0 or < ${stock}`);
       setQuantityInput(parseInt(quantity));
       return;
     } else if (quantityInput > stock) {
-      alert(`Quantity > 0 or < ${stock}`);
+      showToast(`Quantity > 0 or < ${stock}`);
       setQuantityInput(parseInt(stock));
       return;
     }
@@ -100,13 +103,13 @@ const CheckoutProduct = ({
             {buttonSaveOpen && !hideButton && (
               <>
                 <ButtonPrimary
-                  text="Save"
+                  text={t("product.Save")}
                   className={styles.buttonSave}
                   onClick={saveQuantity}
                 />
                 <div className={styles.dash} />
                 <ButtonPrimary
-                  text="Cancel"
+                  text={t("product.Cancel")}
                   className={styles.buttonCancel}
                   onClick={cancelQuantity}
                 />
@@ -115,7 +118,7 @@ const CheckoutProduct = ({
           </InputQuantity>
           {!hideButton && (
             <ButtonPrimary
-              text="Remove from basket"
+              text={t("product.Remove from basket")}
               onClick={!hideButton && removeFromBasket}
             ></ButtonPrimary>
           )}

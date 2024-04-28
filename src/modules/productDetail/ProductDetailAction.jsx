@@ -6,7 +6,9 @@ import ButtonPrimary from "../../components/button/ButtonPrimary";
 import { useStateValue } from "../../hooks/useStateValue";
 import { Checkbox, FormControlLabel } from "@mui/material";
 import { getUserProfile } from "../../utils/getUserProfile";
+import { useTranslation } from "react-i18next";
 const ProductDetailAction = ({ productDetail = {} }) => {
+  const [t, i18n] = useTranslation("global");
   const [{ user }, dispatch] = useStateValue();
   const [address, setAddress] = useState(user?.userProfile?.userAddress);
   useEffect(() => {
@@ -51,43 +53,43 @@ const ProductDetailAction = ({ productDetail = {} }) => {
         )}
       </div>
       <ButtonPrimary
-        text="Add to Basket"
+        text={t("product.Add to Basket")}
         onClick={addToBasket}
         className={styles.productDetailAction__button}
       />
       <div className={styles.productDetailAction__desc}>
-        <p className={styles.productDetailAction__descLeft}>Ships from</p>
-        <p className={styles.productDetailAction__descRight}>Amazon.com</p>
+        <p className={styles.productDetailAction__descLeft}>{t("product.Ships from")}</p>
+        <p className={styles.productDetailAction__descRight}>{t("product.Amazon.com")}</p>
       </div>
       <div className={styles.productDetailAction__desc}>
-        <p className={styles.productDetailAction__descLeft}>Sold by</p>
-        <p className={styles.productDetailAction__descRight}>Amazon.com</p>
+        <p className={styles.productDetailAction__descLeft}>{t("product.Sold by")}</p>
+        <p className={styles.productDetailAction__descRight}>{t("product.Amazon.com")}</p>
       </div>
       <div className={styles.productDetailAction__desc}>
-        <p className={styles.productDetailAction__descLeft}>Return</p>
+        <p className={styles.productDetailAction__descLeft}>{t("product.Return")}</p>
         <p className={styles.productDetailAction__descRight}>
-          Eligible for Return, Refund or Replacement
+          {t("product.Eligible for Return, Refund or Replacement")}
         </p>
       </div>
       <div className={styles.productDetailAction__desc}>
-        <p className={styles.productDetailAction__descLeft}>Payment</p>
+        <p className={styles.productDetailAction__descLeft}>{t("product.Payment")}</p>
         <p className={styles.productDetailAction__descRight}>
-          Secure transaction lorem
+          {t("product.Secure transaction lorem")}
         </p>
       </div>
       <div className={styles.productDetailAction__desc}>
-        <p className={styles.productDetailAction__descLeft}>Customer Service</p>
-        <p className={styles.productDetailAction__descRight}>Amazon.com</p>
+        <p className={styles.productDetailAction__descLeft}>{t("product.Customer Service")}</p>
+        <p className={styles.productDetailAction__descRight}>{t("product.Amazon.com")}</p>
       </div>
       <div className={styles.productDetailAction__desc}>
-        <p className={styles.productDetailAction__descLeft}>Packaging</p>
+        <p className={styles.productDetailAction__descLeft}>{t("product.Packaging")}</p>
         <p className={styles.productDetailAction__descRight}>
-          Ships in product packaging
+          {t("product.Ships in product packaging")}
         </p>
       </div>
       <FormControlLabel
         control={<Checkbox />}
-        label={"Add a gift receipt for easy returns"}
+        label={t("product.Add a gift receipt for easy returns")}
         className={styles.productDetailAction__label}
       />
     </div>

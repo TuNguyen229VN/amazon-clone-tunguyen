@@ -18,6 +18,8 @@ import { getBasketSize } from "../utils/reducer";
 import PropTypes from "prop-types";
 import HeaderReponsive from "./HeaderReponsive";
 import { InputSearchHeader } from "../components/input";
+import ChangeLanguageComponent from "../components/changeLanguage/ChangeLanguageComponent";
+import { useTranslation } from "react-i18next";
 
 const Header = ({ openBackground, setOpenBackground }) => {
   const [openHeader, setOpenHeader] = useState(false);
@@ -28,6 +30,7 @@ const Header = ({ openBackground, setOpenBackground }) => {
       localStorage.removeItem("userInfo");
     }
   };
+  const [t, i18n] = useTranslation("global");
 
   return (
     <header className={styles.header}>
@@ -49,27 +52,37 @@ const Header = ({ openBackground, setOpenBackground }) => {
           <div onClick={handleAuthentication} className={styles.header__option}>
             <span
               className={`${styles.header__optionLineOne} ${styles["--accountName"]}`}
-              title={!user?.auth ? "guest" : user?.auth?.email}
+              title={!user?.auth ? t("header.guest") : user?.auth?.email}
             >
-              Hello {!user?.auth ? "guest" : user?.auth?.email}
+              {t("header.hello")}{" "}
+              {!user?.auth ? t("header.guest") : user?.auth?.email}
             </span>
             <span className={styles.header__optionLineTwo}>
-              {user?.auth ? "Sign out" : "Sign in"}
+              {user?.auth ? t("header.signout") : t("header.signin")}
             </span>
           </div>
         </Link>
         <Link to={ORDER_ROUTE} onClick={() => setOpenBackground(false)}>
           <div className={styles.header__option}>
-            <span className={styles.header__optionLineOne}>Returns</span>
-            <span className={styles.header__optionLineTwo}>& Orders</span>
+            <span className={styles.header__optionLineOne}>
+              {t("header.returns")}
+            </span>
+            <span className={styles.header__optionLineTwo}>
+              {t("header.orders")}
+            </span>
           </div>
         </Link>
         <div className={styles.header__option}>
-          <span className={styles.header__optionLineOne}>Your</span>
-          <span className={styles.header__optionLineTwo}>Prime</span>
+          <span className={styles.header__optionLineOne}>
+            {t("header.your")}
+          </span>
+          <span className={styles.header__optionLineTwo}>
+            {t("header.prime")}
+          </span>
         </div>
       </div>
       <div className={styles.header__optionReponsive}>
+        <ChangeLanguageComponent className={styles.header__changeLanguage} />
         <Link to={CHECKOUT_ROUTE} onClick={() => setOpenBackground(false)}>
           <div className={styles.header__optionBasket}>
             <ShoppingBasket className={styles.iconBasket} />
@@ -84,7 +97,6 @@ const Header = ({ openBackground, setOpenBackground }) => {
           onClick={() => setOpenHeader(!openHeader)}
           className={styles.header__icon}
         />
-
         <HeaderReponsive
           openHeader={openHeader}
           user={user}

@@ -5,6 +5,7 @@ import { categoryData } from "../../data_av/categoryData";
 import { Link } from "react-router-dom";
 import { PRODUCT_ROUTE } from "../../constant/routesApp";
 import { Skeleton, useMediaQuery } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const CatergoryCarousel = ({
   sizeCategory = 0,
@@ -15,6 +16,7 @@ const CatergoryCarousel = ({
   className = "",
   loading,
 }) => {
+  const [t, i18n] = useTranslation("global");
   return (
     <div className={`${styles.categoryCarousel} ${className}`}>
       {loading ? (
@@ -33,7 +35,7 @@ const CatergoryCarousel = ({
                   className={styles.categoryCarousel__title}
                   title={nameCatagory[index]}
                 >
-                  {nameCatagory[index]}
+                  {t(`home.${nameCatagory[index]}`)}
                 </h3>
                 <div className={styles.test}>
                   <img
@@ -50,7 +52,7 @@ const CatergoryCarousel = ({
                   to={PRODUCT_ROUTE}
                   className={styles.categoryCarousel__seeMore}
                 >
-                  See more
+                  {t("home.seemore")}
                 </span>
               </Link>
             </div>

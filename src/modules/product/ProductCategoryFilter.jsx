@@ -10,6 +10,7 @@ import { PRODUCT_ROUTE } from "../../constant/routesApp";
 import { useEffect } from "react";
 import PropTypes from "prop-types";
 import { Skeleton, useMediaQuery } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const MAX__CELL = 1200;
 const flickityOptions = {
@@ -23,6 +24,7 @@ const flickityOptions = {
   groupCells: 2,
 };
 const ProductCategoryFilter = ({ loading = false }) => {
+  const [t, i18n] = useTranslation("global");
   const [flkty, setFlkty] = useState(null);
   const [checkout, setCheckout] = useState(true);
   useEffect(() => {
@@ -75,7 +77,7 @@ const ProductCategoryFilter = ({ loading = false }) => {
                 <img src={Object.values(item)} alt="banner" />
               </div>
               <p className={styles.productCategoryFilter__text}>
-                {replaceDashToSpace(Object.keys(item)[0])}
+                {t(`product.${replaceDashToSpace(Object.keys(item)[0])}`)}
               </p>
             </Link>
           ))}

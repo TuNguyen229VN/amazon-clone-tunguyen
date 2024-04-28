@@ -2,7 +2,8 @@
 
 ## Technologies & Libraries:
 
-- ReactJS, Firebase, Material Icons, Material UI, react-currency-format, Stripe, axios, moment.js, react-flickity, react-paginate, react-photoswipe-gallery, react-image-magnify
+- ReactJS, Firebase, Material Icons, Material UI, react-currency-format, Stripe, axios, moment.js, react-flickity, react-paginate, react-photoswipe-gallery, react-image-magnify, react-toastify,react-i18next, i18next.
+
 
 ## API reference:
 
@@ -31,6 +32,7 @@
 - Payment / Order history
 - Paging
 - Search/ Filter / Sort product
+- Multiple language
 
 ## Rules:
 

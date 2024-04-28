@@ -10,6 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Highlighted } from "../highlightText";
 import SearchIcon from "@mui/icons-material/Search";
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 
 const InputSearchHeader = ({
   openBackground = false,
@@ -20,6 +21,7 @@ const InputSearchHeader = ({
   const [debouncedValue, setDebouncedValue] = useDebounce("", 500);
   const [searchValue, setSearchValue] = useState("");
   const [searchList, setSearchList] = useState([]);
+  const [t, i18n] = useTranslation("global");
 
   useEffect(() => {
     if (!openBackground) {
@@ -37,7 +39,7 @@ const InputSearchHeader = ({
           setSearchList(res.data.products);
         }
       } catch (error) {
-        console.log(error);
+        return;
       }
     };
     if (searchValue !== "" && openBackground) {
@@ -103,7 +105,7 @@ const InputSearchHeader = ({
       <input
         type="text"
         className={styles.search__input}
-        placeholder="Search Amazon"
+        placeholder={t("header.searchAmazon")}
         onChange={handleSearch}
         onKeyPress={handleKeyPress}
         onKeyDown={handleKeyDown}

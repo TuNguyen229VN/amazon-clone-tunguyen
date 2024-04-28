@@ -10,8 +10,10 @@ import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import styles from "./styles/Payment.module.css";
 import { ORDER_ROUTE } from "../../constant/routesApp";
 import { Spinner } from "../../components/loading";
+import { useTranslation } from "react-i18next";
 
 const PaymentMethod = () => {
+  const [t, i18n] = useTranslation("global");
   const navigate = useNavigate();
   const [{ user, basket }, dispatch] = useStateValue();
   const stripe = useStripe();
@@ -83,7 +85,7 @@ const PaymentMethod = () => {
   return (
     <>
       <div className={styles.payment__title}>
-        <h3>Payment Method</h3>
+        <h3>{t("order.Payment Method")}</h3>
       </div>
       <div className={styles.payment__details}>
         <form onSubmit={handleSubmit}>
@@ -93,7 +95,7 @@ const PaymentMethod = () => {
             <CurrencyFormat
               renderText={(value) => (
                 <>
-                  <h3>Order Total: {value}</h3>
+                  <h3>{t("order.Order Total")} {value}</h3>
                 </>
               )}
               decimalScale={2}
@@ -109,12 +111,12 @@ const PaymentMethod = () => {
                   processing && styles.disabled
                 }`}
               >
-                <span>{processing ? <Spinner /> : "Buy Now"}</span>
+                <span>{processing ? <Spinner /> : t("order.Buy Now")}</span>
               </button>
             )}
           </div>
           {/* Error */}
-          {error && <div className={styles.paymentError}>*{error}*</div>}
+          {error && <div className={styles.paymentError}>*{t(`order.${error}`)}*</div>}
         </form>
       </div>
     </>

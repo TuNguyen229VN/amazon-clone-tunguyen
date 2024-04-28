@@ -4,13 +4,15 @@ import CheckoutProduct from "../checkout/CheckoutProduct";
 import styles from "./styles/Payment.module.css";
 import { Link } from "react-router-dom";
 import { PRODUCT_ROUTE } from "../../constant/routesApp";
+import { useTranslation } from "react-i18next";
 
 const PaymentReviewItem = () => {
+  const [t, i18n] = useTranslation("global");
   const [{ basket, user }, dispatch] = useStateValue();
   return (
     <>
       <div className={styles.payment__title}>
-        <h3>Review items and delivery</h3>
+        <h3>{t("order.Review items and delivery")}</h3>
       </div>
       <div className={styles.payment__items}>
         {basket?.length > 0 &&
@@ -28,7 +30,7 @@ const PaymentReviewItem = () => {
           ))}
         {basket?.length <= 0 && (
           <p className={styles.payment__empty}>
-            Items Empty. <Link to={PRODUCT_ROUTE} className={styles.viewmore}>View more product</Link>
+           {t("order.Items Empty")} <Link to={PRODUCT_ROUTE} className={styles.viewmore}>{t("order.View more product")}</Link>
           </p>
         )}
       </div>

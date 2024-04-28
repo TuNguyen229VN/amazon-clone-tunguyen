@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./styles/ProductHome.module.css";
 import ReactPaginate from "react-paginate";
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 const ITEM = 20;
 const ProducPaging = ({
   products = [],
@@ -13,6 +14,7 @@ const ProducPaging = ({
   setSkip,
   loading = true,
 }) => {
+  const [t, i18n] = useTranslation("global");
   // Click paging number
   const handlePageClick = (data) => {
     setCurrentPage(data.selected + 1);
@@ -44,6 +46,8 @@ const ProducPaging = ({
             breakLinkClassName={styles.pagelink}
             pageRangeDisplayed={2}
             forcePage={skip}
+            nextLabel={t("product.Next")}
+            previousLabel={t("product.Previous")}
           />
         </div>
       )}

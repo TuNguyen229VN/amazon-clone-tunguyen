@@ -13,6 +13,7 @@ import { SelectBox } from "../../components/selecbox";
 import { useStateValue } from "../../hooks/useStateValue";
 import { replaceSpecialChars } from "../../utils/replaceDashToSpace";
 import { Skeleton, useMediaQuery } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const LIMIT = 20;
 const ProductHome = () => {
@@ -32,7 +33,10 @@ const ProductHome = () => {
   const is1024Screen = useMediaQuery("(max-width: 1024px)");
   const is768Screen = useMediaQuery("(max-width: 768px)");
   const is480Screen = useMediaQuery("(max-width: 480px)");
+  const [t, i18n] = useTranslation("global");
+  
   useEffect(() => {
+    document.title = "Amazon | Deals";
     window.scrollTo(0, 0);
   }, []);
   useEffect(() => {
@@ -84,7 +88,7 @@ const ProductHome = () => {
   return (
     <div className={styles.productHome}>
       {!loadingTop ? (
-        <h2 className={styles.productHome__title}>Today&apos;s Deals</h2>
+        <h2 className={styles.productHome__title}>{t("product.title")}</h2>
       ) : (
         <Skeleton
           variant="text"

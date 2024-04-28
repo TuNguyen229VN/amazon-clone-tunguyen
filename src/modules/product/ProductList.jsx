@@ -8,6 +8,7 @@ import { PRODUCT_DETAIL_ROUTE } from "../../constant/routesApp";
 import StarIcon from "@mui/icons-material/Star";
 import PropTypes from "prop-types";
 import { Skeleton, useMediaQuery } from "@mui/material";
+import { useTranslation } from "react-i18next";
 const ProductList = ({
   products = [],
   loading = true,
@@ -17,6 +18,7 @@ const ProductList = ({
   selectPrice,
   selectRating,
 }) => {
+  const [t, i18n] = useTranslation("global");
   const [productFilterLeft, setProductFilterLeft] = useState(products);
   const sortList = () => {
     if (products?.length > 0 && productFilterLeft?.length > 0) {
@@ -97,9 +99,11 @@ const ProductList = ({
           <div
             className={`${styles.productList__item} ${styles["--notfound"]}`}
           >
-            The category you are filtering is not available on this page
+            {t(
+              "product.The category you are filtering is not available on this page"
+            )}
             <p className={styles.productList__notice}>
-              *You can choose another page or cancel the filter
+              {t("product.*You can choose another page or cancel the filter")}
             </p>
           </div>
         </>
@@ -107,7 +111,7 @@ const ProductList = ({
 
       {!loading && products.length <= 0 && (
         <p className={`${styles.productList__item} ${styles["--notfound"]}`}>
-          The product you are looking for is not available
+          {t("product.The product you are looking for is not available")}
         </p>
       )}
       {loading && <ProductListSkeleton />}

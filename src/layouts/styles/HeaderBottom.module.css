@@ -10,6 +10,7 @@
   padding: 20px;;
   font-weight: 400;
   z-index: 20;
+  align-items: center;
 }
 
 .headerBottom__title {

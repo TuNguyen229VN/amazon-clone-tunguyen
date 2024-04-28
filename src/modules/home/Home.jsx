@@ -8,6 +8,7 @@ import { CatergoryCarousel, ListItemCarousel } from "../../components/carousel";
 const Home = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
+    document.title = "Amazon.com"
     window.scrollTo(0, 0);
   }, []);
   return (

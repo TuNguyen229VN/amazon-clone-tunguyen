@@ -5,6 +5,8 @@ import { LOGIN_ROUTE, ORDER_ROUTE, PRODUCT_ROUTE } from "../constant/routesApp";
 import styles from "./styles/HeaderReponsive.module.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import ChangeLanguageComponent from "../components/changeLanguage/ChangeLanguageComponent";
+import { useTranslation } from "react-i18next";
 
 const HeaderReponsive = ({
   user,
@@ -13,6 +15,7 @@ const HeaderReponsive = ({
   openHeader,
   setOpenHeader,
 }) => {
+  const [t, i18n] = useTranslation("global");
   return (
     <div
       className={`${styles.headerReponsive} ${
@@ -33,12 +36,13 @@ const HeaderReponsive = ({
         <div onClick={handleAuthentication} className={styles.header__option}>
           <span
             className={`${styles.header__optionLineOne} ${styles["--accountName"]}`}
-            title={!user?.auth ? "guest" : user?.auth?.email}
+            title={!user?.auth ? t("header.guest") : user?.auth?.email}
           >
-            Hello {!user?.auth ? "guest" : user?.auth?.email}
+            {t("header.hello")}{" "}
+            {!user?.auth ? t("header.guest") : user?.auth?.email}
           </span>
           <span className={styles.header__optionLineTwo}>
-            {user?.auth ? "Sign out" : "Sign in"}
+            {user?.auth ? t("header.signout") : t("header.signin")}
           </span>
         </div>
       </Link>
@@ -50,18 +54,28 @@ const HeaderReponsive = ({
         }}
       >
         <div className={styles.header__option2}>
-          <span className={styles.header__optionLineOne}>Returns </span>
-          <span className={styles.header__optionLineTwo}>& Orders</span>
+          <span className={styles.header__optionLineOne}>
+            {" "}
+            {t("header.returns")}{" "}
+          </span>
+          <span className={styles.header__optionLineTwo}>
+            {t("header.orders")}
+          </span>
         </div>
       </Link>
       <ul className={styles.headerBottom}>
+        <li className={styles.headerBottom__item}>
+          <ChangeLanguageComponent
+            className={styles.headerBottom__changeLanguage}
+          />
+        </li>
         <li className={styles.headerBottom__item}>
           <Link
             to={PRODUCT_ROUTE}
             className={styles.headerBottom__title}
             onClick={() => setOpenHeader(false)}
           >
-            All
+            {t("header.all")}
           </Link>
         </li>
         <li className={styles.headerBottom__item}>
@@ -70,7 +84,7 @@ const HeaderReponsive = ({
             className={styles.headerBottom__title}
             onClick={() => setOpenHeader(false)}
           >
-            Today&apos;s Deals
+            {t("header.todayDeals")}
           </Link>
         </li>
         <li className={styles.headerBottom__item}>
@@ -79,7 +93,7 @@ const HeaderReponsive = ({
             className={styles.headerBottom__title}
             onClick={() => setOpenHeader(false)}
           >
-            Customer Service
+            {t("header.customerService")}
           </Link>
         </li>
         <li className={styles.headerBottom__item}>
@@ -88,7 +102,7 @@ const HeaderReponsive = ({
             className={styles.headerBottom__title}
             onClick={() => setOpenHeader(false)}
           >
-            Reigstry
+            {t("header.registry")}
           </Link>
         </li>
         <li className={styles.headerBottom__item}>
@@ -97,7 +111,7 @@ const HeaderReponsive = ({
             className={styles.headerBottom__title}
             onClick={() => setOpenHeader(false)}
           >
-            Gift Cards
+            {t("header.giftCards")}
           </Link>
         </li>
         <li className={styles.headerBottom__item}>
@@ -106,7 +120,7 @@ const HeaderReponsive = ({
             className={styles.headerBottom__title}
             onClick={() => setOpenHeader(false)}
           >
-            Sell
+            {t("header.sell")}
           </Link>
         </li>
       </ul>

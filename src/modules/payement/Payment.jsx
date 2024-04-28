@@ -8,10 +8,14 @@ import { useStateValue } from "../../hooks/useStateValue";
 import { CHECKOUT_ROUTE } from "../../constant/routesApp";
 import { getBasketSize } from "../../utils/reducer";
 import { Skeleton, useMediaQuery } from "@mui/material";
+import { useTranslation } from "react-i18next";
 const Payment = () => {
+  const [t, i18n] = useTranslation("global");
   const [{ basket, user }, dispatch] = useStateValue();
+  
   const [loading, setLoading] = useState(true);
   useEffect(() => {
+    document.title = "Amazon | Payment"
     window.scrollTo(0, 0);
     setLoading(false);
   }, []);
@@ -21,9 +25,9 @@ const Payment = () => {
       {!loading ? (
         <>
           <h1>
-            Checkout (
+            {t("order.Checkout")} (
             <Link to={CHECKOUT_ROUTE} className={styles.payment__link}>
-              {getBasketSize(basket)} items
+              {getBasketSize(basket)} {t("order.items")}
             </Link>
             )
           </h1>

@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { STATUS_SUCCESS } from "../../constant/status";
 import { PRODUCT_DETAIL_ROUTE } from "../../constant/routesApp";
 import { Skeleton, useMediaQuery } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const flickityOptions = {
   contain: true,
@@ -27,6 +28,7 @@ const ListItemCarousel = ({
   loading = false,
   setLoading,
 }) => {
+  const [t, i18n] = useTranslation("global");
   const is768Screen = useMediaQuery("(max-width: 768px)");
   const is480Screen = useMediaQuery("(max-width: 480px)");
   const [flkty, setFlkty] = useState(null);
@@ -63,7 +65,7 @@ const ListItemCarousel = ({
     <div className={styles.listItem}>
       {!loading ? (
         <h4 className={styles.listItem__title} title={title}>
-          {title}
+          {t(`home.${title}`)}
         </h4>
       ) : (
         <Skeleton

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/Login.module.css";
 import LogoBlack from "/assets/logo_black.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,11 +9,15 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { HOME_ROUTE } from "../constant/routesApp";
-import { collection, doc, getDoc, onSnapshot, query } from "firebase/firestore";
+import { showToast } from "../utils/showToast";
 const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    document.title = "Amazon Sign-In";
+  }, []);
 
   const signIn = (e) => {
     e.preventDefault();
@@ -21,7 +25,13 @@ const LoginPage = () => {
       .then((auth) => {
         navigate(HOME_ROUTE);
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => {
+        if (error.message.includes("(auth/invalid-credential)")) {
+          showToast("Email or password not correct");
+        } else {
+          showToast("Invalid email or password");
+        }
+      });
   };
 
   const register = (e) => {
@@ -32,7 +42,15 @@ const LoginPage = () => {
           navigate(HOME_ROUTE);
         }
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => {
+        if (error.message.includes("(auth/email-already-in-use)")) {
+          showToast("Email already in use");
+        } else if (error.message.includes("(auth/weak-password)")) {
+          showToast("Password so weak");
+        } else {
+          showToast("Invalid email or password to create");
+        }
+      });
   };
   return (
     <div className={styles.login}>

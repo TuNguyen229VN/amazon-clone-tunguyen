@@ -95,7 +95,8 @@
     display: block !important;
   }
 
-  .header__option {
+  .header__option,
+  .header__changeLanguage {
     display: none;
   }
 }

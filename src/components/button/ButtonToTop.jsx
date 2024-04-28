@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import styles from "./styles/ButtonToTop.module.css"
+import styles from "./styles/ButtonToTop.module.css";
+import { useTranslation } from "react-i18next";
 const ButtonToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [t, i18n] = useTranslation("global");
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -22,7 +24,7 @@ const ButtonToTop = () => {
 
   return (
     <div className={styles.buttonToTop}>
-      {isVisible && <button onClick={scrollToTop}>Back to Top</button>}
+      {isVisible && <button onClick={scrollToTop}>{t(`home.backToTop`)}</button>}
     </div>
   );
 };

@@ -6,7 +6,9 @@ import { useStateValue } from "../../hooks/useStateValue";
 import CurrencyFormat from "react-currency-format";
 import { getBasketTotal } from "../../utils/reducer";
 import { Skeleton, useMediaQuery } from "@mui/material";
+import { useTranslation } from "react-i18next";
 const Checkout = () => {
+  const [t, i18n] = useTranslation("global");
   const [{ basket, user }, dispatch] = useStateValue();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -21,11 +23,13 @@ const Checkout = () => {
           <div className="">
             <h2 className={styles.checkout__title}>
               {Object.keys(basket).length > 0
-                ? "Shopping Cart"
-                : "Your Amazon Cart is empty"}
+                ? t("order.Shopping Cart")
+                : t("order.Your Amazon Cart is empty")}
             </h2>
-            <p className={styles.checkout__selectAll}>Select all items</p>
-            <p className={styles.checkout__priceTitle}>Price</p>
+            <p className={styles.checkout__selectAll}>
+              {t("order.Select all items")}
+            </p>
+            <p className={styles.checkout__priceTitle}>{t("order.Price")}</p>
             {Object.keys(basket).length > 0 &&
               basket.map((item, index) => (
                 <CheckoutProduct
@@ -45,7 +49,8 @@ const Checkout = () => {
               renderText={(value) => (
                 <>
                   <p>
-                    Subtotal ({Object.keys(basket).length ?? 0} items):
+                    {t("order.Subtotal")} ({Object.keys(basket).length ?? 0}{" "}
+                    {t("order.items")}):
                     <strong> {value}</strong>
                   </p>
                 </>

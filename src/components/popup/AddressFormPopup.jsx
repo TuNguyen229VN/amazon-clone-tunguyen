@@ -18,8 +18,11 @@ import { addDoc, collection, doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase-config";
 import { useStateValue } from "../../hooks/useStateValue";
 import { getUserProfile } from "../../utils/getUserProfile";
+import { showToast } from "../../utils/showToast";
+import { useTranslation } from "react-i18next";
 
 const AddressFormPopup = ({ isOpen, onClose }) => {
+  const [t, i18n] = useTranslation("global");
   const [{ user, basket }, dispatch] = useStateValue();
   const [address, setAddress] = useState({
     houseNumber: "",
@@ -124,7 +127,7 @@ const AddressFormPopup = ({ isOpen, onClose }) => {
 
   const saveUserAddress = async () => {
     if (!user?.auth?.uid) {
-      alert("User ID is missing.");
+      showToast("User ID is missing.");
       return;
     }
     const userDocRef = doc(db, "users", user?.auth?.uid);
@@ -144,23 +147,27 @@ const AddressFormPopup = ({ isOpen, onClose }) => {
 
   return (
     <Dialog open={isOpen} onClose={onClose} fullWidth>
-      <DialogTitle>Enter Address</DialogTitle>
+      <DialogTitle>{t("addressForm.Enter Address")}</DialogTitle>
       <DialogContent>
         <DialogContentText>
-          Please fill out the address form below:
+          {t("addressForm.Please fill out the address form below")}
         </DialogContentText>
         <TextField
           autoFocus
           margin="dense"
           name="houseNumber"
-          label="House Number"
+          label={t("addressForm.House Number")}
           type="text"
           fullWidth
           value={address.houseNumber}
           onChange={handleChange}
           sx={{ marginBlock: "20px" }}
           error={Boolean(addressError.houseNumber)}
-          helperText={addressError.houseNumber || ""}
+          helperText={
+            (addressError.houseNumber &&
+              t(`addressForm.${addressError.houseNumber}`)) ||
+            ""
+          }
         />
         <Autocomplete
           margin="dense"
@@ -170,9 +177,10 @@ const AddressFormPopup = ({ isOpen, onClose }) => {
           renderInput={(params) => (
             <TextField
               {...params}
-              label="City/ Province"
+              label={t("addressForm.City/ Province")}
               error={Boolean(addressError.city)}
-              helperText={addressError.city || ""}
+              helperText={ (addressError.city &&
+              t(`addressForm.${addressError.city}`)) || ""}
             />
           )}
           value={
@@ -196,9 +204,10 @@ const AddressFormPopup = ({ isOpen, onClose }) => {
           renderInput={(params) => (
             <TextField
               {...params}
-              label="District"
+              label={t("addressForm.District")}
               error={Boolean(addressError.district)}
-              helperText={addressError.district || ""}
+              helperText={ (addressError.district &&
+              t(`addressForm.${addressError.district}`)) || ""}
             />
           )}
           value={
@@ -221,9 +230,10 @@ const AddressFormPopup = ({ isOpen, onClose }) => {
           renderInput={(params) => (
             <TextField
               {...params}
-              label="Ward"
+              label={t("addressForm.Ward")}
               error={Boolean(addressError.ward)}
-              helperText={addressError.ward || ""}
+              helperText={ (addressError.ward &&
+              t(`addressForm.${addressError.ward}`)) || ""}
             />
           )}
           value={
@@ -237,9 +247,9 @@ const AddressFormPopup = ({ isOpen, onClose }) => {
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>Cancel</Button>
+        <Button onClick={onClose}>{t("addressForm.Cancel")}</Button>
         <Button onClick={handleSubmit} variant="contained">
-          Save
+          {t("addressForm.Save")}
         </Button>
       </DialogActions>
     </Dialog>

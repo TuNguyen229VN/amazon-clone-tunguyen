@@ -1,0 +1,77 @@
+.changeLanguage {
+  color: white;
+  padding: 8px;
+  border: 1px solid white;
+  position: relative;
+  font-size: 14px;
+  width: 70px;
+  margin-right: 10px;
+}
+.changeLanguage__text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.changeLanguage__wrap {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  width: 100%;
+  top: 40px;
+  background-color: white;
+}
+
+.changeLanguage__button {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #131921;
+  justify-content: space-between;
+  padding: 10px;
+}
+.changeLanguage__button:hover {
+  background-color: #131921;
+  color: white;
+}
+.changeLanguage__button:not(:last-child) {
+  border-bottom: 1px solid #131921;
+}
+.changeLanguage__img {
+  width: 15px;
+  height: 15px;
+  object-fit: cover;
+}
+
+.changeLanguage__text p {
+  display: flex;
+  align-items: center;
+}
+
+.changeLanguage__text svg {
+  font-size: 14px;
+}
+
+@media only screen and (min-width: 1201px) {
+}
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 1024px) {
+  .changeLanguage {
+    font-size: 13px;
+    width: 70px;
+  }
+  .changeLanguage__button {
+    font-size: 13px;
+    padding: 10px;
+  }
+  .changeLanguage__text svg {
+    font-size: 13px;
+  }
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 480px) {
+}

@@ -12,6 +12,7 @@ import { thumbnailCategoryData } from "../../data_av/thumbnailCategoryData";
 import { replaceDashToSpace } from "../../utils/replaceDashToSpace";
 import StarIcon from "@mui/icons-material/Star";
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 
 const ProductFilterLeft = ({
   selectedCategories,
@@ -22,6 +23,7 @@ const ProductFilterLeft = ({
   setSelectRating,
   loading,
 }) => {
+  const [t, i18n] = useTranslation("global");
   const handleCheckboxChange = (category) => {
     let updatedCategories;
     if (category === "all") {
@@ -60,11 +62,11 @@ const ProductFilterLeft = ({
               className={styles.productFilterLeft__link}
               title="All deals"
             >
-              All deals
+              {t("product.All deals")}
             </Link>
           </div>
           <div className={styles.productFilterLeft__block}>
-            <p className={styles.productFilterLeft__title}>Departments</p>
+            <p className={styles.productFilterLeft__title}>{t("product.Departments")}</p>
             <div className={styles.productFilterLeft__action}>
               {thumbnailCategoryData.length > 0 &&
                 thumbnailCategoryData.map((item, index) => (
@@ -79,67 +81,71 @@ const ProductFilterLeft = ({
                         }
                       />
                     }
-                    label={replaceDashToSpace(Object.keys(item)[0])}
+                    label={t(
+                      `product.${replaceDashToSpace(Object.keys(item)[0])}`
+                    )}
                     key={index}
-                    title={replaceDashToSpace(Object.keys(item)[0])}
+                    title={t(
+                      `product.${replaceDashToSpace(Object.keys(item)[0])}`
+                    )}
                     className={styles.productFilterLeft__label}
                   />
                 ))}
             </div>
           </div>
           <div className={styles.productFilterLeft__block}>
-            <p className={styles.productFilterLeft__title}>Price</p>
+            <p className={styles.productFilterLeft__title}>{t("product.Price")}</p>
             <div className={styles.productFilterLeft__action}>
               <p
                 className={`${styles.productFilterLeft__price} ${
                   !selectPrice && `${styles.priceActive}`
                 }`}
-                title="All deals"
+                title={t("product.All deals")}
                 onClick={() => handleSelectPrice()}
               >
-                All deals
+                {t("product.All deals")}
               </p>
               <p
                 className={`${styles.productFilterLeft__price} ${
                   selectPrice === 5 && `${styles.priceActive}`
                 }`}
-                title="5% off or more"
+                title={t("product.5% off or more")}
                 onClick={() => handleSelectPrice(5)}
               >
-                5% off or more
+                {t("product.5% off or more")}
               </p>
               <p
                 className={`${styles.productFilterLeft__price} ${
                   selectPrice === 10 && `${styles.priceActive}`
                 }`}
-                title="10% off or more"
+                title={t("product.10% off or more")}
                 onClick={() => handleSelectPrice(10)}
               >
-                10% off or more
+                {t("product.10% off or more")}
               </p>
               <p
                 className={`${styles.productFilterLeft__price} ${
                   selectPrice === 20 && `${styles.priceActive}`
                 }`}
-                title="20% off or more"
+                title={t("product.20% off or more")}
                 onClick={() => handleSelectPrice(20)}
               >
-                20% off or more
+                {t("product.20% off or more")}
               </p>
               <p
                 className={`${styles.productFilterLeft__price} ${
                   selectPrice === 50 && `${styles.priceActive}`
                 }`}
-                title="50% off or more"
+                title={t("product.50% off or more")}
                 onClick={() => handleSelectPrice(50)}
               >
-                50% off or more
+                {t("product.50% off or more")}
               </p>
             </div>
           </div>
           <div className={styles.productFilterLeft__block}>
             <p className={styles.productFilterLeft__title}>
-              Average Customer Review
+              {t("product.Average Customer Review")}
             </p>
             <div className={styles.productFilterLeft__action}>
               <div
@@ -158,7 +164,7 @@ const ProductFilterLeft = ({
                       />
                     ))}
                 </div>
-                & up
+                {t("product.& up")}
               </div>
               <div
                 className={`${styles.productFilterLeft__rate} ${
@@ -176,7 +182,7 @@ const ProductFilterLeft = ({
                       />
                     ))}
                 </div>
-                & up
+                {t("product.& up")}
               </div>
               <div
                 className={`${styles.productFilterLeft__rate} ${
@@ -194,7 +200,7 @@ const ProductFilterLeft = ({
                       />
                     ))}
                 </div>
-                & up
+                {t("product.& up")}
               </div>
               <div
                 className={`${styles.productFilterLeft__rate} ${
@@ -212,7 +218,7 @@ const ProductFilterLeft = ({
                       />
                     ))}
                 </div>
-                & up
+                {t("product.& up")}
               </div>
             </div>
           </div>

@@ -3,7 +3,9 @@ import styles from "./styles/SelectBox.module.css";
 import PropTypes from "prop-types";
 import { replaceDashToSpace } from "../../utils/replaceDashToSpace";
 import { Skeleton } from "@mui/material";
+import { useTranslation } from "react-i18next";
 const SelectBox = ({ dataSelect, setSortValue, loading }) => {
+  const [t, i18n] = useTranslation("global");
   const handleChange = (e) => {
     if (e.target) {
       setSortValue(e.target.value);
@@ -18,7 +20,7 @@ const SelectBox = ({ dataSelect, setSortValue, loading }) => {
             value={Object.keys(item)[0]}
             className={styles.selectBox__item}
           >
-            Sort by: {replaceDashToSpace(Object.values(item)[0])}
+            {t("product.sortby")} {t(`product.${replaceDashToSpace(Object.values(item)[0])}`)}
           </option>
         ))}
     </select>
@@ -28,7 +30,14 @@ const SelectBox = ({ dataSelect, setSortValue, loading }) => {
 };
 
 const SelectBoxSkeleton = () => {
-  return <Skeleton variant="rounded" width={170} height={24} sx={{marginLeft:"auto"}}/>;
+  return (
+    <Skeleton
+      variant="rounded"
+      width={170}
+      height={24}
+      sx={{ marginLeft: "auto" }}
+    />
+  );
 };
 
 SelectBox.propTypes = {

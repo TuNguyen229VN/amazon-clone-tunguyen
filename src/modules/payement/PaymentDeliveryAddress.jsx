@@ -3,8 +3,10 @@ import { useStateValue } from "../../hooks/useStateValue";
 import styles from "./styles/Payment.module.css";
 import { AddressFormPopup } from "../../components/popup";
 import { getUserProfile } from "../../utils/getUserProfile";
+import { useTranslation } from "react-i18next";
 
 const PaymentDeliveryAddress = () => {
+  const [t, i18n] = useTranslation("global");
   const [{ basket, user }, dispatch] = useStateValue();
   const [open, setOpen] = useState(false);
   const [address, setAddress] = useState(user?.userProfile?.userAddress);
@@ -27,7 +29,7 @@ const PaymentDeliveryAddress = () => {
   return (
     <>
       <div className={styles.payment__title}>
-        <h3>Delivery Address</h3>
+        <h3>{t("order.Delivery Address")}</h3>
       </div>
       <div className={styles.payment__address}>
         <p>{user?.auth?.email}</p>
@@ -39,7 +41,7 @@ const PaymentDeliveryAddress = () => {
           </p>
         )}
         <button onClick={handleOpen} className={styles.payment__openPopup}>
-          {!user?.userProfile?.userAddress ? "Add new address" : "Edit address"}
+          {!user?.userProfile?.userAddress ? t("order.Add new address") : t("order.Edit address")}
         </button>
       </div>
       <AddressFormPopup isOpen={open} onClose={handleClose} />

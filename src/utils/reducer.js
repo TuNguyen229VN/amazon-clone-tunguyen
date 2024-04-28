@@ -1,3 +1,5 @@
+import { showToast } from "./showToast";
+
 export const initialState = {
   basket: JSON.parse(localStorage.getItem("basket")) || [],
   user: JSON.parse(localStorage.getItem("userInfo")) || {
@@ -92,7 +94,7 @@ const reducer = (state, action) => {
         newBasket.splice(index, 1);
         localStorage.setItem("basket", JSON.stringify(newBasket));
       } else {
-        console.warn(
+        showToast(
           `Cant remove product (id: ${action.id}) as its not in basket!`
         );
       }

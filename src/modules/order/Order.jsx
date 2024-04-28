@@ -21,9 +21,11 @@ import { SelectBox } from "../../components/selecbox";
 import useDebounce from "../../hooks/useDebounce";
 import Spinner from "../../components/loading/Spinner";
 import { Skeleton, useMediaQuery } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const NUMBER_LIMIT_INCREASE = 5;
 const Order = () => {
+  const [t, i18n] = useTranslation("global");
   const [{ user, basket }, dispatch] = useStateValue();
   const [order, setOrder] = useState([]);
   const [sortDate, setSortDate] = useState("desc");
@@ -34,6 +36,7 @@ const Order = () => {
   const [loadingTop, setLoadingTop] = useState(true);
 
   useEffect(() => {
+    document.title = "Amazon | Orders";
     window.scrollTo(0, 0);
   }, []);
 
@@ -92,7 +95,7 @@ const Order = () => {
     <div className={styles.orders}>
       <div className={styles.orders__title}>
         {!loadingTop ? (
-          <h1>Your Orders</h1>
+          <h1>{t("order.Your Orders")}</h1>
         ) : (
           <Skeleton
             variant="rectangular"
@@ -120,12 +123,12 @@ const Order = () => {
           {!loadingTop ? (
             <>
               <InputSearch
-                placeholder="Search for purchased products"
+                placeholder={t("order.Search for purchased products")}
                 onChange={handleSearch}
                 className={styles.orders__inputSearch}
               />
               <ButtonPrimary
-                text="Search Orders"
+                text={t("order.Search Orders")}
                 className={styles.orders__buttonSearch}
               />
             </>
@@ -161,14 +164,14 @@ const Order = () => {
         {loading && <OrderItemSkeleton />}
         {!loading && (order.length <= 0 || searchResults.length <= 0) && (
           <p className={styles.order__dont}>
-            Looks like you didn&apos;t place an order.{" "}
-            <Link to={PRODUCT_ROUTE}>View more prodcuts.</Link>
+           {t("order.Looks like you didn't place an order.")}
+            <Link to={PRODUCT_ROUTE}>{t("order.View more prodcuts.")}</Link>
           </p>
         )}
       </div>
       {!loading && searchResults.length > 0 && order.length >= numberLimit && (
         <p onClick={handleLoadMore} className={styles.loadmore}>
-          Load more
+          {t("order.Load More")}
         </p>
       )}
     </div>
@@ -195,7 +198,7 @@ const OrderItemSkeleton = () => {
                 ? "20px"
                 : "22px"
             }
-            width={is480Screen?"100%":is1024Screen ? "200px" : "210px"}
+            width={is480Screen ? "100%" : is1024Screen ? "200px" : "210px"}
           />
           <Skeleton
             variant="rectangular"
@@ -208,7 +211,7 @@ const OrderItemSkeleton = () => {
                 ? "20px"
                 : "22px"
             }
-            width={is480Screen?"100%":is1024Screen ? "200px" : "210px"}
+            width={is480Screen ? "100%" : is1024Screen ? "200px" : "210px"}
           />
           <Skeleton
             variant="rectangular"
@@ -221,7 +224,7 @@ const OrderItemSkeleton = () => {
                 ? "20px"
                 : "22px"
             }
-            width={is480Screen?"100%":is1024Screen ? "350px" : "210px"}
+            width={is480Screen ? "100%" : is1024Screen ? "350px" : "210px"}
           />
         </div>
         <Skeleton
@@ -235,7 +238,7 @@ const OrderItemSkeleton = () => {
               ? "20px"
               : "22px"
           }
-          width={is480Screen?"100%":is1024Screen ? "350px" : "210px"}
+          width={is480Screen ? "100%" : is1024Screen ? "350px" : "210px"}
           sx={{ marginTop: is1200Screen ? "10px" : "0px" }}
         />
       </div>
@@ -262,7 +265,9 @@ const OrderItemSkeleton = () => {
                       ? "20px"
                       : "22px"
                   }
-                  width={is480Screen?"100%":is1024Screen ? "200px" : "140px"}
+                  width={
+                    is480Screen ? "100%" : is1024Screen ? "200px" : "140px"
+                  }
                   sx={{ marginBottom: "10px" }}
                 />
                 <Skeleton
@@ -276,7 +281,9 @@ const OrderItemSkeleton = () => {
                       ? "20px"
                       : "22px"
                   }
-                  width={is480Screen?"100%":is1024Screen ? "200px" : "140px"}
+                  width={
+                    is480Screen ? "100%" : is1024Screen ? "200px" : "140px"
+                  }
                   sx={{ marginBottom: "10px" }}
                 />
                 <Skeleton
@@ -290,7 +297,9 @@ const OrderItemSkeleton = () => {
                       ? "20px"
                       : "22px"
                   }
-                  width={is480Screen?"100%":is1024Screen ? "200px" : "140px"}
+                  width={
+                    is480Screen ? "100%" : is1024Screen ? "200px" : "140px"
+                  }
                   sx={{ marginBottom: "10px" }}
                 />
               </div>
