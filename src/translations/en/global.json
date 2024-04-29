@@ -261,5 +261,15 @@
     "Please fill city": "Please fill city",
     "Please fill district": "Please fill district",
     "Please fill ward": "Please fill ward"
+  },
+  "toast": {
+    "Email or password not correct": "Email or password not correct",
+    "Invalid email or password": "Invalid email or password",
+    "Email already in use": "Email already in use",
+    "Password so weak": "Password so weak",
+    "Invalid email or password to create": "Invalid email or password to create",
+    "Quantity": "Quantity",
+    "or": "or",
+    "User ID is missing":"User ID is missing."
   }
 }

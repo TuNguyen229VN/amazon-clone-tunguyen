@@ -11,6 +11,7 @@ const ChangeLanguageComponent = ({ className }) => {
   const ref = useRef(null);
   const handleChange = (lang) => {
     i18n.changeLanguage(lang);
+    localStorage.setItem("lng", lang);
     setshowDiv(false);
   };
 

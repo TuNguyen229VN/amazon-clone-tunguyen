@@ -127,7 +127,7 @@ const AddressFormPopup = ({ isOpen, onClose }) => {
 
   const saveUserAddress = async () => {
     if (!user?.auth?.uid) {
-      showToast("User ID is missing.");
+      showToast(t("toast.User ID is missing"));
       return;
     }
     const userDocRef = doc(db, "users", user?.auth?.uid);

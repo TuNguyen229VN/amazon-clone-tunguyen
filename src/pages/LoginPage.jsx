@@ -10,7 +10,9 @@ import {
 } from "firebase/auth";
 import { HOME_ROUTE } from "../constant/routesApp";
 import { showToast } from "../utils/showToast";
+import { useTranslation } from "react-i18next";
 const LoginPage = () => {
+  const [t, i18n] = useTranslation("global");
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,9 +29,9 @@ const LoginPage = () => {
       })
       .catch((error) => {
         if (error.message.includes("(auth/invalid-credential)")) {
-          showToast("Email or password not correct");
+          showToast(t("toast.Email or password not correct"));
         } else {
-          showToast("Invalid email or password");
+          showToast(t("toast.Invalid email or password"));
         }
       });
   };
@@ -44,11 +46,11 @@ const LoginPage = () => {
       })
       .catch((error) => {
         if (error.message.includes("(auth/email-already-in-use)")) {
-          showToast("Email already in use");
+          showToast(t("toast.Email already in use"));
         } else if (error.message.includes("(auth/weak-password)")) {
-          showToast("Password so weak");
+          showToast(t("toast.Password so weak"));
         } else {
-          showToast("Invalid email or password to create");
+          showToast(t("toast.Invalid email or password to create"));
         }
       });
   };

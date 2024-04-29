@@ -261,5 +261,15 @@
     "Please fill city": "Vui lòng điền thành phố",
     "Please fill district": "Vui lòng điền quận",
     "Please fill ward": "Vui lòng điền phường"
+  },
+  "toast": {
+    "Email or password not correct": "Email hoặc mật khẩu không đúng",
+    "Invalid email or password":"Email hoặc mật khẩu không hợp lệ",
+    "Email already in use":"Email đã được sử dụng",
+    "Password so weak":"Mật khẩu quá yếu",
+    "Invalid email or password to create":"Email hoặc mật khẩu không hợp lệ để tạo",
+    "Quantity": "Số lượng",
+    "or": "hoặc",
+    "User ID is missing":"ID người dùng bị thiếu."
   }
 }

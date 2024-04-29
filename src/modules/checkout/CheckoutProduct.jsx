@@ -36,11 +36,11 @@ const CheckoutProduct = ({
 
   const saveQuantity = () => {
     if (quantityInput <= 0) {
-      showToast(`Quantity > 0 or < ${stock}`);
+      showToast(`${t("toast.Quantity")} > 0 ${t("toast.or")} < ${stock}`);
       setQuantityInput(parseInt(quantity));
       return;
     } else if (quantityInput > stock) {
-      showToast(`Quantity > 0 or < ${stock}`);
+      showToast(`${t("toast.Quantity")} > 0 ${t("toast.or")} < ${stock}`);
       setQuantityInput(parseInt(stock));
       return;
     }
