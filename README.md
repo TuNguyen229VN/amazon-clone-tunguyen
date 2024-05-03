@@ -53,4 +53,4 @@
 
 - **BEM Convention:** Adheres to the Block, Element, Modifier (BEM) naming convention for CSS class names to ensure consistency and scalability in styling.
 
-(/amazon_md.png)
+![amazon_md img](/amazon_md.png)
