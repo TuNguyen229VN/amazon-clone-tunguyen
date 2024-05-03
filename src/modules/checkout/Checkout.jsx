@@ -26,9 +26,9 @@ const Checkout = () => {
                 ? t("order.Shopping Cart")
                 : t("order.Your Amazon Cart is empty")}
             </h2>
-            <p className={styles.checkout__selectAll}>
+            {/* <p className={styles.checkout__selectAll}>
               {t("order.Select all items")}
-            </p>
+            </p> */}
             <p className={styles.checkout__priceTitle}>{t("order.Price")}</p>
             {Object.keys(basket).length > 0 &&
               basket.map((item, index) => (
