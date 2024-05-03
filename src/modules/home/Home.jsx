@@ -1,7 +1,5 @@
 import React, { useEffect, useId, useState } from "react";
 import styles from "./styles/Home.module.css";
-import Product from "../product/Product";
-import ProductItem from "/assets/product1.jpg";
 import { Banner } from "../../components/banner";
 import { bannerData } from "../../data_av/bannerData";
 import { CatergoryCarousel, ListItemCarousel } from "../../components/carousel";

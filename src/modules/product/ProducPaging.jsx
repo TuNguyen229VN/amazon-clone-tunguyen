@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./styles/ProductHome.module.css";
 import ReactPaginate from "react-paginate";
 import PropTypes from "prop-types";

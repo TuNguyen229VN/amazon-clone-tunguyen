@@ -3,12 +3,10 @@ import styles from "./styles/Order.module.css";
 import { db } from "../../firebase/firebase-config";
 import {
   collection,
-  getDocs,
   limit,
   onSnapshot,
   orderBy,
   query,
-  where,
 } from "firebase/firestore";
 import { useStateValue } from "../../hooks/useStateValue";
 import OrderItem from "./OrderItem";
@@ -19,7 +17,6 @@ import { PRODUCT_ROUTE } from "../../constant/routesApp";
 import { dataSelectSortOrder } from "../../data_av/dataSelectSort";
 import { SelectBox } from "../../components/selecbox";
 import useDebounce from "../../hooks/useDebounce";
-import Spinner from "../../components/loading/Spinner";
 import { Skeleton, useMediaQuery } from "@mui/material";
 import { useTranslation } from "react-i18next";
 

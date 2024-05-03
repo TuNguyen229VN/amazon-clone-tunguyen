@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { LOGIN_ROUTE, ORDER_ROUTE, PRODUCT_ROUTE } from "../constant/routesApp";
 import styles from "./styles/HeaderReponsive.module.css";
-import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import ChangeLanguageComponent from "../components/changeLanguage/ChangeLanguageComponent";
 import { useTranslation } from "react-i18next";

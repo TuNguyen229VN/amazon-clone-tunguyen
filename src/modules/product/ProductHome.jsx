@@ -10,7 +10,6 @@ import axios from "axios";
 import { API_PRODUCT } from "../../constant/constanst";
 import { STATUS_SUCCESS } from "../../constant/status";
 import { SelectBox } from "../../components/selecbox";
-import { useStateValue } from "../../hooks/useStateValue";
 import { replaceSpecialChars } from "../../utils/replaceDashToSpace";
 import { Skeleton, useMediaQuery } from "@mui/material";
 import { useTranslation } from "react-i18next";

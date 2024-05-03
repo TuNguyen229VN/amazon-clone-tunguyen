@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./styles/ProductHome.module.css";
-import axios from "axios";
-import { API_PRODUCT } from "../../constant/constanst";
-import { Link, useParams } from "react-router-dom";
-import { STATUS_SUCCESS } from "../../constant/status";
+import { Link } from "react-router-dom";
 import { PRODUCT_DETAIL_ROUTE } from "../../constant/routesApp";
 import StarIcon from "@mui/icons-material/Star";
 import PropTypes from "prop-types";

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./styles/Header.module.css";
 import Logo from "/assets/logo.png";
 import { ShoppingBasket } from "@mui/icons-material";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useStateValue } from "../hooks/useStateValue";
 import { auth } from "../firebase/firebase-config";
 import MenuIcon from "@mui/icons-material/Menu";
