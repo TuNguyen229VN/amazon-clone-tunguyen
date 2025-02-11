@@ -12,7 +12,9 @@ const API_URL_PRODUCTS_IN_SPECIFIC_CATEGORY =
 const API_PRODUCT = "https://dummyjson.com/products";
 
 // Province API
-const API_PROVINCE = "https://vapi.vnappmob.com/api/province";
+// const API_PROVINCE = "https://vapi.vnappmob.com/api/province";
+const API_PROVINCE = "https://vapi.vnappmob.com/api/v2/province";
+
 export {
   API_STRIPE,
   API_RANDOM_DOG,

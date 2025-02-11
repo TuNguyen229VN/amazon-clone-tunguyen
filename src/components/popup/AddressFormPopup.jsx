@@ -58,7 +58,7 @@ const AddressFormPopup = ({ isOpen, onClose }) => {
   useEffect(() => {
     const getCitiesList = async () => {
       try {
-        const res = await axios.get(API_PROVINCE);
+        const res = await axios.get(`${API_PROVINCE}/`);
         if (res.status === STATUS_SUCCESS) {
           setCitiesList(res.data?.results);
         }
