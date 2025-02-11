@@ -75,6 +75,8 @@ const PaymentMethod = () => {
         setProcessing(false);
         dispatch({ type: "EMPTY_BASKET" });
         navigate(ORDER_ROUTE);
+      }).catch(e=>{
+        console.log(e)
       });
   };
 
