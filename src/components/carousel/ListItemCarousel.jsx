@@ -20,7 +20,7 @@ const flickityOptions = {
   imagesLoaded: true,
   percentPosition: false,
   wrapAround: false,
-  draggable: true,
+  draggable: false,
 };
 const ListItemCarousel = ({
   title = "",

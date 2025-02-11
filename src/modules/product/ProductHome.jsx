@@ -67,6 +67,7 @@ const ProductHome = () => {
 
         const res = await axios.get(search ? URL_SEARCH : URL_CATEGORY);
         if (res.status === STATUS_SUCCESS) {
+          console.log(res.data)
           setSelectedCategories(["all"]);
           setSelectPrice();
           setSelectRating();

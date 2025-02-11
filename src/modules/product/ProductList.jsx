@@ -69,6 +69,7 @@ const ProductList = ({
   return (
     <div className={styles.productList}>
       {!loading &&
+        products.length > 0 &&
         productFilterLeft?.length > 0 &&
         productFilterLeft.map((item) => (
           <Link

@@ -27,6 +27,7 @@
   margin-left: 15px;
   width: 250px;
   object-fit: contain;
+  margin-bottom: 10px;
 }
 
 .listItem__button {
@@ -119,4 +120,8 @@
     height: 50px !important;
     width: 30px !important;
   }
+}
+
+.listItem__flickity {
+  overflow-y: hidden !important;
 }
