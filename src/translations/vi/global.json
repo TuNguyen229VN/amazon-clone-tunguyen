@@ -246,7 +246,8 @@
     "Buy Now": "Mua Ngay",
     "Don't have item to pay": "Không có mặt hàng để thanh toán",
     "Please add your address": "Vui lòng thêm địa chỉ của bạn",
-    "Please enter number visa": "Vui lòng nhập số visa"
+    "Please enter number visa": "Vui lòng nhập số visa",
+    "Invalid order value (Order value is too large or too small to pay)": "Giá trị đơn hàng không hợp lệ (Giá trị đơn hàng quá lớn hoặc quá nhỏ để thanh toán)"
   },
   "addressForm": {
     "Enter Address": "Nhập Địa Chỉ",
@@ -264,12 +265,12 @@
   },
   "toast": {
     "Email or password not correct": "Email hoặc mật khẩu không đúng",
-    "Invalid email or password":"Email hoặc mật khẩu không hợp lệ",
-    "Email already in use":"Email đã được sử dụng",
-    "Password so weak":"Mật khẩu quá yếu",
-    "Invalid email or password to create":"Email hoặc mật khẩu không hợp lệ để tạo",
+    "Invalid email or password": "Email hoặc mật khẩu không hợp lệ",
+    "Email already in use": "Email đã được sử dụng",
+    "Password so weak": "Mật khẩu quá yếu",
+    "Invalid email or password to create": "Email hoặc mật khẩu không hợp lệ để tạo",
     "Quantity": "Số lượng",
     "or": "hoặc",
-    "User ID is missing":"ID người dùng bị thiếu."
+    "User ID is missing": "ID người dùng bị thiếu."
   }
 }

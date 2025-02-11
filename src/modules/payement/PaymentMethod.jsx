@@ -24,13 +24,13 @@ const PaymentMethod = () => {
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState(true);
+  const total = parseFloat((getBasketTotal(basket) * 100).toFixed(2));
   useEffect(() => {
     // generate the special stripe secret whic allows us to charge a customer
-
     const getClientSecret = async () => {
       const response = await axios({
         method: "post",
-        url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
+        url: `/payments/create?total=${total}`,
       });
       setClientSecret(response.data.clientSecret);
     };
@@ -39,6 +39,12 @@ const PaymentMethod = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (total > 10000000 || total < 50) {
+      setError(
+        "Invalid order value (Order value is too large or too small to pay)"
+      );
+      return;
+    }
     if (basket.length <= 0) {
       setError("Don't have item to pay");
       return;
@@ -75,8 +81,6 @@ const PaymentMethod = () => {
         setProcessing(false);
         dispatch({ type: "EMPTY_BASKET" });
         navigate(ORDER_ROUTE);
-      }).catch(e=>{
-        console.log(e)
       });
   };
 
@@ -97,7 +101,9 @@ const PaymentMethod = () => {
             <CurrencyFormat
               renderText={(value) => (
                 <>
-                  <h3>{t("order.Order Total")} {value}</h3>
+                  <h3>
+                    {t("order.Order Total")} {value}
+                  </h3>
                 </>
               )}
               decimalScale={2}
@@ -108,7 +114,7 @@ const PaymentMethod = () => {
             />
             {basket?.length > 0 && (
               <button
-                disabled={processing || succeeded}
+                disabled={processing || succeeded || error}
                 className={`${styles.buttonPayment} ${
                   processing && styles.disabled
                 }`}
@@ -118,7 +124,9 @@ const PaymentMethod = () => {
             )}
           </div>
           {/* Error */}
-          {error && <div className={styles.paymentError}>*{t(`order.${error}`)}*</div>}
+          {error && (
+            <div className={styles.paymentError}>*{t(`order.${error}`)}*</div>
+          )}
         </form>
       </div>
     </>

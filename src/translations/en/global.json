@@ -246,7 +246,8 @@
     "Buy Now": "Buy Now",
     "Don't have item to pay": "Don't have item to pay",
     "Please add your address": "Please add your address",
-    "Please enter number visa": "Please enter number visa"
+    "Please enter number visa": "Please enter number visa",
+    "Invalid order value (Order value is too large or too small to pay)": "Invalid order value (Order value is too large or too small to pay)"
   },
   "addressForm": {
     "Enter Address": "Enter Address",
@@ -270,6 +271,6 @@
     "Invalid email or password to create": "Invalid email or password to create",
     "Quantity": "Quantity",
     "or": "or",
-    "User ID is missing":"User ID is missing."
+    "User ID is missing": "User ID is missing."
   }
 }
