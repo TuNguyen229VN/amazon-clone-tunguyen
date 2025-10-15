@@ -1,5 +1,5 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import React, { useEffect, useId, useState } from "react";
+import React, { useEffect, useId, useRef, useState } from "react";
 import CurrencyFormat from "react-currency-format";
 import { useStateValue } from "../../hooks/useStateValue";
 import { getBasketTotal } from "../../utils/reducer";
@@ -18,13 +18,13 @@ const PaymentMethod = () => {
   const [{ user, basket }, dispatch] = useStateValue();
   const stripe = useStripe();
   const elements = useElements();
-
   const [succeeded, setSucceeded] = useState(false);
   const [processing, setProcessing] = useState("");
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState(true);
   const total = parseFloat((getBasketTotal(basket) * 100).toFixed(2));
+  const isFirstRender = useRef(true);
   useEffect(() => {
     // generate the special stripe secret whic allows us to charge a customer
     const getClientSecret = async () => {
@@ -37,28 +37,61 @@ const PaymentMethod = () => {
     getClientSecret();
   }, [basket]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return; // bỏ qua lần đầu tiên
+    }
+    checkOrderValue(false);
+  }, [user?.userProfile?.userAddress]);
+  const checkOrderValue = (paymentState = false) => {
+    console.log(disabled);
     if (total > 10000000 || total < 50) {
       setError(
         "Invalid order value (Order value is too large or too small to pay)"
       );
-      return;
+      return false;
     }
     if (basket.length <= 0) {
       setError("Don't have item to pay");
-      return;
+      return false;
     }
     if (!user?.userProfile?.userAddress) {
       setError("Please add your address");
-      return;
+      return false;
     }
     if (disabled) {
       setError("Please enter number visa");
-      return;
+      return false;
     }
     setError("");
-    setProcessing(true);
+    paymentState ? setProcessing(true) : setDisabled(false);
+    return true;
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // if (total > 10000000 || total < 50) {
+    //   setError(
+    //     "Invalid order value (Order value is too large or too small to pay)"
+    //   );
+    //   return;
+    // }
+    // if (basket.length <= 0) {
+    //   setError("Don't have item to pay");
+    //   return;
+    // }
+    // if (!user?.userProfile?.userAddress) {
+    //   setError("Please add your address");
+    //   return;
+    // }
+    // if (disabled) {
+    //   setError("Please enter number visa");
+    //   return;
+    // }
+    // setError("");
+    // setProcessing(true);
+    if (!checkOrderValue(true)) return;
+
     const payload = await stripe
       .confirmCardPayment(clientSecret, {
         payment_method: {

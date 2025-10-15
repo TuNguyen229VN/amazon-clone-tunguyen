@@ -120,7 +120,7 @@ const AddressFormPopup = ({ isOpen, onClose }) => {
     } else {
       // Do something with the address data, like sending it to a server
       await saveUserAddress();
-      getUserProfile(user.auth, dispatch);
+      await getUserProfile(user.auth, dispatch);
       onClose();
     }
   };
@@ -179,8 +179,10 @@ const AddressFormPopup = ({ isOpen, onClose }) => {
               {...params}
               label={t("addressForm.City/ Province")}
               error={Boolean(addressError.city)}
-              helperText={ (addressError.city &&
-              t(`addressForm.${addressError.city}`)) || ""}
+              helperText={
+                (addressError.city && t(`addressForm.${addressError.city}`)) ||
+                ""
+              }
             />
           )}
           value={
@@ -206,8 +208,11 @@ const AddressFormPopup = ({ isOpen, onClose }) => {
               {...params}
               label={t("addressForm.District")}
               error={Boolean(addressError.district)}
-              helperText={ (addressError.district &&
-              t(`addressForm.${addressError.district}`)) || ""}
+              helperText={
+                (addressError.district &&
+                  t(`addressForm.${addressError.district}`)) ||
+                ""
+              }
             />
           )}
           value={
@@ -232,8 +237,10 @@ const AddressFormPopup = ({ isOpen, onClose }) => {
               {...params}
               label={t("addressForm.Ward")}
               error={Boolean(addressError.ward)}
-              helperText={ (addressError.ward &&
-              t(`addressForm.${addressError.ward}`)) || ""}
+              helperText={
+                (addressError.ward && t(`addressForm.${addressError.ward}`)) ||
+                ""
+              }
             />
           )}
           value={

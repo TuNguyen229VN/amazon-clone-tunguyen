@@ -4,6 +4,8 @@
 
 - The Amazon Clone project aims to replicate the functionality and design of the renowned e-commerce platform, Amazon, using ReactJS. Leveraging a range of modern technologies and libraries such as Firebase, Material UI, and Stripe, this project strives to deliver a seamless shopping experience to users while also providing essential features like authentication, product management, and payment processing.
 
+- **Visa number test:** 4242 4242 4242 4242 - 04 / 26 (Change date by year) - 424 - 24242
+
 **🗓️ Project created on:** March 20, 2024
 
 ## Technologies & Libraries:
