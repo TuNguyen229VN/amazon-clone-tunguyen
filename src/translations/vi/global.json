@@ -247,7 +247,13 @@
     "Don't have item to pay": "Không có mặt hàng để thanh toán",
     "Please add your address": "Vui lòng thêm địa chỉ của bạn",
     "Please enter number visa": "Vui lòng nhập số visa",
-    "Invalid order value (Order value is too large or too small to pay)": "Giá trị đơn hàng không hợp lệ (Giá trị đơn hàng quá lớn hoặc quá nhỏ để thanh toán)"
+    "Invalid order value (Order value is too large or too small to pay)": "Giá trị đơn hàng không hợp lệ (Giá trị đơn hàng quá lớn hoặc quá nhỏ để thanh toán)",
+    "Số thẻ của quý vị không đầy đủ.": "Số thẻ của quý vị không đầy đủ",
+    "Payment failed, please check your order again": "Thanh toán thất bại, vui lòng kiểm tra lại đơn hàng của bạn",
+    "Năm hết hạn của thẻ ở trong quá khứ.": "Năm hết hạn của thẻ ở trong quá khứ",
+    "Ngày hết hạn trên thẻ không hợp lệ.": "Ngày hết hạn trên thẻ không hợp lệ",
+    "Số thẻ của quý vị không hợp lệ.": "Số thẻ của quý vị không hợp lệ",
+    "Thẻ đã bị từ chối.": "Thẻ đã bị từ chối"
   },
   "addressForm": {
     "Enter Address": "Nhập Địa Chỉ",

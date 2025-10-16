@@ -247,7 +247,13 @@
     "Don't have item to pay": "Don't have item to pay",
     "Please add your address": "Please add your address",
     "Please enter number visa": "Please enter number visa",
-    "Invalid order value (Order value is too large or too small to pay)": "Invalid order value (Order value is too large or too small to pay)"
+    "Invalid order value (Order value is too large or too small to pay)": "Invalid order value (Order value is too large or too small to pay)",
+    "Số thẻ của quý vị không đầy đủ.": "Your card number is incomplete",
+    "Payment failed, please check your order again": "Payment failed, please check your order again",
+    "Năm hết hạn của thẻ ở trong quá khứ.": "Your card's expiration year is in the past",
+    "Ngày hết hạn trên thẻ không hợp lệ.": "Your card's expiration date is invalid",
+    "Số thẻ của quý vị không hợp lệ.": "Your card number is invalid",
+    "Thẻ đã bị từ chối.": "Your card was declined"
   },
   "addressForm": {
     "Enter Address": "Enter Address",
