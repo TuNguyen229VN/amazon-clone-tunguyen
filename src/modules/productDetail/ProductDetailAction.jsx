@@ -44,10 +44,10 @@ const ProductDetailAction = ({ productDetail = {} }) => {
           <>
             <LocationOnIcon fontSize="small" />
             <p
-              title={`${address?.houseNumber}, ${address?.ward.ward_name}, ${address?.district.district_name}, ${address?.city.province_name}`}
+              title={`${address?.houseNumber}, ${address?.ward?.ward_name || address?.ward?.name}, ${address?.district?.district_name || address?.district?.name}, ${address?.city?.province_name || address?.city?.name}`}
             >
-              {address?.houseNumber}, {address?.ward.ward_name},{" "}
-              {address?.district.district_name}, {address?.city.province_name}
+              {address?.houseNumber}, {address?.ward?.ward_name || address?.ward?.name},{" "}
+              {address?.district?.district_name || address?.district?.name}, {address?.city?.province_name || address?.city?.name}
             </p>
           </>
         )}

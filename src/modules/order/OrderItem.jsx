@@ -39,10 +39,10 @@ const OrderItem = ({ order = [] }) => {
               <h2 className={styles.order__shiptoTitle}>{t("order.Ship to")}</h2>
               <p
                 className={styles.order__shiptoAddress}
-                title={`${address?.houseNumber}, ${address?.ward.ward_name}, ${address?.district.district_name}, ${address?.city.province_name}`}
+                title={`${address?.houseNumber}, ${address?.ward?.ward_name || address?.ward?.name}, ${address?.district?.district_name || address?.district?.name}, ${address?.city?.province_name || address?.city?.name}`}
               >
-                {address?.houseNumber}, {address?.ward.ward_name},{" "}
-                {address?.district.district_name}, {address?.city.province_name}
+                {address?.houseNumber}, {address?.ward?.ward_name || address?.ward?.name},{" "}
+                {address?.district?.district_name || address?.district?.name}, {address?.city?.province_name || address?.city?.name}
               </p>
             </div>
           )}

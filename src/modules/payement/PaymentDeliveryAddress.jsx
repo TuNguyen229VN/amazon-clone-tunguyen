@@ -36,8 +36,8 @@ const PaymentDeliveryAddress = () => {
 
         {user?.userProfile?.userAddress && (
           <p>
-            {address?.houseNumber}, {address?.ward.ward_name},{" "}
-            {address?.district.district_name}, {address?.city.province_name}
+            {address?.houseNumber}, {address?.ward?.ward_name || address?.ward?.name},{" "}
+            {address?.district?.district_name || address?.district?.name}, {address?.city?.province_name || address?.city?.name}
           </p>
         )}
         <button onClick={handleOpen} className={styles.payment__openPopup}>

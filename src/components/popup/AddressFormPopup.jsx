@@ -60,7 +60,7 @@ const AddressFormPopup = ({ isOpen, onClose }) => {
       try {
         const res = await axios.get(`${API_PROVINCE}/`);
         if (res.status === STATUS_SUCCESS) {
-          setCitiesList(res.data?.results);
+          setCitiesList(res.data);
         }
       } catch (error) {
         return;
@@ -70,10 +70,10 @@ const AddressFormPopup = ({ isOpen, onClose }) => {
     const getDistrictsList = async () => {
       try {
         const res = await axios.get(
-          `${API_PROVINCE}/district/${address.city?.province_id}`
+          `${API_PROVINCE}/district/${address.city?.code}`
         );
         if (res.status === STATUS_SUCCESS) {
-          setDistrictsList(res.data?.results);
+          setDistrictsList(res.data);
         }
       } catch (error) {
         return;
@@ -83,10 +83,10 @@ const AddressFormPopup = ({ isOpen, onClose }) => {
     const getWardList = async () => {
       try {
         const res = await axios.get(
-          `${API_PROVINCE}/ward/${address.district?.district_id}`
+          `${API_PROVINCE}/ward/${address.district?.code}`
         );
         if (res.status === STATUS_SUCCESS) {
-          setWardList(res.data?.results);
+          setWardList(res.data);
         }
       } catch (error) {
         return;
@@ -173,7 +173,7 @@ const AddressFormPopup = ({ isOpen, onClose }) => {
           margin="dense"
           name="city"
           options={citiesList}
-          getOptionLabel={(option) => option?.province_name || ""}
+          getOptionLabel={(option) => option?.name || ""}
           renderInput={(params) => (
             <TextField
               {...params}
@@ -187,7 +187,7 @@ const AddressFormPopup = ({ isOpen, onClose }) => {
           )}
           value={
             citiesList.find(
-              (cities) => cities?.province_id === address.city?.province_id
+              (cities) => cities?.code === address.city?.code
             ) || null
           }
           onChange={(event, newValue) => {
@@ -202,7 +202,7 @@ const AddressFormPopup = ({ isOpen, onClose }) => {
           margin="dense"
           name="district"
           options={districtsList}
-          getOptionLabel={(option) => option?.district_name || ""}
+          getOptionLabel={(option) => option?.name || ""}
           renderInput={(params) => (
             <TextField
               {...params}
@@ -217,7 +217,7 @@ const AddressFormPopup = ({ isOpen, onClose }) => {
           )}
           value={
             districtsList.find(
-              (dis) => dis?.district_id === address.district?.district_id
+              (dis) => dis?.code === address.district?.code
             ) || null
           }
           onChange={(event, newValue) => {
@@ -231,7 +231,7 @@ const AddressFormPopup = ({ isOpen, onClose }) => {
           margin="dense"
           name="ward"
           options={wardList}
-          getOptionLabel={(option) => option?.ward_name || ""}
+          getOptionLabel={(option) => option?.name || ""}
           renderInput={(params) => (
             <TextField
               {...params}
@@ -244,7 +244,7 @@ const AddressFormPopup = ({ isOpen, onClose }) => {
             />
           )}
           value={
-            wardList.find((ward) => ward?.ward_id === address.ward?.ward_id) ||
+            wardList.find((ward) => ward?.code === address.ward?.code) ||
             null
           }
           onChange={(event, newValue) => {

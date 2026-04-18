@@ -13,7 +13,9 @@ const API_PRODUCT = "https://dummyjson.com/products";
 
 // Province API
 // const API_PROVINCE = "https://vapi.vnappmob.com/api/province";
-const API_PROVINCE = "https://vapi.vnappmob.com/api/v2/province";
+// const API_PROVINCE = "https://vapi.vnappmob.com/api/v2/province";
+// const API_PROVINCE = "https://api-stripe-clientid.vercel.app/api";
+const API_PROVINCE = "https://api-stripe-clientid.vercel.app/api/province";
 
 export {
   API_STRIPE,
