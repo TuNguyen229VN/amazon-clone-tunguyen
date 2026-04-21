@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
 import { Skeleton, useMediaQuery } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-const MAX__CELL = 1200;
+// const MAX__CELL = 1200;
 const flickityOptions = {
   contain: true,
   draggable: false,
@@ -30,6 +30,7 @@ const ProductCategoryFilter = ({ loading = false }) => {
   useEffect(() => {
     if (flkty) {
       let target = flkty.selectedCell.target;
+      let MAX__CELL = flkty.slideableWidth - flkty.size.width;
       if (target == flkty.cells[0].target) {
         document
           .querySelector(`.${styles["--back"]}`)
