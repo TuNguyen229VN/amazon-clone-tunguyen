@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./styles/ProductHome.module.css";
 import ProductCategoryFilter from "./ProductCategoryFilter";
@@ -20,10 +20,9 @@ const ProductHome = () => {
   const search = new URLSearchParams(window.location.search).get("search");
   const [currentPage, setCurrentPage] = useState(1);
   const [skip, setSkip] = useState(0);
-  const [products, setProducts] = useState([]);
+  const [allProducts, setAllProducts] = useState([]); // full dataset của category/search
   const [loading, setLoading] = useState(true);
   const [loadingTop, setLoadingTop] = useState(true);
-  const [count, setCount] = useState(0);
   const [filter, setFilter] = useState("");
   const [sortValue, setSortValue] = useState("charactDesc");
   const [selectedCategories, setSelectedCategories] = useState(["all"]);
@@ -33,23 +32,17 @@ const ProductHome = () => {
   const is768Screen = useMediaQuery("(max-width: 768px)");
   const is480Screen = useMediaQuery("(max-width: 480px)");
   const [t, i18n] = useTranslation("global");
-  
+
   useEffect(() => {
     document.title = "Amazon | Deals";
     window.scrollTo(0, 0);
   }, []);
+
+  // Fetch TOÀN BỘ data theo category/search — chỉ chạy lại khi slug/search đổi
   useEffect(() => {
     if (slug && slug !== "all") {
       setFilter(slug);
-      if (filter !== slug) {
-        setCurrentPage(1);
-        setSkip(0);
-      }
     } else if (slug === "all") {
-      if (filter) {
-        setCurrentPage(1);
-        setSkip(0);
-      }
       setFilter("");
     }
 
@@ -58,31 +51,74 @@ const ProductHome = () => {
         setLoading(true);
         const URL_SEARCH =
           search &&
-          `${API_PRODUCT}/search?q=${replaceSpecialChars(
-            search
-          )}&limit=${LIMIT}&skip=${LIMIT * skip}`;
+          `${API_PRODUCT}/search?q=${replaceSpecialChars(search)}&limit=0`;
         const URL_CATEGORY = `${API_PRODUCT}${
-          slug && slug != "all" ? `/category/${slug}` : "/"
-        }?limit=${LIMIT}&skip=${LIMIT * skip}`;
+          slug && slug !== "all" ? `/category/${slug}` : "/"
+        }?limit=0`;
 
         const res = await axios.get(search ? URL_SEARCH : URL_CATEGORY);
         if (res.status === STATUS_SUCCESS) {
           setSelectedCategories(["all"]);
           setSelectPrice();
           setSelectRating();
-          setProducts(res.data.products);
-          setCount(res.data?.total);
-          // setLoading(false);
+          setAllProducts(res.data.products || []);
+          setCurrentPage(1);
+          setSkip(0);
           setLoadingTop(false);
         }
       } catch (error) {
         setLoading(false);
         setLoadingTop(false);
-        return;
       }
     };
     getProduct();
-  }, [count, currentPage, filter, slug, skip, search]);
+  }, [slug, search]);
+
+  // Filter trên TOÀN BỘ allProducts (không giới hạn theo trang)
+  const filteredProducts = useMemo(() => {
+    let result = allProducts;
+
+    if (selectedCategories?.length && selectedCategories[0] !== "all") {
+      result = result.filter((item) =>
+        selectedCategories.includes(item.category)
+      );
+    }
+    if (selectRating) {
+      result = result.filter((item) => item.rating > selectRating);
+    }
+    if (selectPrice) {
+      // giữ nguyên logic cũ: selectPrice đang so với discountPercentage
+      result = result.filter((item) => item.discountPercentage > selectPrice);
+    }
+    return result;
+  }, [allProducts, selectedCategories, selectRating, selectPrice]);
+
+  // Sort trên kết quả đã filter
+  const sortedProducts = useMemo(() => {
+    const result = [...filteredProducts];
+    switch (sortValue) {
+      case "charactDesc":
+        return result.sort((a, b) => a?.title.localeCompare(b?.title));
+      case "charactAsc":
+        return result.sort((a, b) => b?.title.localeCompare(a?.title));
+      case "priceDesc":
+        return result.sort((a, b) => b?.price - a?.price);
+      case "priceAsc":
+        return result.sort((a, b) => a?.price - b?.price);
+      default:
+        return result;
+    }
+  }, [filteredProducts, sortValue]);
+
+  // Phân trang trên kết quả đã filter + sort
+  const pagedProducts = useMemo(() => {
+    const start = LIMIT * skip;
+    return sortedProducts.slice(start, start + LIMIT);
+  }, [sortedProducts, skip]);
+
+  useEffect(() => {
+    setLoading(false);
+  }, [pagedProducts]);
 
   return (
     <div className={styles.productHome}>
@@ -124,24 +160,21 @@ const ProductHome = () => {
           loading={loadingTop}
         />
         <ProductList
-          products={products}
+          products={pagedProducts}
+          hasAnyProducts={allProducts.length > 0}
+          hasFilteredProducts={filteredProducts.length > 0}
           loading={loading}
-          setLoading={setLoading}
-          sortValue={sortValue}
-          selectedCategories={selectedCategories}
-          selectPrice={selectPrice}
-          selectRating={selectRating}
         />
       </div>
       <ProducPaging
-        products={products}
-        count={count}
-        setCount={setCount}
+        products={pagedProducts}
+        count={filteredProducts.length}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         setSkip={setSkip}
         skip={skip}
         loading={loadingTop}
+         itemsPerPage={LIMIT}
       />
     </div>
   );

@@ -3,23 +3,24 @@ import styles from "./styles/ProductHome.module.css";
 import ReactPaginate from "react-paginate";
 import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
-const ITEM = 20;
+
 const ProducPaging = ({
   products = [],
   currentPage = 0,
   setCurrentPage,
   count = 0,
-  setCount,
   skip = 0,
   setSkip,
   loading = true,
+  itemsPerPage = 20,
 }) => {
   const [t, i18n] = useTranslation("global");
-  // Click paging number
+
   const handlePageClick = (data) => {
     setCurrentPage(data.selected + 1);
     setSkip(data.selected);
   };
+
   return (
     <>
       {!loading && products?.length > 0 && (
@@ -35,7 +36,7 @@ const ProducPaging = ({
             breakLabel={
               <div className={styles.productPaging__pageItem}>...</div>
             }
-            pageCount={Math.ceil(count / ITEM)}
+            pageCount={Math.ceil(count / itemsPerPage)}
             disabledLinkClassName={styles.disalbeLink}
             marginPagesDisplayed={3}
             onPageChange={handlePageClick}
@@ -54,14 +55,16 @@ const ProducPaging = ({
     </>
   );
 };
+
 ProducPaging.propTypes = {
   products: PropTypes.array,
   count: PropTypes.number,
-  setCount: PropTypes.func,
   currentPage: PropTypes.number,
   setCurrentPage: PropTypes.func,
   skip: PropTypes.number,
   setSkip: PropTypes.func,
   loading: PropTypes.bool,
+  itemsPerPage: PropTypes.number,
 };
+
 export default ProducPaging;
