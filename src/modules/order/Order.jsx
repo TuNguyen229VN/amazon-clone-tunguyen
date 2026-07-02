@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./styles/Order.module.css";
 import { db } from "../../firebase/firebase-config";
-import {
-  collection,
-  limit,
-  onSnapshot,
-  orderBy,
-  query,
-} from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { useStateValue } from "../../hooks/useStateValue";
 import OrderItem from "./OrderItem";
 import { ButtonPrimary } from "../../components/button";
@@ -21,14 +15,16 @@ import { Skeleton, useMediaQuery } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 const NUMBER_LIMIT_INCREASE = 5;
+const INITIAL_LIMIT = 4;
+
 const Order = () => {
   const [t, i18n] = useTranslation("global");
   const [{ user, basket }, dispatch] = useStateValue();
-  const [order, setOrder] = useState([]);
+  const [allOrders, setAllOrders] = useState([]); // toàn bộ đơn hàng của user
   const [sortDate, setSortDate] = useState("desc");
   const [debouncedValue, setDebouncedValue] = useDebounce("", 500);
-  const [searchResults, setSearchResults] = useState([]);
-  const [numberLimit, setNumberLimit] = useState(4);
+  const [searchResults, setSearchResults] = useState([]); // đã search, chưa cắt limit hiển thị
+  const [numberLimit, setNumberLimit] = useState(INITIAL_LIMIT); // số lượng hiển thị hiện tại
   const [loading, setLoading] = useState(true);
   const [loadingTop, setLoadingTop] = useState(true);
 
@@ -37,47 +33,47 @@ const Order = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(() => {
-    setLoading(true);
-    let newSearchResults = [];
-    order.forEach((item) => {
-      let searchProduct = item.data?.basket?.find((basketItem) =>
-        basketItem.title.toLowerCase().includes(debouncedValue.toLowerCase())
-      );
-      if (searchProduct) {
-        newSearchResults.push(item);
-      }
-    });
-    setSearchResults(newSearchResults);
-    setLoading(false);
-  }, [debouncedValue, order, numberLimit]);
-
+  // Fetch TOÀN BỘ đơn hàng (không limit) — chạy lại khi user hoặc sortDate đổi
   useEffect(() => {
     setLoading(true);
     if (user?.auth) {
       const ordersQuery = query(
         collection(db, "users", user?.auth?.uid, "orders"),
-        orderBy("created", sortDate),
-        limit(numberLimit)
+        orderBy("created", sortDate)
       );
       const unsubscribe = onSnapshot(ordersQuery, (querySnapshot) => {
         const ordersData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           data: doc?.data(),
         }));
-        setOrder(ordersData);
+        setAllOrders(ordersData);
+        setNumberLimit(INITIAL_LIMIT); // reset số lượng hiển thị khi đổi sort
         setLoading(false);
         setLoadingTop(false);
       });
+      return () => unsubscribe();
     } else {
-      setOrder([]);
+      setAllOrders([]);
       setLoading(false);
       setLoadingTop(false);
     }
-  }, [user?.auth, sortDate, numberLimit]);
+  }, [user?.auth, sortDate]);
+
+  // Search trên TOÀN BỘ allOrders, không phụ thuộc numberLimit
+  useEffect(() => {
+    setLoading(true);
+    const newSearchResults = allOrders.filter((item) =>
+      item.data?.basket?.some((basketItem) =>
+        basketItem.title.toLowerCase().includes(debouncedValue.toLowerCase())
+      )
+    );
+    setSearchResults(newSearchResults);
+    setLoading(false);
+  }, [debouncedValue, allOrders]);
 
   const handleSearch = (e) => {
     setDebouncedValue(e.target.value);
+    setNumberLimit(INITIAL_LIMIT); // search mới thì reset về hiển thị từ đầu
   };
 
   const handleLoadMore = () => {
@@ -87,6 +83,8 @@ const Order = () => {
   const is1024Screen = useMediaQuery("(max-width: 1024px)");
   const is768Screen = useMediaQuery("(max-width: 768px)");
   const is480Screen = useMediaQuery("(max-width: 480px)");
+
+  const visibleResults = searchResults.slice(0, numberLimit);
 
   return (
     <div className={styles.orders}>
@@ -154,27 +152,30 @@ const Order = () => {
       </div>
       <div className={styles.orders__order}>
         {!loading &&
-          searchResults.length > 0 &&
-          searchResults.map((item, index) => (
+          visibleResults.length > 0 &&
+          visibleResults.map((item, index) => (
             <OrderItem order={item} key={index} />
           ))}
         {loading && <OrderItemSkeleton />}
-        {!loading && (order.length <= 0 || searchResults.length <= 0) && (
+        {!loading && (allOrders.length <= 0 || searchResults.length <= 0) && (
           <p className={styles.order__dont}>
-           {t("order.Looks like you didn't place an order.")}
+            {t("order.Looks like you didn't place an order.")}
             <Link to={PRODUCT_ROUTE}>{t("order.View more prodcuts.")}</Link>
           </p>
         )}
       </div>
-      {!loading && searchResults.length > 0 && order.length >= numberLimit && (
-        <p onClick={handleLoadMore} className={styles.loadmore}>
-          {t("order.Load More")}
-        </p>
-      )}
+      {!loading &&
+        searchResults.length > 0 &&
+        searchResults.length > numberLimit && (
+          <p onClick={handleLoadMore} className={styles.loadmore}>
+            {t("order.Load More")}
+          </p>
+        )}
     </div>
   );
 };
 
+// OrderItemSkeleton giữ nguyên, không đổi
 const OrderItemSkeleton = () => {
   const is1200Screen = useMediaQuery("(max-width: 1200px)");
   const is1024Screen = useMediaQuery("(max-width: 1024px)");
@@ -319,4 +320,5 @@ const OrderItemSkeleton = () => {
     </div>
   );
 };
+
 export default Order;
