@@ -17,7 +17,7 @@ const HeaderBottom = () => {
       </li>
       <li className={styles.headerBottom__item}>
         <Link
-          to={`${PRODUCT_ROUTE}/skincare`}
+          to={`${PRODUCT_ROUTE}/skin-care`}
           className={styles.headerBottom__title}
         >
           {t("header.todayDeals")}
@@ -41,7 +41,7 @@ const HeaderBottom = () => {
       </li>
       <li className={styles.headerBottom__item}>
         <Link
-          to={`${PRODUCT_ROUTE}/lighting`}
+          to={`${PRODUCT_ROUTE}/kitchen-accessories`}
           className={styles.headerBottom__title}
         >
           {t("header.giftCards")}

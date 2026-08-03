@@ -24,7 +24,7 @@ export const thumbnailCategoryData = [
   { smartphones: Smartphone },
   { laptops: Laptops },
   { fragrances: Fragrances },
-  { skincare: Skincare },
+  { "skin-care": Skincare },
   { groceries: Groceries },
   { "home-decoration": HomeDecoration },
   { furniture: Furniture },
