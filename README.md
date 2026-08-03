@@ -57,4 +57,33 @@
 
 - **BEM Convention:** Adheres to the Block, Element, Modifier (BEM) naming convention for CSS class names to ensure consistency and scalability in styling.
 
+## Environment Variables
+
+Create a `.env` file in the root directory and add:
+
+```env
+# Firebase
+VITE_API_KEY_FIREBASE=
+VITE_AUTH_DOMAIN_FIREBASE=
+VITE_PROJECT_ID_FIREBASE=
+VITE_STORAGE_BUCKET_FIREBASE=
+VITE_MESSAGING_SENDER_ID_FIREBASE=
+VITE_APP_ID_FIREBASE=
+VITE_MEASUREMENT_ID_FIREBASE=
+
+# Stripe
+VITE_STRIPE_PUBLISHABLE_KEY=
+```
+
+Replace the empty values with your own Firebase and Stripe configuration.
+
+> ⚠️ Do not expose the Stripe Secret Key (`sk_test_...` or `sk_live_...`) in a Vite frontend application.
+
+## Installation
+
+```bash
+npm install
+npm run dev
+```
+
 ![amazon_md img](/amazon_md.png)
